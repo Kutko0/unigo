@@ -3,7 +3,6 @@
 ###################
 *.com
 *.class
-*.exe
 *.pdb
 *.dll.config
 *.cache
@@ -55,15 +54,10 @@ TestResults/
 ehthumbs.db
 Icon?
 Thumbs.db
-[Bb]in
-[Oo]bj
 [Tt]est[Rr]esults
 *.suo
-*.user
 *.[Cc]ache
 *[Rr]esharper*
-_[Ss]cripts
-*.exe
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
