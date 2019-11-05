@@ -3,7 +3,6 @@
 ###################
 *.com
 *.class
-*.dll
 *.exe
 *.pdb
 *.dll.config
@@ -22,7 +21,6 @@ _UpgradeReport_Files/
 ###############
 # Directories #
 ###############
-bin/
 obj/
 TestResults/
 ###################
@@ -50,7 +48,6 @@ TestResults/
 ######################
 # Logs and databases #
 ######################
-*.log
 *.sqlite
 # OS generated files #
 ######################
@@ -65,11 +62,8 @@ Thumbs.db
 *.user
 *.[Cc]ache
 *[Rr]esharper*
-packages
-NuGet.exe
 _[Ss]cripts
 *.exe
-*.dll
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
