@@ -20,8 +20,14 @@ namespace Unigo.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        
-       
+
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Ride> Rides { get; set; }
+        public DbSet<Destination> Destinations { get; set; }
+        public DbSet<PersonRide> PersonRides { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<StopPointRide> StopPointRides { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

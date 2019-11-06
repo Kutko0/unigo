@@ -8,6 +8,8 @@ namespace Unigo.Models
 {
     public class StopPointRide
     {
+        public int Id { get; set; }
+
         [ForeignKey("RideId")]
         public Ride Ride { get; set; }
         public int RideId { get; set; }

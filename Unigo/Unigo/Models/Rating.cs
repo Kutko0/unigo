@@ -9,6 +9,8 @@ namespace Unigo.Models
 {
     public class Rating
     {
+        public int Id { get; set; }
+
         [ForeignKey("RiderId")]
         public Person Rider { get; set; }
         public int RiderId { get; set; }
