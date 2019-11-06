@@ -14,6 +14,7 @@ namespace Unigo.Models
         public Person Rider { get; set; }
         public int RiderId { get; set; }
 
+        [ForeignKey("DestinationId")]
         public Destination Destination { get; set; }
         public int DestinationId { get; set; }
 
