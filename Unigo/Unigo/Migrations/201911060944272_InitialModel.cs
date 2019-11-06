@@ -71,8 +71,8 @@
                         Active = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Destinations", t => t.DestinationId, cascadeDelete: true)
-                .ForeignKey("dbo.People", t => t.RiderId, cascadeDelete: true)
+                .ForeignKey("dbo.Destinations", t => t.DestinationId, cascadeDelete: false)
+                .ForeignKey("dbo.People", t => t.RiderId, cascadeDelete: false)
                 .Index(t => t.RiderId)
                 .Index(t => t.DestinationId);
             
@@ -86,7 +86,7 @@
                         Stars = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.People", t => t.RaterId, cascadeDelete: true)
+                .ForeignKey("dbo.People", t => t.RaterId, cascadeDelete: false)
                 .ForeignKey("dbo.People", t => t.RiderId, cascadeDelete: true)
                 .Index(t => t.RiderId)
                 .Index(t => t.RaterId);
