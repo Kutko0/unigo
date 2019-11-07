@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201911061039315_PopulatingDestination.designer.cs">
       <DependentUpon>201911061039315_PopulatingDestination.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911070916006_AddNumberOfSeatsToRide.cs" />
+    <Compile Include="Migrations\201911070916006_AddNumberOfSeatsToRide.designer.cs">
+      <DependentUpon>201911070916006_AddNumberOfSeatsToRide.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs" />
@@ -288,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911061039315_PopulatingDestination.resx">
       <DependentUpon>201911061039315_PopulatingDestination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911070916006_AddNumberOfSeatsToRide.resx">
+      <DependentUpon>201911070916006_AddNumberOfSeatsToRide.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
