@@ -111,3 +111,4 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.pdb
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.Migrations.InitialModel.resources
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.csproj.GenerateResource.cache
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.Migrations.PopulatingDestination.resources
