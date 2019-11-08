@@ -226,3 +226,4 @@ D:\Docs\Projects\Uni\unigo\Unigo\Unigo\obj\Debug\Unigo.csproj.CopyComplete
 D:\Docs\Projects\Uni\unigo\Unigo\Unigo\obj\Debug\Unigo.dll
 D:\Docs\Projects\Uni\unigo\Unigo\Unigo\obj\Debug\Unigo.pdb
 D:\Docs\Projects\Uni\unigo\Unigo\Unigo\obj\Debug\Unigo.Migrations.AddNumberOfSeatsToRide.resources
+D:\Docs\Projects\Uni\unigo\Unigo\Unigo\obj\Debug\Unigo.Migrations.ChangeNavigationPropertyToVirtual.resources

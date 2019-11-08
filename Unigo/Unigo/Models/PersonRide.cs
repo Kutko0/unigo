@@ -11,11 +11,11 @@ namespace Unigo.Models
         public int Id { get; set; }
 
         [ForeignKey("RideId")]
-        public Ride Ride { get; set; }
+        public virtual Ride Ride { get; set; }
         public int RideId { get; set; }
 
         [ForeignKey("PersonId")]
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
         public int PersonId { get; set; }
 
     }
