@@ -187,33 +187,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911060944272_InitialModel.cs" />
-    <Compile Include="Migrations\201911060944272_InitialModel.designer.cs">
-      <DependentUpon>201911060944272_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911061039315_PopulatingDestination.cs" />
-    <Compile Include="Migrations\201911061039315_PopulatingDestination.designer.cs">
-      <DependentUpon>201911061039315_PopulatingDestination.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911070916006_AddNumberOfSeatsToRide.cs" />
-    <Compile Include="Migrations\201911070916006_AddNumberOfSeatsToRide.designer.cs">
-      <DependentUpon>201911070916006_AddNumberOfSeatsToRide.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.cs" />
-    <Compile Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.designer.cs">
-      <DependentUpon>201911080835451_ChangeNavigationPropertyToVirtual.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Car.cs" />
-    <Compile Include="Models\Destination.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\PersonRide.cs" />
-    <Compile Include="Models\Rating.cs" />
-    <Compile Include="Models\Ride.cs" />
-    <Compile Include="Models\StopPointRide.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -291,18 +266,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911060944272_InitialModel.resx">
-      <DependentUpon>201911060944272_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911061039315_PopulatingDestination.resx">
-      <DependentUpon>201911061039315_PopulatingDestination.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911070916006_AddNumberOfSeatsToRide.resx">
-      <DependentUpon>201911070916006_AddNumberOfSeatsToRide.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.resx">
-      <DependentUpon>201911080835451_ChangeNavigationPropertyToVirtual.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Unigo.Data\Unigo.Data.csproj">
+      <Project>{38d147c5-29c6-4488-94a6-75fda43a5e57}</Project>
+      <Name>Unigo.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
