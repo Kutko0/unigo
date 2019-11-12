@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Unigo.Models;
+using Unigo.Data;
 
 namespace Unigo.Controllers
 {
