@@ -11,10 +11,18 @@ namespace Unigo.Controllers
     public class TestController : Controller
     {
         // GET: Test
-        //readonly IRepository<Person> personRepo = new GenericRepo<Person>();
+        private readonly IRepository<Person> personRepo;
+
+
+        public TestController(IRepository<Person> personRepository)
+        {
+            this.personRepo = personRepository;
+        }
+
         public ActionResult Index()
         {
-
+            Person p = personRepo.GetById(1);
+            ViewBag.CustomerName = p.FirstName + " " + p.LastName;
             return View();
         }
     }

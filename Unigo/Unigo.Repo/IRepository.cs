@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Unigo.Repo
 {
-    // {TPk} value as int, so that we can implement Read/Write operations for 
-    // model entity and use the int type for id parameter to read based on id
+
     // {TEnt} is set with the constraints as class
-    public interface IRepository<TEnt> :IDisposable where TEnt : class
+    public interface IRepository<TEnt> : IDisposable where TEnt : class
     {
         IQueryable<TEnt> GetAll();
 

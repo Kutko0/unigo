@@ -63,7 +63,7 @@ namespace Unigo.Repo
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this._context.Dispose();
         }
 
         public TEnt GetById(int id)

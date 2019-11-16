@@ -109,9 +109,6 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.csproj.CopyComplete
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.pdb
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.Migrations.InitialModel.resources
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.csproj.GenerateResource.cache
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.Migrations.PopulatingDestination.resources
 D:\Docs\Projects\Uni\unigo\Unigo\Unigo\bin\Unigo.dll.config
 D:\Docs\Projects\Uni\unigo\Unigo\Unigo\bin\Unigo.dll
 D:\Docs\Projects\Uni\unigo\Unigo\Unigo\bin\Unigo.pdb
@@ -359,3 +356,27 @@ E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.dll
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Common.xml
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Common.WebHost.xml
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Common.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Common.WebHost.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Threading.Tasks.Extensions.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Data.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Domain.Models.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Repo.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\WebActivatorEx.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Data.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Data.dll.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Domain.Models.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Repo.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Repo.dll.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Common.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Common.WebHost.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Threading.Tasks.Extensions.xml

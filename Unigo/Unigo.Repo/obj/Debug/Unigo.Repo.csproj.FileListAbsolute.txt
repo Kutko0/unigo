@@ -37,3 +37,42 @@ E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.Co
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CopyComplete
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.dll
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Repo.dll.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Repo.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Repo.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.SqlServer.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Helpers.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Mvc.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Razor.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Razor.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Data.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Domain.Models.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\WebActivatorEx.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Data.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Data.dll.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Domain.Models.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.SqlServer.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Helpers.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Mvc.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Razor.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Razor.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csprojAssemblyReference.cache
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CoreCompileInputs.cache
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CopyComplete
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.pdb
