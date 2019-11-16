@@ -57,9 +57,9 @@ namespace Unigo.Repo
             return this.Entities.AsQueryable();
         }
 
-        public void Attach(TEnt entity)
+        public TEnt Attach(TEnt entity)
         {
-            throw new NotImplementedException();
+            return this._context.Set<TEnt>().Attach(entity);
         }
 
         public void Dispose()
@@ -74,17 +74,31 @@ namespace Unigo.Repo
 
         public void Remove(TEnt entity)
         {
-            throw new NotImplementedException();
+            var entry = this._context.Entry(entity);
+            if (entry.State != EntityState.Deleted)
+            {
+                entry.State = EntityState.Deleted;
+            }
+            else
+            {
+                this.DbSet.Attach(entity);
+                this.DbSet.Remove(entity);
+            }
         }
 
         public void RemoveById(int id)
         {
-            throw new NotImplementedException();
+            var entity = this.GetById(id);
+
+            if (entity != null)
+            {
+                this.Remove(entity);
+            }
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            this._context.SaveChanges();
         }
 
         public void Update(TEnt entity)

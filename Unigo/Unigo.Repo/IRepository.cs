@@ -19,7 +19,7 @@ namespace Unigo.Repo
         void Update(TEnt entity);
 
         //https://docs.microsoft.com/en-us/ef/ef6/saving/change-tracking/entity-state#attaching-an-existing-entity-to-the-context
-        void Attach(TEnt entity);
+        TEnt Attach(TEnt entity);
 
         void Remove(TEnt entity);
 
