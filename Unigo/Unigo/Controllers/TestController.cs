@@ -10,15 +10,16 @@ namespace Unigo.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
+        
         private readonly IRepository<Person> personRepo;
 
-
+        // Dependency
         public TestController(IRepository<Person> personRepository)
         {
             this.personRepo = personRepository;
         }
 
+        // GET: Test
         public ActionResult Index()
         {
             Person p = personRepo.GetById(1);
