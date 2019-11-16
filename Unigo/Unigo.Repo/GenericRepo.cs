@@ -41,19 +41,20 @@ namespace Unigo.Repo
 
         public void Add(TEnt entity)
         {
-            throw new NotImplementedException();
+            var entry = this._context.Entry(entity);
+            if (entry.State != EntityState.Detached)
+            {
+                entry.State = EntityState.Added;
+            }
+            else
+            {
+                this.DbSet.Add(entity);
+            }
         }
 
         public IQueryable<TEnt> GetAll()
         {
-            if(!(this.Entities.AsQueryable() == null))
-            {
-                return this.Entities.AsQueryable();
-
-            }
-
-            IQueryable<TEnt> empty = Enumerable.Empty<TEnt>().AsQueryable();
-            return empty;
+            return this.Entities.AsQueryable();
         }
 
         public void Attach(TEnt entity)
@@ -88,7 +89,13 @@ namespace Unigo.Repo
 
         public void Update(TEnt entity)
         {
-            throw new NotImplementedException();
+            var entry = this._context.Entry(entity);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            entry.State = EntityState.Modified;
         }
     }
 }
