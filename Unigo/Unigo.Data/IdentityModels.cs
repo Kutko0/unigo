@@ -19,23 +19,22 @@ namespace Unigo.Data
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDBContext
     {
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public IDbSet<Person> Persons { get; set; }
+        public IDbSet<Car> Cars { get; set; }
+        public IDbSet<Ride> Rides { get; set; }
+        public IDbSet<Destination> Destinations { get; set; }
+        public IDbSet<PersonRide> PersonRides { get; set; }
+        public IDbSet<Rating> Ratings { get; set; }
+        public IDbSet<StopPointRide> StopPointRides { get; set; }
 
-        public DbSet<Person> Persons { get; set; }
-        public DbSet<Car> Cars { get; set; }
-        public DbSet<Ride> Rides { get; set; }
-        public DbSet<Destination> Destinations { get; set; }
-        public DbSet<PersonRide> PersonRides { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
-        public DbSet<StopPointRide> StopPointRides { get; set; }
-
-        private static ApplicationDbContext Create()
+        public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }

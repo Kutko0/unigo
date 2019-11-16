@@ -9,11 +9,11 @@ namespace Unigo.Repo
     // {TPk} value as int, so that we can implement Read/Write operations for 
     // model entity and use the int type for id parameter to read based on id
     // {TEnt} is set with the constraints as class
-    interface IRepository<TEnt, in TPk> :IDisposable where TEnt : class
+    public interface IRepository<TEnt> :IDisposable where TEnt : class
     {
-        IQueryable<TEnt> All();
+        IQueryable<TEnt> GetAll();
 
-        TEnt GetById(TPk id);
+        TEnt GetById(int id);
 
         void Add(TEnt entity);
 
@@ -24,7 +24,7 @@ namespace Unigo.Repo
 
         void Remove(TEnt entity);
 
-        void RemoveById(TPk id);
+        void RemoveById(int id);
 
         void SaveChanges();
     }

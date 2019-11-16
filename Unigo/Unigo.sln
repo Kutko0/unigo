@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unigo.Data", "Unigo.Data\Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unigo.Repo", "Unigo.Repo\Unigo.Repo.csproj", "{15BCC942-0933-43A8-B860-C3F8C8770C78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unigo.Domain.Models", "Unigo.Domain.Models\Unigo.Domain.Models.csproj", "{6CC869F2-466F-4B9A-B8E6-B19192A585AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{15BCC942-0933-43A8-B860-C3F8C8770C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15BCC942-0933-43A8-B860-C3F8C8770C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15BCC942-0933-43A8-B860-C3F8C8770C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC869F2-466F-4B9A-B8E6-B19192A585AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC869F2-466F-4B9A-B8E6-B19192A585AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC869F2-466F-4B9A-B8E6-B19192A585AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC869F2-466F-4B9A-B8E6-B19192A585AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
