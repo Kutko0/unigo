@@ -37,7 +37,7 @@ namespace Unigo.API.Controllers
         {
             //Checks data annotations in model class Person
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest("Not a valid model");
 
             peopleRepository.Add(person);
             peopleRepository.SaveChanges();
@@ -46,9 +46,28 @@ namespace Unigo.API.Controllers
         }
 
         [HttpPut]
-        public void UpdatePerson(int id, Person person)
+        public IHttpActionResult UpdatePerson(int id, Person person)
         {
-           
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+
+
+            var existingPerson = peopleRepository.GetById(id);
+            person.Id = id;
+
+            if (existingPerson != null)
+            {
+                    
+
+                    peopleRepository.SaveChanges();
+             }
+             else
+             {
+                    return NotFound();
+             }
+            
+            return Ok();
+
         }
 
         [HttpDelete]
