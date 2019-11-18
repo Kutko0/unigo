@@ -40,3 +40,4 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.CopyComplete
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.RideOnMap.resources

@@ -26,5 +26,13 @@ namespace Unigo.Controllers
             ViewBag.CustomerName = p.FirstName + " " + p.LastName;
             return View();
         }
+
+        // GET: MapTest
+        public ActionResult MapTest()
+        {
+
+            ViewBag.URL_API = "https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBs3lGeDQjJj8VQ_c0KjZkQnlADlOXR0jU";
+            return View();
+        }
     }
 }

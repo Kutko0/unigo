@@ -74,12 +74,18 @@
     <Compile Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.Designer.cs">
       <DependentUpon>201911080835451_ChangeNavigationPropertyToVirtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911181502048_RideOnMap.cs" />
+    <Compile Include="Migrations\201911181502048_RideOnMap.Designer.cs">
+      <DependentUpon>201911181502048_RideOnMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonRide.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Ride.cs" />
+    <Compile Include="RideDescription.cs" />
+    <Compile Include="RideOnMap.cs" />
     <Compile Include="StopPointRide.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.resx">
       <DependentUpon>201911080835451_ChangeNavigationPropertyToVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181502048_RideOnMap.resx">
+      <DependentUpon>201911181502048_RideOnMap.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

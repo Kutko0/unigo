@@ -18,6 +18,9 @@ namespace Unigo.Data
         IDbSet<PersonRide> PersonRides { get; set; }
         IDbSet<Rating> Ratings { get; set; }
         IDbSet<StopPointRide> StopPointRides { get; set; }
+        IDbSet<RideDescription> RideDescription { get; set; }
+        IDbSet<RideOnMap> RidesOnMap { get; set; }
+        
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

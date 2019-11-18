@@ -33,6 +33,8 @@ namespace Unigo.Data
         public IDbSet<PersonRide> PersonRides { get; set; }
         public IDbSet<Rating> Ratings { get; set; }
         public IDbSet<StopPointRide> StopPointRides { get; set; }
+        public IDbSet<RideDescription> RideDescription { get ; set ; }
+        public IDbSet<RideOnMap> RidesOnMap { get; set ; }
 
         public static ApplicationDbContext Create()
         {
