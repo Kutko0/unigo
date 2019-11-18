@@ -11,8 +11,14 @@ namespace Unigo.API.Controllers
 {
     public class PeopleController : ApiController
     {
-        
-        private IRepository<Person> peopleRepository = new GenericRepo<Person>(new ApplicationDbContext());
+
+        public IRepository<Person> peopleRepository;
+
+        public PeopleController(IRepository<Person> peopleRepo)
+        {
+            this.peopleRepository = peopleRepo;
+        }
+
 
         [HttpGet]
         public IEnumerable<Person> GetAllPeople()
@@ -45,6 +51,7 @@ namespace Unigo.API.Controllers
             return Created(new Uri(Request.RequestUri + "/" + person.Id), person );
         }
 
+        
         [HttpPut]
         public IHttpActionResult UpdatePerson(int id, Person person)
         {
@@ -53,13 +60,19 @@ namespace Unigo.API.Controllers
 
 
             var existingPerson = peopleRepository.GetById(id);
-            person.Id = id;
 
             if (existingPerson != null)
             {
-                    
 
-                    peopleRepository.SaveChanges();
+                // Ako to urobiť existingPerson= person a nie jednotlivé parametre
+
+                existingPerson.FirstName = person.FirstName;
+                existingPerson.LastName = person.LastName;
+                existingPerson.Age = person.Age;
+                existingPerson.PhoneNumber = person.PhoneNumber;
+                existingPerson.Email = person.Email;
+                
+                peopleRepository.SaveChanges();
              }
              else
              {
