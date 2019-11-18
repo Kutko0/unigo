@@ -76,3 +76,41 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CopyComplete
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Repo.dll.config
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Repo.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Repo.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.SqlServer.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Helpers.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Mvc.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Razor.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Data.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Domain.Models.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\WebActivatorEx.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Data.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Data.dll.config
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Unigo.Domain.Models.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\EntityFramework.SqlServer.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Helpers.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Mvc.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.Razor.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csprojAssemblyReference.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CopyComplete
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.pdb

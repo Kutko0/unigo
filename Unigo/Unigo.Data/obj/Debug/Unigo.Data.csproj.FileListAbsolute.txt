@@ -40,3 +40,23 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.CopyComplete
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Unigo.Data.dll.config
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Unigo.Data.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Unigo.Data.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\EntityFramework.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\EntityFramework.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csprojAssemblyReference.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.InitialModel.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.PopulatingDestination.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.AddNumberOfSeatsToRide.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.ChangeNavigationPropertyToVirtual.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.GenerateResource.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.CopyComplete
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.pdb
