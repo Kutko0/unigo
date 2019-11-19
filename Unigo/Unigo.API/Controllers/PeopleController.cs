@@ -64,8 +64,7 @@ namespace Unigo.API.Controllers
             if (existingPerson != null)
             {
 
-                // Ako to urobiť existingPerson= person a nie jednotlivé parametre
-
+                
                 existingPerson.FirstName = person.FirstName;
                 existingPerson.LastName = person.LastName;
                 existingPerson.Age = person.Age;
@@ -80,7 +79,6 @@ namespace Unigo.API.Controllers
              }
             
             return Ok();
-
         }
 
         [HttpDelete]
