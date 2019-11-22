@@ -4,3 +4,8 @@ E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domai
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.csproj.CoreCompileInputs.cache
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.dll
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\bin\Debug\Unigo.Domain.Models.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\bin\Debug\Unigo.Domain.Models.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.csprojAssemblyReference.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.pdb

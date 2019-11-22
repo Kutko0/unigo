@@ -34,6 +34,27 @@ namespace Unigo.API.Controllers
             return chosenRatings.ToList();  
         }
 
+        [HttpPut]
+        public IHttpActionResult UpdateRating(int id, Rating rating)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+
+            var existingRating = ratingsRepository.GetById(id);
+
+            if(existingRating != null)
+            {
+                existingRating.Stars = rating.Stars;
+                ratingsRepository.SaveChanges();
+            } 
+            else
+            {
+                return NotFound();
+            }
+
+            return Ok();
+        }
+
         [HttpPost]
         public IHttpActionResult CreateRating(Rating rating)
         {
