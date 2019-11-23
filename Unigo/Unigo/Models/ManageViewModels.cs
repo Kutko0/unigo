@@ -69,13 +69,42 @@ namespace Unigo.Models
 
     public class ChangeFirstLastNameViewModel
     {
-        [StringLength(100, ErrorMessage = "Make your name shorter.")]
+        [StringLength(100, ErrorMessage = "First name length between 2 and 100."), MinLength(2)]
         [Display(Name = "New first name")]
-        public string NFirst;
+        [Required]
+        public string NFirst { get; set; }
 
-        [StringLength(100, ErrorMessage = "Make your name shorter.")]
+        [StringLength(100, ErrorMessage = "Last name length between 2 and 100."), MinLength(2)]
         [Display(Name = "New last name")]
-        public string NLast;
+        [Required]
+        public string NLast { get; set; }
+    }
+
+    public class AddCarViewModel {
+
+        [Display(Name = "License plate")]
+        [Required]
+        public string LicensePlate { get; set; }
+
+        [Display(Name = "Color")]
+        [Required]
+        public string Color { get; set; }
+
+        [Display(Name = "Type")]
+        [Required]
+        public string Type { get; set; }
+        
+        [Display(Name = "Brand")]
+        [Required]
+        public string Brand { get; set; }
+        
+        [Display(Name = "Description(Optional)")]
+        public string Description { get; set; }
+
+        [Display(Name = "Number of seats")]
+        [Required]
+        public int NumberOfSeats { get; set; }
+
     }
 
     

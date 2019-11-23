@@ -92,9 +92,17 @@ namespace Unigo.Controllers
         //----------------------
 
         // GET: /Manage/ChangeFirstLastName
+        [HttpGet]
         public ActionResult ChangeFirstLastName()
-        {   
-            return View();
+        {
+            var userId = User.Identity.GetUserId();
+            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
+
+            return View(new ChangeFirstLastNameViewModel
+            {
+                NFirst = userPerson.FirstName,
+                NLast = userPerson.LastName
+            });
         }
 
 
@@ -103,29 +111,28 @@ namespace Unigo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangeFirstLastName(ChangeFirstLastNameViewModel model)
         {
-            ManageMessageId? message;
+            ManageMessageId? message = ManageMessageId.NoChange;
 
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
+            var userId = User.Identity.GetUserId();
+            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
 
-            //var userId = User.Identity.GetUserId();
-            //Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
+            if(userPerson.FirstName == model.NFirst && userPerson.LastName == model.NLast)
+            {
+                return RedirectToAction("Index", new { Message = message });
+            }
 
-            //userPerson.FirstName = model.NFirst;
-            //userPerson.LastName = model.NLast;
+            userPerson.FirstName = model.NFirst;
+            userPerson.LastName = model.NLast;
+            peopleRepo.SaveChanges();
+            message = ManageMessageId.ChangeFirstLastNameSuccess;
 
-            //message = ManageMessageId.ChangeFirstLastNameSuccess;
-            //peopleRepo.SaveChanges();
-            //message = ManageMessageId.NoChange;
+            return RedirectToAction("Index", new { Message = message });
 
-
-            //return RedirectToAction("Index", new { Message = message });
-
-            ViewBag.Name = model.NLast;
-            return View();
         }
 
 
