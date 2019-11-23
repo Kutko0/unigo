@@ -72,7 +72,6 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\bin\Debug\System.Web.WebPages.Razor.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csprojAssemblyReference.cache
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CoreCompileInputs.cache
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.csproj.CopyComplete
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Repo\obj\Debug\Unigo.Repo.pdb

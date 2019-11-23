@@ -9,7 +9,7 @@ namespace Unigo.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Unigo.Data.ApplicationDbContext context)

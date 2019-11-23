@@ -67,7 +67,7 @@ namespace Unigo.API.Controllers
                 
                 existingPerson.FirstName = person.FirstName;
                 existingPerson.LastName = person.LastName;
-                existingPerson.Age = person.Age;
+                existingPerson.DateOfBirth = person.DateOfBirth;
                 existingPerson.PhoneNumber = person.PhoneNumber;
                 existingPerson.Email = person.Email;
                 

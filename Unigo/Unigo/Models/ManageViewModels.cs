@@ -10,8 +10,9 @@ namespace Unigo.Models
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
-        public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 
     public class ManageLoginsViewModel
@@ -66,21 +67,16 @@ namespace Unigo.Models
         public string Number { get; set; }
     }
 
-    public class VerifyPhoneNumberViewModel
+    public class ChangeFirstLastNameViewModel
     {
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
+        [StringLength(100, ErrorMessage = "Make your name shorter.")]
+        [Display(Name = "New first name")]
+        public string NFirst;
 
-        [Required]
-        [Phone]
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        [StringLength(100, ErrorMessage = "Make your name shorter.")]
+        [Display(Name = "New last name")]
+        public string NLast;
     }
 
-    public class ConfigureTwoFactorViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-    }
+    
 }

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Release\Package\PackageTmp" />
+  <setAcl path="E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

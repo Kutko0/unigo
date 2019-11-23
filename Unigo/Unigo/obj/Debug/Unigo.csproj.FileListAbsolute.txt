@@ -105,7 +105,6 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.O
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.OAuth.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.csprojAssemblyReference.cache
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.csproj.CoreCompileInputs.cache
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.csproj.CopyComplete
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\obj\Debug\Unigo.pdb
@@ -513,3 +512,8 @@ D:\Docs\Projects\unigo\Unigo\Unigo\bin\Unigo.API.pdb
 D:\Docs\Projects\unigo\Unigo\Unigo\bin\Unigo.API.dll.config
 D:\Docs\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.dll
 D:\Docs\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.xml
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.xml

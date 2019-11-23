@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Unigo.Models
@@ -64,10 +65,36 @@ namespace Unigo.Models
 
     public class RegisterViewModel
     {
+        public DateTime Eightteen = DateTime.Now.AddYears(-18);
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        
+        [Required]
+        [Display(Name = "Agree with Termss")]
+        public bool AgreeWithTerms { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        
+        [Required]
+        [Display(Name = "Phone number")]
+        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$", 
+            ErrorMessage = "Only danish numbers allowed.\n Use +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 format.")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        [DataType(DataType.Date)]
+        [GreaterThanDate()]
+        public DateTime DateOfBirth { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -108,5 +135,25 @@ namespace Unigo.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+
+    // Custom attribute
+    public class GreaterThanDate : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            DateTime dt = (DateTime)value;
+
+            long Eightteen = DateTime.Now.AddYears(-18).Ticks;
+
+            if (dt.Ticks <= Eightteen)
+            {
+                return ValidationResult.Success;
+            }
+
+            return new ValidationResult(ErrorMessage ?? "Must be 18 y.o.");
+        }
+
     }
 }
