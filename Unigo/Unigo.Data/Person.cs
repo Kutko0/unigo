@@ -10,15 +10,16 @@ namespace Unigo.Data
     {
         public int Id { get; set; }
 
+        public string UserId { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public int Age { get; set; }
-
+        public DateTime DateOfBirth { get; set; }
         
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
      }

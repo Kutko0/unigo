@@ -58,21 +58,9 @@
     <Compile Include="Destination.cs" />
     <Compile Include="IDBContext.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201911060944272_InitialModel.cs" />
-    <Compile Include="Migrations\201911060944272_InitialModel.Designer.cs">
-      <DependentUpon>201911060944272_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911061039315_PopulatingDestination.cs" />
-    <Compile Include="Migrations\201911061039315_PopulatingDestination.Designer.cs">
-      <DependentUpon>201911061039315_PopulatingDestination.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911070916006_AddNumberOfSeatsToRide.cs" />
-    <Compile Include="Migrations\201911070916006_AddNumberOfSeatsToRide.Designer.cs">
-      <DependentUpon>201911070916006_AddNumberOfSeatsToRide.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.cs" />
-    <Compile Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.Designer.cs">
-      <DependentUpon>201911080835451_ChangeNavigationPropertyToVirtual.cs</DependentUpon>
+    <Compile Include="Migrations\201911231214332_Init.cs" />
+    <Compile Include="Migrations\201911231214332_Init.Designer.cs">
+      <DependentUpon>201911231214332_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -87,17 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911060944272_InitialModel.resx">
-      <DependentUpon>201911060944272_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911061039315_PopulatingDestination.resx">
-      <DependentUpon>201911061039315_PopulatingDestination.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911070916006_AddNumberOfSeatsToRide.resx">
-      <DependentUpon>201911070916006_AddNumberOfSeatsToRide.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911080835451_ChangeNavigationPropertyToVirtual.resx">
-      <DependentUpon>201911080835451_ChangeNavigationPropertyToVirtual.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911231214332_Init.resx">
+      <DependentUpon>201911231214332_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
