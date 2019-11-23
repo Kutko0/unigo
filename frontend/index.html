@@ -21,86 +21,142 @@
 		<script src="scripts/script.js"></script>
 	</head>
 	<body>
-		<div class="container-fluid" id="nav">
-			<nav class="container navbar navbar-expand-md navbar-dark text-right">
-				<a href="#" class="navbar-brand" id="brand">UNIGO</a>
-				<button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+		<section id="navbar">
+			<div class="container-fluid" id="nav">
+				<nav class="container navbar navbar-expand-md navbar-dark text-right">
+					<a href="#" class="navbar-brand" id="brand">UNIGO</a>
+					<button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
 						<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-collapse collapse" id="collapsingNavbar">
-					<ul class="navbar-nav text-right">
-						<li class="nav-item">
-							<a href="" class="nav-link active">Home</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">About</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">FAQ</a>
-						</li>
-					</ul>
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a href="login.html" class="nav-link">Login</a>
-						</li>
-					</ul>
+					</button>
+					<div class="navbar-collapse collapse" id="collapsingNavbar">
+						<ul class="navbar-nav text-right">
+							<li class="nav-item">
+								<a href="" class="nav-link active">Home</a>
+							</li>
+							<li class="nav-item">
+								<a href="#about" class="nav-link">About</a>
+							</li>
+							<li class="nav-item">
+								<a href="#contact" class="nav-link">Contact</a>
+							</li>
+						</ul>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a href="login.html" class="nav-link">Login</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</section>
+		<section id="header" class="py-3 py-md-5">
+			<div class="jumbotron-fluid">
+				<div class="container text-center py-5">
+					<h1 id="brand">UNIGO</h1>
+					<p class="lead">Regular travel routine made easier</p>
+					<a class="btn btn-lg btn-primary" href="signup.html" role="button">Sign Up</a>
 				</div>
-			</nav>
-		</div>
-		<header class="container-fluid py-5">
-			<div class="container py-5">
-				<div class="col-lg px-5">
-					<div class="row px-3 mb-3">
-						<div class="col-lg align-items-center">
-							<h4 class="text-white pb-3">Travel to your university conveniently for cheaper</h4>
-							<p class="text-white text-justify pb-5">With <span id="brand">UNIGO</span> you can save money on your daily rides to your education institution. Rideshare with other students of the same campus. You decide who you pick-up, where you are headed and what your stops will be</p>
+			</div>
+		</section>
+		<section id="process" class="py-3 py-md-5 bg-unigo text-white">
+			<div class="container-fluid">
+				<div class="container text-center">
+					<div class="mb-5">
+						<h3>How does it work?</h3>
+					</div>
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+							<h4>Sign Up</h4>
+							<p class="lead">Create an account to get started with our service</p>
+							<a class="btn btn-lg btn-light" href="signup.html" role="button">Sign Up</a>
 						</div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg">
-							<h4 class="text-white pb-3">Sign up for an account to fully enjoy the experience with <span id="brand">UNIGO</span></h4>
-							<p class="text-white text-justify">With an account you can join rides, create rides, see your ride history, engage with fellow students and much more</p>
-							<div class="text-center">
-								<a href="signup.html" class="btn btn-lg active white-button" role="button">Sign Up</a>
-							</div>
+						<div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+							<h4>Find a Ride</h4>
+							<p class="lead">Find a ride anywhere</p>
+							<p class="lead"></p>
+						</div>
+						<div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+							<h4>Create a Ride</h4>
+							<p class="lead">Create a ride for other people</p>
+							<p class="lead">You decide when and where you want to go, who to pick-up and where to stop along the way</p>
+						</div>
+						<div class="col-12 col-md-6 col-lg-3 mb-lg-0">
+							<h4>Go!</h4>
+							<p class="lead">Time to start packing!</p>
+							<p class="lead">Join other students and travel together to your campuses</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</header>
-		<div class="container p-5">
-			<div class="row text-center">
-				<div class="col-sm roundedm-5 m-5 p-5 text-white infobox one-edge-shadow">
-					<i class="fas fa-car fa-3x pb-3 "></i>
-					<h5>Pellentesque molestie lacinia orci, dapibus gravida justo sagittis sit amet.</h5>
-				</div>
-				<div class="col-sm rounded m-5 p-5 text-white infobox one-edge-shadow">
-					<i class="fas fa-car fa-3x pb-3"></i>
-					<h5>Integer vehicula, orci non commodo semper, magna velit suscipit ante, eu aliquam lectus sapien at lectus.</h5>
-				</div>
-				<div class="col-sm rounded m-5 p-5 text-white infobox one-edge-shadow">
-					<i class="fas fa-user fa-3x pb-3"></i>
-					<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-				</div>
-			</div>
-		</div>
-		<footer class="footer font-small py-3">	
-			<div class="container">
-				<div class="row justify-content-center justify-content-md-center">
-					<div class="col col-lg-2"></div>
-					<div class="col-12 col-md-auto">
-						<a href="#">
-							<i class="fab fa-facebook-f fa-2x text-white mx-3"></i>
-						</a>
-						<a href="#">
-							<i class="fab fa-twitter fa-2x text-white mx-3"></i>
-						</a>
-						<a href="#">
-							<i class="fab fa-github fa-2x text-white mx-3"></i>
-						</a>
+		</section>
+		<section id="about" class="py-3 py-md-5">
+			<div class="container-fluid">
+				<div class="container text-center">
+					<div class="mb-5">
+						<h3>About Us</h3>
 					</div>
-					<div class="col col-lg-2"></div>
+					<div class="row">
+						<div class="col col-md-6">
+							<h4>Placeholder</h4>
+							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, mi et aliquam dignissim, nisl leo ullamcorper felis, vitae dapibus odio lacus in metus. Praesent dictum vel diam eu auctor.</p>
+						</div>
+						<div class="col col-md-6">
+							<h4>Placeholder</h4>
+							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, mi et aliquam dignissim, nisl leo ullamcorper felis, vitae dapibus odio lacus in metus. Praesent dictum vel diam eu auctor.</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</footer>
+		</section>
+		<section id="contact" class="pt-3 pt-md-5 bg-unigo text-white">
+			<footer class="page-footer font-small blue pt-4">
+				<div class="container text-center text-md-left">
+					<div class="row">
+						<div class="col-12 col-md-6 mt-md-0 mt-3">
+							<h5 class="text-uppercase">Contact</h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, mi et aliquam dignissim, nisl leo ullamcorper felis, vitae dapibus odio lacus in metus. Praesent dictum vel diam eu auctor. Aenean vulputate metus tortor, ac ultrices lorem porttitor ac.</p>
+						</div>
+						<hr class="clearfix w-75 d-md-none pb-3 hr-white">
+						<div class="col-6 col-md-3 mb-md-0 mb-3">
+							<h5 class="text-uppercase">Links</h5>
+							<ul class="list-unstyled">
+								<li>
+									<a href="#!">Link 1</a>
+								</li>
+								<li>
+									<a href="#!">Link 2</a>
+								</li>
+								<li>
+									<a href="#!">Link 3</a>
+								</li>
+								<li>
+									<a href="#!">Link 4</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-6 col-md-3 mb-md-0 mb-3">
+								<h5 class="text-uppercase">Links</h5>
+								<ul class="list-unstyled">
+									<li>
+										<a href="#!">Link 1</a>
+									</li>
+									<li>
+										<a href="#!">Link 2</a>
+									</li>
+									<li>
+										<a href="#!">Link 3</a>
+									</li>
+									<li>
+										<a href="#!">Link 4</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright text-center pt-3 pb-1">
+					<p>Created by UCN Students</p>
+				</div>
+			</footer>
+		</section>
 	</body>
 </html>

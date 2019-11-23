@@ -1,31 +1,21 @@
 body {
 	height: 100%;
-	font-family: Roboto !important;
 }
 
-#nav, .navbar, .bg-c-lightblue, header, footer {
+.jumbotron {
 	background-color: #4b7bec;
 }
 
+#nav, .navbar, .bg-unigo {
+	background-color: #4b7bec;
+}
 
 #brand {
 	font-family: 'Days One' !important;
-	color: white !important;
 }
 
-.white-button {
-	background-color: #FFF !important;
-	color: #4b7bec !important;
-}
-
-.blue-button {
-	background-color: #4b7bec !important;
+footer li a {
 	color: #FFF !important;
-}
-
-.infobox {
-	background-color: #4b7bec;
-	box-shadow: 1px 0px 8px #000;
 }
 
 /* Profile Page */
@@ -39,8 +29,12 @@ body {
 	font-family: Quicksand !important;
 }
 
-hr {
+.hr-blue {
 	border-top: 2px solid #4b7bec;
+}
+
+.hr-white {
+	border-top: 2px solid #FFF;
 }
 
 .wrapper {
