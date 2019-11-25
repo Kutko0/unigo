@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Unigo.Models;
 using Unigo.Data;
+using Unigo.Repo;
 
 namespace Unigo.Controllers
 {
@@ -18,9 +19,15 @@ namespace Unigo.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IRepository<Person> peopleRepo;
 
         public AccountController()
         {
+        }
+        
+        public AccountController(IRepository<Person> pr)
+        {
+            this.peopleRepo = pr;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -81,11 +88,8 @@ namespace Unigo.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
+
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -156,14 +160,24 @@ namespace Unigo.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
-                Console.WriteLine(user.Id);
-
                 if (result.Succeeded)
                 {
+                    Person p = new Person
+                    {
+                        UserId = user.Id,
+                        DateOfBirth = model.DateOfBirth,
+                        PhoneNumber = model.PhoneNumber,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Email
+                    };
+
+                    peopleRepo.Add(p);
+                    peopleRepo.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
+                    // Email code of we want to use it
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");

@@ -10,8 +10,9 @@ namespace Unigo.Models
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
-        public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 
     public class ManageLoginsViewModel
@@ -66,21 +67,45 @@ namespace Unigo.Models
         public string Number { get; set; }
     }
 
-    public class VerifyPhoneNumberViewModel
+    public class ChangeFirstLastNameViewModel
     {
+        [StringLength(100, ErrorMessage = "First name length between 2 and 100."), MinLength(2)]
+        [Display(Name = "New first name")]
         [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
+        public string NFirst { get; set; }
 
+        [StringLength(100, ErrorMessage = "Last name length between 2 and 100."), MinLength(2)]
+        [Display(Name = "New last name")]
         [Required]
-        [Phone]
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        public string NLast { get; set; }
     }
 
-    public class ConfigureTwoFactorViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    public class AddCarViewModel {
+
+        [Display(Name = "License plate")]
+        [Required]
+        public string LicensePlate { get; set; }
+
+        [Display(Name = "Color")]
+        [Required]
+        public string Color { get; set; }
+
+        [Display(Name = "Type")]
+        [Required]
+        public string Type { get; set; }
+        
+        [Display(Name = "Brand")]
+        [Required]
+        public string Brand { get; set; }
+        
+        [Display(Name = "Description(Optional)")]
+        public string Description { get; set; }
+
+        [Display(Name = "Number of seats")]
+        [Required]
+        public int NumberOfSeats { get; set; }
+
     }
+
+    
 }

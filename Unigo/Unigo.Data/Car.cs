@@ -16,6 +16,10 @@ namespace Unigo.Data
 
         public string Color { get; set; }
 
+        public string Brand { get; set; }
+        
+        public string Description { get; set; }
+
         public string Type { get; set; }
 
         public int NumberOfSeats { get; set; }
