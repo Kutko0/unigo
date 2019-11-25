@@ -517,3 +517,8 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.d
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.pdb
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll.config
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.xml
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.dll
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Unigo.API.dll
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Unigo.API.pdb
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Unigo.API.dll.config
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.xml
