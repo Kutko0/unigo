@@ -68,10 +68,33 @@
 									<input class="form-control" id="startPoint" aria-describedby="emailHelp" placeholder="Enter start point">
 								</div>
 								<div class="form-group">
-									<label for="endPotin">To?</label>
+									<label for="endPoint">To?</label>
 									<input class="form-control" id="endPoint" aria-describedby="emailHelp" placeholder="Enter destination">
 								</div>
-								<button class="btn btn-primary w-50 rounded-pill" role="button">Add stop point</button>
+								<div class="form-group">
+									<label for="freeSeat">Free seats?</label>
+									<select class="form-control" id="freeSeat">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div id="stopPoints">
+									<div class="form-group">
+										<input class="form-control d-none" id="stopPoint1" aria-describedby="emailHelp" placeholder="Stop destination">
+									</div>
+									<div class="form-group">
+										<input class="form-control d-none" id="stopPoint2" aria-describedby="emailHelp" placeholder="Stop destination">
+									</div>
+									<div class="form-group">
+										<input class="form-control d-none" id="stopPoint3" aria-describedby="emailHelp" placeholder="Stop destination">
+									</div>
+								</div>
+								<div class="text-center pt-1 pt-md-3">
+									<a class="btn btn-primary w-50 rounded-pill text-white" role="button" id="addStopPoint" onclick="displayStopPoints()">Add stop point</a>
+								</div>
 							</form>
 						</div>
 						<div class="col-12 col-md-8">
