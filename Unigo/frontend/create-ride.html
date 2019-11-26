@@ -19,6 +19,11 @@
 		<link href="https://fonts.googleapis.com/css?family=Days+One|Quicksand|Roboto&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="scripts/script.js"></script>
+
+		<!-- Date Time -->
+		<script type="text/javascript" src="scripts/moment-with-locales.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css"/>
 	</head>
 	<body>
 		<section id="navbar">
@@ -95,6 +100,30 @@
 								<div class="text-center pt-1 pt-md-3">
 									<a class="btn btn-primary w-50 rounded-pill text-white" role="button" id="addStopPoint" onclick="displayStopPoints()">Add stop point</a>
 								</div>
+								<div class="form-group">
+									<div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+										<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+										<div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+											<div class="input-group-text">
+												<i class="fa fa-calendar"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									$(function () {
+										$('#datetimepicker4').datetimepicker({
+											format: 'MM/DD/YYYY HH:mm',
+											sideBySide: true,
+											daysOfWeekDisabled: [0, 6],
+											disabledTimeIntervals: [moment({ h: 0 }), moment({ h: 6 })],
+											widgetPositioning: {
+												horizontal: 'left',
+												vertical: 'bottom'
+											}
+										});
+									});
+								</script>
 							</form>
 						</div>
 						<div class="col-12 col-md-8">
