@@ -1,0 +1,8 @@
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.exe.config
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.exe
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.pdb
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csprojAssemblyReference.cache
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.Properties.Resources.resources
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csproj.GenerateResource.cache
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.exe
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.pdb

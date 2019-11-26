@@ -1,31 +1,63 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Unigo | Ride-sharing";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<section id="header" class="py-3 py-md-5">
+    <div class="jumbotron-fluid">
+        <div class="container text-center py-5">
+            <h1 id="brand">UNIGO</h1>
+            <p class="lead">Your regular travel routine made easier</p>
+            <a class="btn btn-lg btn-primary rounded-pill" href="@Url.Action("Register", "Account")" role="button">Sign Up</a>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section>
+<section id="process" class="py-3 py-md-5 bg-unigo text-white">
+    <div class="container-fluid">
+        <div class="container text-center">
+            <div class="mb-5">
+                <h3>How does it work?</h3>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <h4>Sign Up</h4>
+                    <p class="lead">Create an account to get started with our service</p>
+                    <a class="btn btn-lg btn-light rounded-pill" href="@Url.Action("Register", "Account")" role="button">Sign Up</a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <h4>Find a Ride</h4>
+                    <p class="lead">Find a ride anywhere</p>
+                    <p class="lead"></p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <h4>Create a Ride</h4>
+                    <p class="lead">Create a ride for other people</p>
+                    <p class="lead">You decide when and where you want to go, who to pick-up and where to stop along the way</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-lg-0">
+                    <h4>Go!</h4>
+                    <p class="lead">Time to start packing!</p>
+                    <p class="lead">Join other students and travel together to your campuses</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</section>
+<section id="about" class="py-3 py-md-5">
+    <div class="container-fluid">
+        <div class="container text-center">
+            <div class="mb-5">
+                <h3>About Us</h3>
+            </div>
+            <div class="row">
+                <div class="col col-md-6">
+                    <h4>Placeholder</h4>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, mi et aliquam dignissim, nisl leo ullamcorper felis, vitae dapibus odio lacus in metus. Praesent dictum vel diam eu auctor.</p>
+                </div>
+                <div class="col col-md-6">
+                    <h4>Placeholder</h4>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, mi et aliquam dignissim, nisl leo ullamcorper felis, vitae dapibus odio lacus in metus. Praesent dictum vel diam eu auctor.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
