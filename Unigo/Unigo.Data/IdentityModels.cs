@@ -26,6 +26,7 @@ namespace Unigo.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
         public IDbSet<Person> Persons { get; set; }
         public IDbSet<Car> Cars { get; set; }
         public IDbSet<Ride> Rides { get; set; }

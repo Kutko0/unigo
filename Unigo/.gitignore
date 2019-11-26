@@ -41,3 +41,7 @@ Thumbs.db
 *.ncrunchsolution
 *.dot[Cc]over
 .vs
+*.dll
+*.pdd
+*.mdf
+*.ldf
