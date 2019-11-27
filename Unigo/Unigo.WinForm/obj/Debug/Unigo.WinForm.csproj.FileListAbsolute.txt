@@ -1,8 +1,49 @@
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.exe.config
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.exe
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.pdb
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csprojAssemblyReference.cache
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.Properties.Resources.resources
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csproj.GenerateResource.cache
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.exe
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.exe.config
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.exe
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.WinForm.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csprojAssemblyReference.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.Properties.Resources.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csproj.GenerateResource.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.exe
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Newtonsoft.Json.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.API.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.Data.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.Repo.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Optimization.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Mvc.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Http.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Net.Http.Formatting.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Http.WebHost.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\EntityFramework.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\WebGrease.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Razor.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Antlr3.Runtime.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.API.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.API.dll.config
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.Data.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.Data.dll.config
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.Repo.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Unigo.Repo.dll.config
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Newtonsoft.Json.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Optimization.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Mvc.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Http.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Net.Http.Formatting.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Http.WebHost.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\EntityFramework.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.Razor.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Antlr3.Runtime.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csproj.CopyComplete
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.StartWindow.resources
