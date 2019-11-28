@@ -67,6 +67,7 @@ namespace Unigo.Controllers
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.ChangePhoneSuccess ? "Your phone number was changed."
+                : message == ManageMessageId.ChangeSuccess ? "Changed succesfully."
                 : message == ManageMessageId.RemoveLoginSuccess ? "Removed login success."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
@@ -135,6 +136,28 @@ namespace Unigo.Controllers
 
         }
 
+        // POST: /Manage/ChangeFirstLastName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdatePersonData(RegisterViewModel model)
+        {
+            ManageMessageId? message = ManageMessageId.NoChange;
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = User.Identity.GetUserId();
+            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
+
+            
+            peopleRepo.SaveChanges();
+            message = ManageMessageId.ChangeSuccess;
+
+            return RedirectToAction("Index", new { Message = message });
+
+        }
 
 
         // Custom methods end
@@ -339,6 +362,7 @@ namespace Unigo.Controllers
             ChangePhoneSuccess,
             ChangeFirstLastNameSuccess,
             ChangePasswordSuccess,
+            ChangeSuccess,
             Error,
             NoChange,
             RemovePhoneSuccess,

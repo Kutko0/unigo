@@ -1,0 +1,10 @@
+Unigo:
+  Frontend:
+    Miscellaneous:
+      ✔ Replace the custom button styling and replace it with the default one that comes with bootstrap @low @done(19-11-23 21:40)
+      ☐ Fill footer with relevant content @high
+      ☐ Add Find a Ride, Create a Ride and Sign Up buttons to the navbar @high 
+    Views:
+      ☐ Create Ride @critical 
+      ☐ Find Ride @critical 
+      ☐ Messages @low

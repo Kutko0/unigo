@@ -1,44 +1,58 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>Unigo Ridesharing</title>
 
+    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <script src="https://kit.fontawesome.com/d0a1bb1862.js" crossorigin="anonymous"></script>
+
+    <!-- Custom Imports -->
+    <link href="https://fonts.googleapis.com/css?family=Days+One|Quicksand|Roboto&display=swap" rel="stylesheet">
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/Scripts/joinRide.js")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+    <section id="navbar">
+        <div class="container-fluid" id="nav">
+            <nav class="container navbar navbar-expand-md navbar-dark text-right">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")" id="brand">UNIGO</a>
+                <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+                <div class="navbar-collapse collapse" id="collapsingNavbar">
+                    <ul class="navbar-nav text-right">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Home")#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Home")#contact" class="nav-link">Contact</a>
+                        </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            @Html.Partial("_LoginPartial")
+                        </ul>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+                </div>
+            </nav>
+        </div>
+    </section>
+    @RenderBody()
     @RenderSection("scripts", required: false)
+    @Html.Partial("_Footer")
 </body>
 </html>
+
+
+
+

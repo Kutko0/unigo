@@ -3,10 +3,7 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
+@*<div>
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -28,4 +25,150 @@
             @Html.ActionLink("Change first and last name", "ChangeFirstLastName");
         </dd>
     </dl>
+</div>*@
+
+
+@*
+    NOTES: 
+        Delete ChangeFirstNameLastName
+        Create Add Car form
+        Add ViewModels to IndexViewModel
+        Connect all of them with controller
+        Test if it works
+        Go on to create Ride and Cars
+        After cars and ride done, add funcionality here/ Add ViewModels if needed
+        
+
+*@
+<header class="container-fluid pt-5 bg-unigo">
+    <div class="container">
+        <div class="row text-md-left text-center">
+            <div class="col ml-auto">
+                <h1 class="text-white">Settings</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container" style="min-height: 70vh;">
+    <p class="text-success" style="margin-bottom: -10px;">@ViewBag.StatusMessage</p>
+    <div class="row py-3 py-sm-5">
+        <div class="col col-md-3 pb-3">
+            <div class="list-group text-center" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                <a class="list-group-item list-group-item-action" id="list-security-list" data-toggle="list" href="#list-security" role="tab" aria-controls="profile">Security</a>
+                <a class="list-group-item list-group-item-action" id="list-mycars-list" data-toggle="list" href="#list-mycars" role="tab" aria-controls="mycars">My Cars</a>
+                <a class="list-group-item list-group-item-action" id="list-history-list" data-toggle="list" href="#list-history" role="tab" aria-controls="history">History</a>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+            <!-- Profile -->
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="text-md-left text-center">
+                            <h3>Profile Settings</h3>
+                            <p>Change your profile settings</p>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <h6><strong>First Name</strong></h6>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="firstName"
+                                           aria-describedby="nameHelp" placeholder="First Name" value="Marco">
+                                </div>
+                                <h6><strong>Last Name</strong></h6>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="lastName"
+                                           aria-describedby="nameHelp" placeholder="Last Name" value="Magdolen">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6><strong>Email</strong></h6>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email address" value="magdolen.marco@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="label-floating"><strong>Date of Birth</strong></label>
+                                    <div class="form-group">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6><strong>Phone Number</strong></h6>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="phoneNumber"
+                                           aria-describedby="phoneNumberHelp" placeholder="Enter your phone number" value="+45 81917585">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col text-md-left text-center">
+                                <a href="#" class="btn btn-lg btn-primary rounded-pill"
+                                   role="button" aria-pressed="true" id="main-button">Save Changes</a>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                
+                    <!-- Security -->
+                    <div class="tab-pane fade" id="list-security" role="tabpanel" aria-labelledby="list-security-list">
+                        <div class="text-md-left text-center">
+                            <h3>Security Settings</h3>
+                            <p>Make sure to have a strong password</p>
+                        </div>
+                        <hr>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <h6><strong>Change Password</strong></h6>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="oldPassword" placeholder="Enter your old password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="newPassword" placeholder="Enter your new password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="newPasswordAgain" placeholder="Enter your new password again">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 text-md-left text-center">
+                            <div class="col">
+                                <a href="#" class="btn btn-lg btn-primary rounded-pill" role="button" aria-pressed="true" id="main-button">Save Changes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cars -->
+                    <div class="tab-pane fade" id="list-mycars" role="tabpanel" aria-labelledby="list-mycars-list">
+                        <div class="text-md-left text-center">
+                            <h3>My Cars</h3>
+                            <p>See and manage your cars</p>
+                        </div>
+                        <hr>
+                        <br>
+                        <div class="row">
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <!-- History -->
+                    <div class="tab-pane fade" id="list-history" role="tabpanel" aria-labelledby="list-history-list">
+
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>
+
+
+
