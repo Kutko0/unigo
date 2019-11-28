@@ -86,19 +86,23 @@
 										<option>5</option>
 									</select>
 								</div>
-								<div id="stopPoints">
-									<div class="form-group">
-										<input class="form-control d-none" id="stopPoint1" aria-describedby="emailHelp" placeholder="Stop destination">
+								<div class="row d">
+									<div class="col-8">
+										<div class="form-group">
+											<label for="stopPoints">Stop points?</label>
+											<input class="form-control" id="startPoint" aria-describedby="emailHelp" placeholder="Enter stop point">
+										</div>
 									</div>
-									<div class="form-group">
-										<input class="form-control d-none" id="stopPoint2" aria-describedby="emailHelp" placeholder="Stop destination">
+									<div class="col ml-auto text-right">
+										<div class="stopPointOp">
+											<a class="ml-3 btn btn-primary text-white" role="button" id="addStopPoint" onclick="addStopPoint()">
+												<i class="fas fa-plus"></i>
+											</a>
+											<a class="ml-1 btn btn-primary text-white " role="button" id="addStopPoint" onclick="addStopPoint()">
+												<i class="fas fa-minus"></i>
+											</a>
+										</div>
 									</div>
-									<div class="form-group">
-										<input class="form-control d-none" id="stopPoint3" aria-describedby="emailHelp" placeholder="Stop destination">
-									</div>
-								</div>
-								<div class="text-center pt-1 pt-md-3">
-									<a class="btn btn-primary w-50 rounded-pill text-white" role="button" id="addStopPoint" onclick="displayStopPoints()">Add stop point</a>
 								</div>
 								<div class="form-group">
 									<div class="input-group date" id="datetimepicker4" data-target-input="nearest">
@@ -116,7 +120,6 @@
 											format: 'MM/DD/YYYY HH:mm',
 											sideBySide: true,
 											daysOfWeekDisabled: [0, 6],
-											disabledTimeIntervals: [moment({ h: 0 }), moment({ h: 6 })],
 											widgetPositioning: {
 												horizontal: 'left',
 												vertical: 'bottom'
