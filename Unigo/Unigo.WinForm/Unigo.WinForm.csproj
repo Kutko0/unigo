@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UpdateCarWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateCarWindow.Designer.cs">
+      <DependentUpon>UpdateCarWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePersonWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="StartWindow.Designer.cs">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateCarWindow.resx">
+      <DependentUpon>UpdateCarWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdatePersonWindow.resx">
       <DependentUpon>UpdatePersonWindow.cs</DependentUpon>
     </EmbeddedResource>

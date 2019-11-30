@@ -48,3 +48,4 @@ D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.Deploym
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csproj.CopyComplete
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.StartWindow.resources
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdatePersonWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateCarWindow.resources

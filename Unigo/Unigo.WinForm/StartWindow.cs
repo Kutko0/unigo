@@ -23,9 +23,11 @@ namespace Unigo.WinForm
             this.client = client;
             InitializeComponent();
             PopulateDataGridPeople();
+            PopulateDataGridCars();
         }
 
-       
+        #region PeopleTab things
+
         private async void PopulateDataGridPeople()
         {
             var response = await client.GetAsync(apiURL + "/people");
@@ -41,7 +43,7 @@ namespace Unigo.WinForm
 
         private async void txtPeopleName_TextChanged(object sender, EventArgs e)
         {
-            var response = await client.GetAsync(apiURL + "/people/ByName/" + txtPeopleName.Text.Trim());
+            var response = await client.GetAsync(apiURL + "/people/ByName/" + txtPeopleSearchBar.Text.Trim());
             var jsonResults = await response.Content.ReadAsStringAsync();
 
             IEnumerable<Person> results = JsonConvert.DeserializeObject<IEnumerable<Person>>(jsonResults);
@@ -89,5 +91,82 @@ namespace Unigo.WinForm
                 
             }
         }
+
+        #endregion
+
+        #region CarsTab things
+
+        private async void PopulateDataGridCars()
+        {
+            var response = await client.GetAsync(apiURL + "/cars");
+            var jsonResults = await response.Content.ReadAsStringAsync();
+
+            IEnumerable<Car> results = JsonConvert.DeserializeObject<IEnumerable<Car>>(jsonResults);
+
+            gvCars.DataSource = results;
+
+            gvCars.Columns["Id"].Visible = false;
+            gvCars.Columns["Rider"].Visible = false;
+            gvCars.Columns["RiderId"].Visible = false;
+            gvCars.Columns["Color"].Visible = false;
+            gvCars.Columns["NumberOfSeats"].Visible = false;
+        }
+
+        private async void txtCarsSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            var response = await client.GetAsync(apiURL + "/cars/ByLicensePlate/" + txtCarsSearchBar.Text.Trim());
+            var jsonResults = await response.Content.ReadAsStringAsync();
+
+            IEnumerable<Car> results = JsonConvert.DeserializeObject<IEnumerable<Car>>(jsonResults);
+
+            gvCars.DataSource = results;
+        }
+
+        private async void gvCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            try
+            {
+                DataGridViewRow row = gvCars.Rows[rowIndex];
+                int carId = (int)row.Cells[0].Value;
+
+                var response = await client.GetAsync(apiURL + "/cars/ById/" + carId);
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                Car car = JsonConvert.DeserializeObject<Car>(jsonResults);
+
+                Form updateCarWindow = new UpdateCarWindow(car, client);
+                updateCarWindow.Show();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private async void btnDeleteCar_Click(object sender, EventArgs e)
+        {
+            var rowsToDelete = gvCars.SelectedRows;
+
+            DialogResult dialogResult = MessageBox.Show("Do you want to delete " + rowsToDelete.Count + " row(s) ", "Delete car", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in rowsToDelete)
+                {
+                    int carId = (int)row.Cells[0].Value;
+
+                    var response = await client.DeleteAsync(apiURL + "/cars/" + carId);
+                    PopulateDataGridCars();
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
+        #endregion
+
+
     }
 }
