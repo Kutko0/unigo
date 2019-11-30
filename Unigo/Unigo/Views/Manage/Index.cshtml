@@ -4,40 +4,41 @@
 }
 
 @*<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Email</dt>
-        <dd>
-            @Html.ActionLink("Change email", "ChangeEmail");
-        </dd>
-        <dt>Password:</dt>
-        <dd>
-            @Html.ActionLink("Change password", "ChangePassword")
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count
-            @Html.ActionLink("Manage", "ManageLogins")
-        </dd>
-        <dt>First and Last Name</dt>
-        <dd>
-            @Html.ActionLink("Change first and last name", "ChangeFirstLastName");
-        </dd>
-    </dl>
-</div>*@
+        <h4>Change your account settings</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Email</dt>
+            <dd>
+                @Html.ActionLink("Change email", "ChangeEmail");
+            </dd>
+            <dt>Password:</dt>
+            <dd>
+                @Html.ActionLink("Change password", "ChangePassword")
+            </dd>
+            <dt>External Logins:</dt>
+            <dd>
+                @Model.Logins.Count
+                @Html.ActionLink("Manage", "ManageLogins")
+            </dd>
+            <dt>First and Last Name</dt>
+            <dd>
+                @Html.ActionLink("Change first and last name", "ChangeFirstLastName");
+            </dd>
+        </dl>
+    </div>*@
 
 
 @*
-    NOTES: 
-        Delete ChangeFirstNameLastName
+    NOTES:
+        Create Controller method for Updating person
+        Create controller method for adding a car if there is not yet
         Create Add Car form
         Add ViewModels to IndexViewModel
         Connect all of them with controller
         Test if it works
         Go on to create Ride and Cars
         After cars and ride done, add funcionality here/ Add ViewModels if needed
-        
+
 
 *@
 <header class="container-fluid pt-5 bg-unigo">
@@ -63,112 +64,33 @@
         <div class="col-12 col-md-9">
             <!-- Profile -->
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        <div class="text-md-left text-center">
-                            <h3>Profile Settings</h3>
-                            <p>Change your profile settings</p>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col">
-                                <h6><strong>First Name</strong></h6>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstName"
-                                           aria-describedby="nameHelp" placeholder="First Name" value="Marco">
-                                </div>
-                                <h6><strong>Last Name</strong></h6>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastName"
-                                           aria-describedby="nameHelp" placeholder="Last Name" value="Magdolen">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <h6><strong>Email</strong></h6>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email address" value="magdolen.marco@gmail.com">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="label-floating"><strong>Date of Birth</strong></label>
-                                    <div class="form-group">
+                @Html.Partial("~/Views/Shared/UpdatePerson_Partial.cshtml", Model.PersonData)
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <h6><strong>Phone Number</strong></h6>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" id="phoneNumber"
-                                           aria-describedby="phoneNumberHelp" placeholder="Enter your phone number" value="+45 81917585">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col text-md-left text-center">
-                                <a href="#" class="btn btn-lg btn-primary rounded-pill"
-                                   role="button" aria-pressed="true" id="main-button">Save Changes</a>
-                            </div>
-                        </div>
-                    }
+                <!-- Password -->
+                @Html.Partial("~/Views/Shared/ChangePassword_Partial.cshtml", Model.ChangePass)
+                <!-- Cars -->
+                <div class="tab-pane fade" id="list-mycars" role="tabpanel" aria-labelledby="list-mycars-list">
+                    <div class="text-md-left text-center">
+                        <h3>My Cars</h3>
+                        <p>See and manage your cars</p>
                     </div>
-                
-                    <!-- Security -->
-                    <div class="tab-pane fade" id="list-security" role="tabpanel" aria-labelledby="list-security-list">
-                        <div class="text-md-left text-center">
-                            <h3>Security Settings</h3>
-                            <p>Make sure to have a strong password</p>
-                        </div>
-                        <hr>
-                        <br>
-                        <div class="row">
-                            <div class="col">
-                                <h6><strong>Change Password</strong></h6>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="oldPassword" placeholder="Enter your old password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="newPassword" placeholder="Enter your new password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="newPasswordAgain" placeholder="Enter your new password again">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-md-left text-center">
-                            <div class="col">
-                                <a href="#" class="btn btn-lg btn-primary rounded-pill" role="button" aria-pressed="true" id="main-button">Save Changes</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Cars -->
-                    <div class="tab-pane fade" id="list-mycars" role="tabpanel" aria-labelledby="list-mycars-list">
-                        <div class="text-md-left text-center">
-                            <h3>My Cars</h3>
-                            <p>See and manage your cars</p>
-                        </div>
-                        <hr>
-                        <br>
-                        <div class="row">
-                            <div class="col"></div>
-                        </div>
-                    </div>
-                    <!-- History -->
-                    <div class="tab-pane fade" id="list-history" role="tabpanel" aria-labelledby="list-history-list">
-
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col"></div>
                     </div>
                 </div>
+                <!-- History -->
+                <div class="tab-pane fade" id="list-history" role="tabpanel" aria-labelledby="list-history-list">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
 

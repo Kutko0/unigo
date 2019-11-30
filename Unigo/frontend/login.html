@@ -48,18 +48,24 @@
 		</section>
 		<div class="container">
 			<div class="row py-3 py-md-5 justify-content-center">
-				<div class="col-10 col-sm-8 col-md-6 col-lg-4">
+				<div class="col-10 col-sm-8 col-md-6 col-lg-4 px-0">
 					<div class="wrapper px-5 py-3 rounded">
 						<div class="text-center">
 							<h3 class="text-white">Login</h3>
 						</div>
 						<form>
 							<div class="form-group">
-								<input type="email" class="form-control" id="email" placeholder="Email">
+								<label for="email" class="text-white">Email</label>
+								<input type="email" class="form-control" id="email" placeholder="example@mail.com">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" id="password" placeholder="Password">
+								<label for="password" class="text-white">Password</label>
+								<input type="password" class="form-control" id="password" placeholder="Panda123.">
 								<br>
+								<div class="form-check pb-3">
+									<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label text-white" for="defaultCheck1">Remember me</label>
+								</div>
 							</div>
 							<div class="text-center pb-3">
 								<a href="#" class="btn btn-lg btn-light rounded-pill" role="button" aria-pressed="true">Login</a>

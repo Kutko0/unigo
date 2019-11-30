@@ -74,84 +74,39 @@ namespace Unigo.Controllers
                 : message == ManageMessageId.NoChange ? "No changes has been made."
                 : "";
 
-            var userId = User.Identity.GetUserId();
-            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
-
-            var model = new IndexViewModel
-            {
-                HasPassword = HasPassword(),
-                PhoneNumber = userPerson.PhoneNumber,
-                LastName = userPerson.LastName,
-                FirstName = userPerson.FirstName,
-                Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
-            };
-            return View(model);
+            
+            return View(FillIndexViewWithData());
         }
 
         // Custom created methods
         //----------------------
 
-        // GET: /Manage/ChangeFirstLastName
-        [HttpGet]
-        public ActionResult ChangeFirstLastName()
-        {
-            var userId = User.Identity.GetUserId();
-            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
-
-            return View(new ChangeFirstLastNameViewModel
-            {
-                NFirst = userPerson.FirstName,
-                NLast = userPerson.LastName
-            });
-        }
-
-
-        // POST: /Manage/ChangeFirstLastName
+        // POST: /Manage/UpdatePersonData
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangeFirstLastName(ChangeFirstLastNameViewModel model)
+        public ActionResult UpdatePersonData(UpdatePersonViewModel model)
         {
             ManageMessageId? message = ManageMessageId.NoChange;
 
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("Index", FillIndexViewWithData(updatePerson: model));
             }
 
             var userId = User.Identity.GetUserId();
             Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
 
-            if(userPerson.FirstName == model.NFirst && userPerson.LastName == model.NLast)
-            {
-                return RedirectToAction("Index", new { Message = message });
-            }
+            userPerson.FirstName = model.FirstName;
+            userPerson.LastName = model.LastName;
+            userPerson.Email = model.Email;
+            userPerson.DateOfBirth = model.DateOfBirth;
+            userPerson.PhoneNumber= model.PhoneNumber;
 
-            userPerson.FirstName = model.NFirst;
-            userPerson.LastName = model.NLast;
-            peopleRepo.SaveChanges();
-            message = ManageMessageId.ChangeFirstLastNameSuccess;
+            // get user object from the storage
+            var user = UserManager.FindById(userId);
+            user.Email = model.Email;
+            UserManager.Update(user);
 
-            return RedirectToAction("Index", new { Message = message });
-
-        }
-
-        // POST: /Manage/ChangeFirstLastName
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult UpdatePersonData(RegisterViewModel model)
-        {
-            ManageMessageId? message = ManageMessageId.NoChange;
-
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            var userId = User.Identity.GetUserId();
-            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
-
-            
             peopleRepo.SaveChanges();
             message = ManageMessageId.ChangeSuccess;
 
@@ -200,30 +155,7 @@ namespace Unigo.Controllers
 
         //
         // POST: /Manage/RemovePhoneNumber
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemovePhoneNumber()
-        {
-            var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
-            if (!result.Succeeded)
-            {
-                return RedirectToAction("Index", new { Message = ManageMessageId.Error });
-            }
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user != null)
-            {
-                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-            }
-            return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
-        }
-
-        //
-        // GET: /Manage/ChangePassword
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
-
+        
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -232,7 +164,7 @@ namespace Unigo.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("Index", FillIndexViewWithData(changePass:model));
             }
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
@@ -245,7 +177,7 @@ namespace Unigo.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
-            return View(model);
+            return RedirectToAction("Index", new { Message = ManageMessageId.NoChange });
         }
 
         //
@@ -367,6 +299,48 @@ namespace Unigo.Controllers
             NoChange,
             RemovePhoneSuccess,
             RemoveLoginSuccess
+        }
+
+        private IndexViewModel FillIndexViewWithData(
+            UpdatePersonViewModel updatePerson = null, 
+            ChangePasswordViewModel changePass = null)
+        {
+            // Person update view model creation
+            var userId = User.Identity.GetUserId();
+            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
+            UpdatePersonViewModel personView = new UpdatePersonViewModel
+            {
+                FirstName = userPerson.FirstName,
+                LastName = userPerson.LastName,
+                PhoneNumber = userPerson.PhoneNumber,
+                Email = userPerson.Email,
+                DateOfBirth = userPerson.DateOfBirth
+            };
+
+            // Change pass view model creation
+            ChangePasswordViewModel changePassword = new ChangePasswordViewModel();
+
+
+            // Check for specific parameters
+            if (updatePerson != null)
+            {
+                personView = updatePerson;
+            }
+
+            if(changePass != null)
+            {
+                changePassword = changePass;
+            }
+
+
+            var model = new IndexViewModel
+            {
+                //BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                PersonData = personView,
+                ChangePass = changePassword
+            };
+
+            return model;
         }
 
 #endregion

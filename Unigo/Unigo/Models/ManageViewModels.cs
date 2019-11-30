@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -7,12 +8,10 @@ namespace Unigo.Models
 {
     public class IndexViewModel
     {
-        public bool HasPassword { get; set; }
-        public IList<UserLoginInfo> Logins { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool BrowserRemembered { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        //public bool BrowserRemembered { get; set; }
+
+        public UpdatePersonViewModel PersonData { get; set; }
+        public ChangePasswordViewModel ChangePass { get; set; }
     }
 
     public class ManageLoginsViewModel
@@ -67,19 +66,6 @@ namespace Unigo.Models
         public string Number { get; set; }
     }
 
-    public class ChangeFirstLastNameViewModel
-    {
-        [StringLength(100, ErrorMessage = "First name length between 2 and 100."), MinLength(2)]
-        [Display(Name = "New first name")]
-        [Required]
-        public string NFirst { get; set; }
-
-        [StringLength(100, ErrorMessage = "Last name length between 2 and 100."), MinLength(2)]
-        [Display(Name = "New last name")]
-        [Required]
-        public string NLast { get; set; }
-    }
-
     public class AddCarViewModel {
 
         [Display(Name = "License plate")]
@@ -107,5 +93,36 @@ namespace Unigo.Models
 
     }
 
-    
+    public class UpdatePersonViewModel
+    {
+        public DateTime Eightteen = DateTime.Now.AddYears(-18);
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Phone number")]
+        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$",
+            ErrorMessage = "Only danish numbers allowed.\n Use +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 format.")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [GreaterThanDate()]
+        public DateTime DateOfBirth { get; set; }
+    }
+
+
 }

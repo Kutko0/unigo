@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Unigo | Find a Ride</title>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+		<script src="https://kit.fontawesome.com/d0a1bb1862.js" crossorigin="anonymous"></script>
+
+		<!-- Custom Imports -->
+		<link href="https://fonts.googleapis.com/css?family=Days+One|Quicksand|Roboto&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="scripts/script.js"></script>
+
+		<!-- Date Time -->
+		<script type="text/javascript" src="scripts/moment-with-locales.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css"/>
+	</head>
+	<body>
+		<section id="navbar">
+			<div class="container-fluid" id="nav">
+				<nav class="container navbar navbar-expand-md navbar-dark text-right">
+					<a href="index.html" class="navbar-brand" id="brand">UNIGO</a>
+					<button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="navbar-collapse collapse" id="collapsingNavbar">
+						<ul class="navbar-nav text-right">
+							<li class="nav-item">
+								<a href="index.html#about" class="nav-link">About</a>
+							</li>
+							<li class="nav-item">
+								<a href="index.html#contact" class="nav-link">Contact</a>
+							</li>
+						</ul>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a href="login.html" class="nav-link">Login</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</section>
+		<section id="header">
+			<header class="container-fluid pt-5 bg-unigo">
+				<div class="container">
+					<div class="row text-md-left text-center">
+						<div class="col ml-auto">
+							<h1 class="text-white">Find a Ride</h1>
+						</div>
+					</div>
+				</div>
+			</header>
+		</section>
+		<section id="findRide">
+			<div class="container-fluid">
+				<div class="container">
+					<div class="row py-3 py-sm-5">
+						<div class="col-12 col-md-4 offset-md-4">
+							<form>
+								<div class="form-group">
+									<label for="endPoint">To?</label>
+									<select class="form-control" id="endPoint">
+										<option value="sof">UCN Sofiendalsvej</option>
+										<option value="hob">UCN Hobrovej</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="datetimepicker4">When?</label>
+									<div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+										<input id="datetimepicker4" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+										<div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+											<div class="input-group-text">
+												<i class="fa fa-calendar"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-center">
+									<button type="button" class="btn btn-primary">Search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="row w-100 py-1">
+						<h2>Rides to <span id="destination">UCN Sofiendalsvej</span></h2>
+					</div>
+					<div class="row py-1" id="rides">
+						<div id="91848"> <!-- Might be Ride ID -->
+							<div class="card mb-3">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12 col-md-3 text-center">
+											<img src="resources/images/marco-pfp.jpg" class="rounded-pill w-75" alt="Profile Picture">
+											<p class="justify lead my-1">Marco Magdolen</p>
+											<p id="rating">
+												<span id="ratingValue">4.7</span>
+												<i class="fa fa-star"></i>
+											</p>
+										</div>
+										<div class="col-12 col-md-6">
+											<div class="text-center">
+												<h3 class="card-title"><span id="destination">UCN Sofiendalsvej</span></h3>
+												<h6 class="card-subtitle lead"><span id="date">Tomorrow</span> at <span id="leavingTime">7.55</span></h6>
+												<h6 class="card-subtitle mt-1">
+													<i class="fas fa-map-marker-alt mr-1"></i>
+													<span id="startPoint">Kvickly Dannebrogsgade</span>
+												</h6>
+												<hr class="w-100">
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-car"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1" id="carType">Mercedes Benz CLA 35 AMG</p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-coins"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1">Negotiate with the driver</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-3 my-auto pt-3 pt-md-0">
+											<div class="row d-flex justify-content-center align-items-center">
+												<h3 class="lead">Free seats:<h3><span class="ml-3" id="seats">3</span></h3></h3>
+											</div>
+											<div class="row d-flex justify-content-center mt-1 mt-sm-3">
+												<button type="button" class="btn btn-success">Join this ride</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="78878"> <!-- Might be Ride ID -->
+							<div class="card mb-3">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12 col-md-3 text-center">
+											<img src="resources/images/marco-pfp.jpg" class="rounded-pill w-75" alt="Profile Picture">
+											<p class="justify lead my-1">Marco Magdolen</p>
+											<p id="rating">
+												<span id="ratingValue">4.7</span>
+												<i class="fa fa-star"></i>
+											</p>
+										</div>
+										<div class="col-12 col-md-6">
+											<div class="text-center">
+												<h3 class="card-title"><span id="destination">UCN Sofiendalsvej</span></h3>
+												<h6 class="card-subtitle lead"><span id="date">3rd of December</span> at <span id="leavingTime">7.45</span></h6>
+												<h6 class="card-subtitle mt-1">
+													<i class="fas fa-map-marker-alt mr-1"></i>
+													<span id="startPoint">Dannebrogsgade 45</span>
+												</h6>
+												<hr class="w-100">
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-car"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1" id="carType">Tesla Model S P100D</p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-coins"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1">Negotiate with the driver</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-3 my-auto pt-3 pt-md-0">
+											<div class="row d-flex justify-content-center align-items-center">
+												<h3 class="lead">Free seats:<h3><span class="ml-3" id="seats">1</span></h3></h3>
+											</div>
+											<div class="row d-flex justify-content-center mt-1 mt-sm-3">
+												<button type="button" class="btn btn-success">Join this ride</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row w-100 py-1">
+						<h2>Rides to <span id="destination">UCN Hobrovej</span></h2>
+					</div>
+					<div class="row py-1" id="rides">
+						<div id="84544"> <!-- Might be Ride ID -->
+							<div class="card mb-3">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12 col-md-3 text-center">
+											<img src="resources/images/marco-pfp.jpg" class="rounded-pill w-75" alt="Profile Picture">
+											<p class="justify lead my-1">Marco Magdolen</p>
+											<p id="rating">
+												<span id="ratingValue">4.7</span>
+												<i class="fa fa-star"></i>
+											</p>
+										</div>
+										<div class="col-12 col-md-6">
+											<div class="text-center">
+												<h3 class="card-title"><span id="destination">UCN Hobrovej</span></h3>
+												<h6 class="card-subtitle lead"><span id="date">4th of December</span> at <span id="leavingTime">8.00</span></h6>
+												<h6 class="card-subtitle mt-1">
+													<i class="fas fa-map-marker-alt mr-1"></i>
+													<span id="startPoint">Fuckknowswhere</span>
+												</h6>
+												<hr class="w-100">
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-car"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1" id="carType">1998 Toyota Corolla</p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-coins"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1">Negotiate with the driver</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-3 my-auto pt-3 pt-md-0">
+											<div class="row d-flex justify-content-center align-items-center">
+												<h3 class="lead">Free seats:<h3><span class="ml-3" id="seats">2</span></h3></h3>
+											</div>
+											<div class="row d-flex justify-content-center mt-1 mt-sm-3">
+												<button type="button" class="btn btn-success">Join this ride</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="25148"> <!-- Might be Ride ID -->
+							<div class="card mb-3">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12 col-md-3 text-center">
+											<img src="resources/images/marco-pfp.jpg" class="rounded-pill w-75" alt="Profile Picture">
+											<p class="justify lead my-1">Marco Magdolen</p>
+											<p id="rating">
+												<span id="ratingValue">4.7</span>
+												<i class="fa fa-star"></i>
+											</p>
+										</div>
+										<div class="col-12 col-md-6">
+											<div class="text-center">
+												<h3 class="card-title"><span id="destination">UCN Hobrovej</span></h3>
+												<h6 class="card-subtitle lead"><span id="date">3rd of December</span> at <span id="leavingTime">7.45</span></h6>
+												<h6 class="card-subtitle mt-1">
+													<i class="fas fa-map-marker-alt mr-1"></i>
+													<span id="startPoint">idk</span>
+												</h6>
+												<hr class="w-100">
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-car"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1" id="carType">Something that has 4 wheels and a wheel</p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-1">
+													<i class="fa fa-coins"></i>
+												</div>
+												<div class="col">
+													<p class="mb-1">Negotiate with the driver</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-3 my-auto pt-3 pt-md-0">
+											<div class="row d-flex justify-content-center align-items-center">
+												<h3 class="lead">Free seats:<h3><span class="ml-3" id="seats">1</span></h3></h3>
+											</div>
+											<div class="row d-flex justify-content-center mt-1 mt-sm-3">
+												<button type="button" class="btn btn-success">Join this ride</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
