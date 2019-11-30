@@ -19,6 +19,11 @@
 		<link href="https://fonts.googleapis.com/css?family=Days+One|Quicksand|Roboto&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="scripts/script.js"></script>
+
+		<!-- Date Time -->
+		<script type="text/javascript" src="scripts/moment-with-locales.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css"/>
 	</head>
 	<body>
 		<section id="navbar">
@@ -62,7 +67,7 @@
 						<a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
 						<a class="list-group-item list-group-item-action" id="list-security-list" data-toggle="list" href="#list-security" role="tab" aria-controls="profile">Security</a>
 						<a class="list-group-item list-group-item-action" id="list-mycars-list" data-toggle="list" href="#list-mycars" role="tab" aria-controls="mycars">My Cars</a>
-						<a class="list-group-item list-group-item-action" id="list-history-list" data-toggle="list" href="#list-history" role="tab" aria-controls="history">History</a>
+						<a class="list-group-item list-group-item-action" id="list-history-list" data-toggle="list" href="#list-history" role="tab" aria-controls="history">Ride History</a>
 					</div>
 				</div>
 				<div class="col-12 col-md-9">
@@ -98,129 +103,28 @@
 							<div class="row">
 								<div class="col">
 									<div class="form-group">
-										<label class="label-floating"><strong>Date of Birth</strong></label>
-										<form class="form-inline">
-											<select class="custom-select" id="birthDay">
-												<option>Day</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												<option>8</option>
-												<option>9</option>
-												<option>10</option>
-												<option>11</option>
-												<option>12</option>
-												<option>13</option>
-												<option>14</option>
-												<option>15</option>
-												<option>16</option>
-												<option>17</option>
-												<option>18</option>
-												<option>19</option>
-												<option>20</option>
-												<option>21</option>
-												<option>22</option>
-												<option>23</option>
-												<option>24</option>
-												<option>25</option>
-												<option>26</option>
-												<option>27</option>
-												<option>28</option>
-												<option>29</option>
-												<option>30</option>
-												<option>31</option>
-											</select>
-											<select class="custom-select" id="birthMonth">
-												<option>Month</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												<option>8</option>
-												<option>9</option>
-												<option>10</option>
-												<option>11</option>
-												<option>12</option>
-											</select>
-											<select class="custom-select" id="birthYear">
-												<option>Year</option>
-												<option>2006</option>
-												<option>2005</option>
-												<option>2004</option>
-												<option>2003</option>
-												<option>2002</option>
-												<option>2001</option>
-												<option>2000</option>
-												<option>1999</option>
-												<option>1998</option>
-												<option>1997</option>
-												<option>1996</option>
-												<option>1995</option>
-												<option>1994</option>
-												<option>1993</option>
-												<option>1992</option>
-												<option>1991</option>
-												<option>1990</option>
-												<option>1989</option>
-												<option>1988</option>
-												<option>1987</option>
-												<option>1986</option>
-												<option>1985</option>
-												<option>1984</option>
-												<option>1983</option>
-												<option>1982</option>
-												<option>1981</option>
-												<option>1980</option>
-												<option>1979</option>
-												<option>1978</option>
-												<option>1977</option>
-												<option>1976</option>
-												<option>1975</option>
-												<option>1974</option>
-												<option>1973</option>
-												<option>1972</option>
-												<option>1971</option>
-												<option>1970</option>
-												<option>1969</option>
-												<option>1968</option>
-												<option>1967</option>
-												<option>1966</option>
-												<option>1965</option>
-												<option>1964</option>
-												<option>1963</option>
-												<option>1962</option>
-												<option>1961</option>
-												<option>1960</option>
-												<option>1959</option>
-												<option>1958</option>
-												<option>1957</option>
-												<option>1956</option>
-												<option>1955</option>
-												<option>1954</option>
-												<option>1953</option>
-												<option>1952</option>
-												<option>1951</option>
-												<option>1950</option>
-												<option>1949</option>
-												<option>1948</option>
-												<option>1947</option>
-												<option>1946</option>
-												<option>1945</option>
-												<option>1944</option>
-												<option>1943</option>
-												<option>1942</option>
-												<option>1941</option>
-												<option>1940</option>
-											</select>
-										</form>
+										<h6><strong>Date of Birth</strong></h6>
+										<div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+											<input id="datetimepicker4" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+											<div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+												<div class="input-group-text">
+													<i class="fa fa-calendar"></i>
+												</div>
+											</div>
+										</div>
 									</div>
+									<script type="text/javascript">
+										$(function () {
+											$('#datetimepicker4').datetimepicker({
+												format: 'MM/DD/YYYY',
+												sideBySide: true,
+												widgetPositioning: {
+													horizontal: 'left',
+													vertical: 'top'
+												}
+											});
+										});
+									</script>
 								</div>
 							</div>
 							<div class="row">
@@ -265,20 +169,87 @@
 								</div>
 							</div>
 						</div>
+						<!-- My Cars -->
 						<div class="tab-pane fade" id="list-mycars" role="tabpanel" aria-labelledby="list-mycars-list">
 							<div class="text-md-left text-center">
 								<h3>My Cars</h3>
 								<p>See and manage your cars</p>
 							</div>
-							<hr>
-							<br>
 							<div class="row">
-								<div class="col"></div>
+								<div class="col">
+									<table class="table table-hover table-responsive text-center" id="myCars">
+										<thead>
+											<tr>
+												<th scope="col" >Brand</th>
+												<th scope="col">Type</th>
+												<th scope="col">Color</th>
+												<th scope="col">Free Seats</th>
+												<th scope="col">Licence Plate</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row" class="font-weight-normal">Škoda</th>
+												<td>Felicia</td>
+												<td>Gay</td>
+												<td>4</td>
+												<td>KE848AP</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<div class="text-md-left text-center">
+										<h3>Add a new Car</h3>
+										<hr>
+									</div>
+									<div class="row">
+										<div class="col">
+											<h6><strong>Brand</strong></h6>
+											<div class="form-group">
+												<input type="name" class="form-control" id="carBrand" placeholder="Toyota">
+											</div>
+											<h6><strong>Type</strong></h6>
+											<div class="form-group">
+												<input type="name" class="form-control" id="type" placeholder="Corolla">
+											</div>
+											<h6><strong>Color</strong></h6>
+											<div class="form-group">
+												<input type="name" class="form-control" id="color" placeholder="Black">
+											</div>
+											<h6><strong>Number of Free Seats</strong></h6>
+											<div class="form-group">
+												<select class="form-control" id="freeSeat">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+													<option>6</option>
+												</select>
+											</div>
+											<h6><strong>License Plate</strong></h6>
+											<div class="form-group">
+												<input type="name" class="form-control" id="type" placeholder="CA40256">
+											</div>
+										</div>
+									</div>
+									<div class="text-md-left text-center">
+										<button type="button" class="btn btn-primary">Add Car</button>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!-- History -->
 						<div class="tab-pane fade" id="list-history" role="tabpanel" aria-labelledby="list-history-list">
-							
+							<div class="text-md-left text-center">
+								<h3>Ride History</h3>
+								<p>History is written by champions</p>
+							</div>
+							<hr>
+							<br>
 						</div>
 					</div>
 				</div>
