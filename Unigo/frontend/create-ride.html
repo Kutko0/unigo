@@ -96,7 +96,7 @@
 								<div class="form-group">
 									<div class="d-inline-flex align-items-center">
 										<a class="btn btn-primary text-white" role="button" id="addStopPoint" onclick="addStopPoint()">Add</a>
-										<p class="m-0 ml-1" for="stopPoints">Stop points?</p>
+										<p class="m-0 ml-1" for="stopPoints">stop points?</p>
 									</div>
 									<div id="location">
 									</div>
@@ -124,7 +124,7 @@
 										$('#datetimepicker4').datetimepicker({
 											format: 'MM/DD/YYYY HH:mm',
 											minDate: moment().utc(),
-											daysOfWeekDisabled: [0, 6],
+											stepping: 5,
 											sideBySide: true,
 											widgetPositioning: {
 												horizontal: 'right',

@@ -86,6 +86,20 @@
 										</div>
 									</div>
 								</div>
+								<script type="text/javascript">
+									$(function () {
+										$('#datetimepicker4').datetimepicker({
+											format: 'MM/DD/YYYY HH:mm',
+											minDate: moment().utc(),
+											stepping: 5,
+											sideBySide: true,
+											widgetPositioning: {
+												horizontal: 'right',
+												vertical: 'bottom'
+											}
+										});
+									});
+								</script>
 								<div class="text-center">
 									<button type="button" class="btn btn-primary">Search</button>
 								</div>
