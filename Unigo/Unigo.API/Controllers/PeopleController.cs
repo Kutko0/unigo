@@ -9,6 +9,7 @@ using Unigo.Repo;
 
 namespace Unigo.API.Controllers
 {
+    [RoutePrefix("api/people")]
     public class PeopleController : ApiController
     {
 
@@ -27,17 +28,30 @@ namespace Unigo.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        [Route("ById/{id}")]
+        public IHttpActionResult GetById(int id)
         {
             Person person = peopleRepository.GetById(id);
-
             if (person == null)
                 return NotFound();
 
             return Ok(person);
         }
 
-        
+        [HttpGet]
+        [Route("ByName/{name}")]
+        public IEnumerable<Person> GetByName(string name)
+        {
+            var people = peopleRepository.GetAll();
+            var chosenPeople = from person in people
+                               where person.FirstName.Contains(name) || person.LastName.Contains(name)
+                               select person;
+
+
+            return chosenPeople;
+        }
+
+
         [HttpPost]
         public IHttpActionResult CreatePerson(Person person)
         {

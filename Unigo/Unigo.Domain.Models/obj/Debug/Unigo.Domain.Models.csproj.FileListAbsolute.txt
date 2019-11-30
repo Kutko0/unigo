@@ -9,3 +9,8 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Domain.Models\b
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.csprojAssemblyReference.cache
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\bin\Debug\Unigo.Domain.Models.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\bin\Debug\Unigo.Domain.Models.pdb
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.csprojAssemblyReference.cache
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.dll
+D:\Docs\Projects\unigo\Unigo\Unigo.Domain.Models\obj\Debug\Unigo.Domain.Models.pdb

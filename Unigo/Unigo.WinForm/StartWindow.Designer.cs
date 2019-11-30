@@ -31,15 +31,18 @@
             this.tabDestinations = new System.Windows.Forms.TabPage();
             this.tabRides = new System.Windows.Forms.TabPage();
             this.tabPeople = new System.Windows.Forms.TabPage();
+            this.btnDeletePerson = new System.Windows.Forms.Button();
+            this.lablePeopleName = new System.Windows.Forms.Label();
+            this.txtPeopleName = new System.Windows.Forms.TextBox();
             this.gvPeople = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCars = new System.Windows.Forms.TabPage();
-            this.btnSearchPeople = new System.Windows.Forms.Button();
-            this.txtPeopleName = new System.Windows.Forms.TextBox();
-            this.lablePeopleName = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvPeople)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabCars.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDestinations
@@ -62,9 +65,9 @@
             // 
             // tabPeople
             // 
+            this.tabPeople.Controls.Add(this.btnDeletePerson);
             this.tabPeople.Controls.Add(this.lablePeopleName);
             this.tabPeople.Controls.Add(this.txtPeopleName);
-            this.tabPeople.Controls.Add(this.btnSearchPeople);
             this.tabPeople.Controls.Add(this.gvPeople);
             this.tabPeople.Location = new System.Drawing.Point(4, 22);
             this.tabPeople.Name = "tabPeople";
@@ -74,13 +77,43 @@
             this.tabPeople.Text = "People";
             this.tabPeople.UseVisualStyleBackColor = true;
             // 
+            // btnDeletePerson
+            // 
+            this.btnDeletePerson.Location = new System.Drawing.Point(606, 24);
+            this.btnDeletePerson.Name = "btnDeletePerson";
+            this.btnDeletePerson.Size = new System.Drawing.Size(93, 28);
+            this.btnDeletePerson.TabIndex = 4;
+            this.btnDeletePerson.Text = "Delete";
+            this.btnDeletePerson.UseVisualStyleBackColor = true;
+            this.btnDeletePerson.Click += new System.EventHandler(this.btnDeletePerson_Click);
+            // 
+            // lablePeopleName
+            // 
+            this.lablePeopleName.AutoSize = true;
+            this.lablePeopleName.Location = new System.Drawing.Point(115, 29);
+            this.lablePeopleName.Name = "lablePeopleName";
+            this.lablePeopleName.Size = new System.Drawing.Size(137, 13);
+            this.lablePeopleName.TabIndex = 3;
+            this.lablePeopleName.Text = "Search by first or last name:";
+            // 
+            // txtPeopleName
+            // 
+            this.txtPeopleName.Location = new System.Drawing.Point(258, 22);
+            this.txtPeopleName.Name = "txtPeopleName";
+            this.txtPeopleName.Size = new System.Drawing.Size(144, 20);
+            this.txtPeopleName.TabIndex = 2;
+            this.txtPeopleName.TextChanged += new System.EventHandler(this.txtPeopleName_TextChanged);
+            // 
             // gvPeople
             // 
             this.gvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvPeople.Location = new System.Drawing.Point(51, 59);
+            this.gvPeople.Location = new System.Drawing.Point(65, 59);
             this.gvPeople.Name = "gvPeople";
+            this.gvPeople.ReadOnly = true;
+            this.gvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvPeople.Size = new System.Drawing.Size(532, 385);
             this.gvPeople.TabIndex = 0;
+            this.gvPeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvPeople_CellContentClick);
             // 
             // tabControl1
             // 
@@ -96,6 +129,7 @@
             // 
             // tabCars
             // 
+            this.tabCars.Controls.Add(this.dataGridView1);
             this.tabCars.Location = new System.Drawing.Point(4, 22);
             this.tabCars.Name = "tabCars";
             this.tabCars.Padding = new System.Windows.Forms.Padding(3);
@@ -104,31 +138,15 @@
             this.tabCars.Text = "Cars";
             this.tabCars.UseVisualStyleBackColor = true;
             // 
-            // btnSearchPeople
+            // dataGridView1
             // 
-            this.btnSearchPeople.Location = new System.Drawing.Point(647, 18);
-            this.btnSearchPeople.Name = "btnSearchPeople";
-            this.btnSearchPeople.Size = new System.Drawing.Size(109, 32);
-            this.btnSearchPeople.TabIndex = 1;
-            this.btnSearchPeople.Text = "Search";
-            this.btnSearchPeople.UseVisualStyleBackColor = true;
-            this.btnSearchPeople.Click += new System.EventHandler(this.btnSearchPeople_Click);
-            // 
-            // txtPeopleName
-            // 
-            this.txtPeopleName.Location = new System.Drawing.Point(514, 22);
-            this.txtPeopleName.Name = "txtPeopleName";
-            this.txtPeopleName.Size = new System.Drawing.Size(116, 20);
-            this.txtPeopleName.TabIndex = 2;
-            // 
-            // lablePeopleName
-            // 
-            this.lablePeopleName.AutoSize = true;
-            this.lablePeopleName.Location = new System.Drawing.Point(448, 22);
-            this.lablePeopleName.Name = "lablePeopleName";
-            this.lablePeopleName.Size = new System.Drawing.Size(60, 13);
-            this.lablePeopleName.TabIndex = 3;
-            this.lablePeopleName.Text = "FirstName :";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(71, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(532, 385);
+            this.dataGridView1.TabIndex = 1;
             // 
             // StartWindow
             // 
@@ -142,6 +160,8 @@
             this.tabPeople.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvPeople)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabCars.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,8 +174,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabCars;
         private System.Windows.Forms.DataGridView gvPeople;
-        private System.Windows.Forms.Button btnSearchPeople;
         private System.Windows.Forms.Label lablePeopleName;
         private System.Windows.Forms.TextBox txtPeopleName;
+        private System.Windows.Forms.Button btnDeletePerson;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
