@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Unigo.Data;
 
 namespace Unigo.Models
 {
@@ -10,8 +11,11 @@ namespace Unigo.Models
     {
         //public bool BrowserRemembered { get; set; }
 
+        public AddCarViewModel AddCar { get; set; }
+
         public UpdatePersonViewModel PersonData { get; set; }
         public ChangePasswordViewModel ChangePass { get; set; }
+        
     }
 
     public class ManageLoginsViewModel
@@ -59,7 +63,7 @@ namespace Unigo.Models
     }
 
     public class AddPhoneNumberViewModel
-    {
+    { 
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
@@ -69,6 +73,10 @@ namespace Unigo.Models
     public class AddCarViewModel {
 
         [Display(Name = "License plate")]
+        /* [RegularExpression(@"^[A-Z]{1,3}-[A-Z]{1,2}-[0-9]{1,4}$",
+                ErrorMessage = "Enter danish license plate.")] 
+             DOES NOT WORK, can't find regex for danish Plates   
+             */
         [Required]
         public string LicensePlate { get; set; }
 
@@ -88,10 +96,14 @@ namespace Unigo.Models
         public string Description { get; set; }
 
         [Display(Name = "Number of seats")]
+        [Range(0, 6, ErrorMessage = "Maximum number of seats is 6.")]
         [Required]
         public int NumberOfSeats { get; set; }
 
+        public List<Car> carList { get; set; }
+
     }
+
 
     public class UpdatePersonViewModel
     {

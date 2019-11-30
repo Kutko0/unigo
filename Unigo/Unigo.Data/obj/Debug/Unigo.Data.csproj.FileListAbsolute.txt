@@ -58,3 +58,4 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.GenerateResource.cache
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Init.resources
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Destinations.resources
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.PopulateCars.resources

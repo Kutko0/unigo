@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,15 +19,17 @@ namespace Unigo.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IRepository<Person> peopleRepo;
+        private IRepository<Car> carRepo;
 
 
         public ManageController()
         {
         }
 
-        public ManageController(IRepository<Person> pr)
+        public ManageController(IRepository<Person> pr, IRepository<Car> cr)
         {
             this.peopleRepo = pr;
+            this.carRepo = cr;
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -61,7 +64,7 @@ namespace Unigo.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        public ActionResult Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
@@ -72,6 +75,7 @@ namespace Unigo.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
                 : message == ManageMessageId.NoChange ? "No changes has been made."
+                : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
                 : "";
 
             
@@ -114,9 +118,46 @@ namespace Unigo.Controllers
 
         }
 
+        // POST: /Manage/AddCar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCar(AddCarViewModel model)
+        {
+            ManageMessageId? message = ManageMessageId.NoChange;
+
+            if (!ModelState.IsValid)
+            {
+                return View("Index", FillIndexViewWithData(addCar: model));
+            }
+
+            var userId = User.Identity.GetUserId();
+            int userPersonId = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault().Id;
+
+            Car car = new Car
+            {
+                Brand = model.Brand,
+                Color = model.Color,
+                LicensePlate = model.LicensePlate,
+                NumberOfSeats = model.NumberOfSeats,
+                RiderId = userPersonId,
+                Type = model.Type
+            };
+
+            if (!String.IsNullOrEmpty(model.Description))
+            {
+                car.Description = model.Description;
+            }
+
+            this.carRepo.Add(car);
+            this.carRepo.SaveChanges();
+
+            message = ManageMessageId.AddCarSuccess;
+
+            return RedirectToAction("Index", new { Message = message });
+
+        }
 
         // Custom methods end
-
 
 
         // Auto-Generated methods under
@@ -295,6 +336,7 @@ namespace Unigo.Controllers
             ChangeFirstLastNameSuccess,
             ChangePasswordSuccess,
             ChangeSuccess,
+            AddCarSuccess,
             Error,
             NoChange,
             RemovePhoneSuccess,
@@ -303,7 +345,8 @@ namespace Unigo.Controllers
 
         private IndexViewModel FillIndexViewWithData(
             UpdatePersonViewModel updatePerson = null, 
-            ChangePasswordViewModel changePass = null)
+            ChangePasswordViewModel changePass = null,
+            AddCarViewModel addCar = null)
         {
             // Person update view model creation
             var userId = User.Identity.GetUserId();
@@ -320,6 +363,9 @@ namespace Unigo.Controllers
             // Change pass view model creation
             ChangePasswordViewModel changePassword = new ChangePasswordViewModel();
 
+            // Add car vies model creation
+            AddCarViewModel addCarModel = new AddCarViewModel();
+            addCarModel.carList = this.carRepo.GetAll().Where(c => c.RiderId == userPerson.Id).ToList();
 
             // Check for specific parameters
             if (updatePerson != null)
@@ -332,12 +378,17 @@ namespace Unigo.Controllers
                 changePassword = changePass;
             }
 
+            if(addCar != null)
+            {
+                addCarModel = addCar;
+            }
+
 
             var model = new IndexViewModel
             {
-                //BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
                 PersonData = personView,
-                ChangePass = changePassword
+                ChangePass = changePassword,
+                AddCar = addCarModel
             };
 
             return model;

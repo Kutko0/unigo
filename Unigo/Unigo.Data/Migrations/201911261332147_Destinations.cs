@@ -15,6 +15,7 @@ namespace Unigo.Data.Migrations
             Sql("INSERT INTO Destinations( Name) VALUES('Mylius Erichsens Vej 137')");
             Sql("INSERT INTO Destinations( Name) VALUES('Selma Lagerløfs Vej 2')");
             Sql("INSERT INTO Destinations( Name) VALUES('Skolevangen 45 (Hjørring)')");
+            
         }
         
         public override void Down()
