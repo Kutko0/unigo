@@ -14,10 +14,6 @@ E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.Co
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.CopyComplete
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.dll
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.pdb
-E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.InitialModel.resources
-E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.PopulatingDestination.resources
-E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.AddNumberOfSeatsToRide.resources
-E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Migrations.ChangeNavigationPropertyToVirtual.resources
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.GenerateResource.cache
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\bin\Debug\Unigo.Data.dll.config
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\bin\Debug\Unigo.Data.dll
@@ -59,3 +55,5 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Init.resources
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Destinations.resources
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.PopulateCars.resources
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Destinations.resources
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.PopulateCars.resources

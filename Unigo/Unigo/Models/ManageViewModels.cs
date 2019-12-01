@@ -9,10 +9,7 @@ namespace Unigo.Models
 {
     public class IndexViewModel
     {
-        //public bool BrowserRemembered { get; set; }
-
         public AddCarViewModel AddCar { get; set; }
-
         public UpdatePersonViewModel PersonData { get; set; }
         public ChangePasswordViewModel ChangePass { get; set; }
         
@@ -125,7 +122,7 @@ namespace Unigo.Models
         [Required]
         [Display(Name = "Phone number")]
         [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$",
-            ErrorMessage = "Only danish numbers allowed.\n Use +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 format.")]
+            ErrorMessage = "Only danish numbers allowed.\n Use one of +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 formats.")]
         public string PhoneNumber { get; set; }
 
         [Required]

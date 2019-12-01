@@ -22,5 +22,11 @@ namespace Unigo.Data
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
+
+        public string City { get; set; }
+
+        public DateTime Joined { get; set; }
+
+        public int Campus { get; set; }
      }
 }

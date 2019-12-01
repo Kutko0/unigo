@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using Unigo.Models;
 using Unigo.Data;
 using Unigo.Repo;
+using System.Collections.Generic;
 
 namespace Unigo.Controllers
 {
@@ -20,14 +21,16 @@ namespace Unigo.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IRepository<Person> peopleRepo;
+        private IRepository<Destination> destRepo;
 
         public AccountController()
         {
         }
         
-        public AccountController(IRepository<Person> pr)
+        public AccountController(IRepository<Person> pr, IRepository<Destination> dr)
         {
             this.peopleRepo = pr;
+            this.destRepo = dr;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -101,7 +104,35 @@ namespace Unigo.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            // Cities dropdown set up
+            List<SelectListItem> cities = new List<SelectListItem>();
+            cities.Add(new SelectListItem
+            {
+                Text = "Aalborg",
+                Value = "Aalborg"
+            });
+
+            // Campus dropdown set up from destinations
+            List<SelectListItem> campuses = new List<SelectListItem>();
+            List<Destination> destinations = destRepo.GetAll().ToList();
+            foreach (var dest in destinations)
+            {
+                campuses.Add(new SelectListItem
+                {
+                    Text = dest.Name,
+                    Value =  dest.Id.ToString()
+                });
+            }
+
+            RegisterViewModel rvm = new RegisterViewModel
+            {
+                cities = cities,
+                campuses = campuses
+
+            };
+
+
+            return View(rvm);
         }
 
         //
@@ -126,7 +157,10 @@ namespace Unigo.Controllers
                         PhoneNumber = model.PhoneNumber,
                         FirstName = model.FirstName,
                         LastName = model.LastName,
-                        Email = model.Email
+                        Email = model.Email,
+                        Campus = model.Campus,
+                        City = model.City,
+                        Joined = DateTime.Now
                     };
 
                     peopleRepo.Add(p);

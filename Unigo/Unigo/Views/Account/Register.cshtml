@@ -3,6 +3,8 @@
     ViewBag.Title = "Register";
 }
 
+
+
 <div class="container">
     <div class="row py-3 py-md-5 justify-content-center">
         <div class="col-10 col-sm-8 col-md-6 col-lg-4">
@@ -28,18 +30,24 @@
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                     </div>
                     <div class="form-group">
+                        @Html.DropDownListFor(model => model.City, Model.cities , new { @class = "form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.Campus, Model.campuses, new { @class = "form-control"})
+                    </div>
+                    <div class="form-group">
                         @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", type = "date" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", type = "tel" , placeholder = "Phone number"})
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", type = "tel", placeholder = "Phone number" })
                     </div>
                     <div class="form-group">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Pa$$w0rd"})
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Pa$$w0rd" })
                     </div>
                     <div class="form-group">
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" , placeholder = "Confirm Pa$$w0rd"})
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Pa$$w0rd" })
                     </div>
-                    
+
                     <div class="text-center pb-3">
                         <input type="submit" class="btn btn-lg btn-light rounded-pill" value="Register" />
                     </div>
