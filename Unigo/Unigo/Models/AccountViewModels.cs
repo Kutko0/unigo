@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Unigo.Data;
 
 namespace Unigo.Models
 {
@@ -49,7 +50,7 @@ namespace Unigo.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        
+
         [Required]
         [Display(Name = "Agree with Termss")]
         public bool AgreeWithTerms { get; set; }
@@ -57,14 +58,14 @@ namespace Unigo.Models
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        
+
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        
+
         [Required]
         [Display(Name = "Phone number")]
-        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$", 
+        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$",
             ErrorMessage = "Only danish numbers allowed.\n Use +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 format.")]
         public string PhoneNumber { get; set; }
 
@@ -73,12 +74,6 @@ namespace Unigo.Models
         [DataType(DataType.Date)]
         [GreaterThanDate()]
         public DateTime DateOfBirth { get; set; }
-
-        [Required]
-        public string City { get; set; }
-
-        [Required]
-        public int Campus { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -91,8 +86,22 @@ namespace Unigo.Models
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public List<SelectListItem> campuses { get; set; }
-        public List<SelectListItem> cities { get; set; }
+        [Required]
+        public int CampusId { get; set; }
+
+        public List<ListHelper> Campuses { get; set; }
+
+
+        public Cities City { get; set; }
+
+        public Nationalities Nationality { get; set; }
+
+    }
+
+    public class ListHelper
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
     }
 
@@ -127,6 +136,14 @@ namespace Unigo.Models
 
     public class UserProfileViewModel
     {
+        public string FirstName;
+        public string Lastname;
+        public string City;
+        public string Nationality;
+        public string Campus;
+        public string Joined;
+        public string UrlPhoto;
+        // Add rides
 
     }
 

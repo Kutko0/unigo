@@ -104,35 +104,33 @@ namespace Unigo.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            // Cities dropdown set up
-            List<SelectListItem> cities = new List<SelectListItem>();
-            cities.Add(new SelectListItem
-            {
-                Text = "Aalborg",
-                Value = "Aalborg"
-            });
-
-            // Campus dropdown set up from destinations
-            List<SelectListItem> campuses = new List<SelectListItem>();
-            List<Destination> destinations = destRepo.GetAll().ToList();
-            foreach (var dest in destinations)
-            {
-                campuses.Add(new SelectListItem
-                {
-                    Text = dest.Name,
-                    Value =  dest.Id.ToString()
-                });
-            }
 
             RegisterViewModel rvm = new RegisterViewModel
             {
-                cities = cities,
-                campuses = campuses
-
+                Campuses = GetListOfCampuses()
             };
 
-
             return View(rvm);
+        }
+
+        private List<ListHelper> GetListOfCampuses()
+        {
+            IEnumerable<Destination> dests = destRepo.GetAll().ToList();
+            var selectList = new List<ListHelper>();
+
+            foreach (var dest in dests)
+            {
+                var newItem = new ListHelper
+                {
+                    Id = dest.Id,
+                    Name = dest.Name
+
+                };
+                selectList.Add(newItem);
+
+            }
+
+            return selectList;
         }
 
         //
@@ -158,9 +156,10 @@ namespace Unigo.Controllers
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Email = model.Email,
-                        Campus = model.Campus,
-                        City = model.City,
-                        Joined = DateTime.Now
+                        Joined = DateTime.Now,
+                        Campus = model.CampusId,
+                        City = model.City.ToString(),
+                        Nationality = model.Nationality.ToString()
                     };
 
                     peopleRepo.Add(p);
@@ -177,6 +176,7 @@ namespace Unigo.Controllers
                 }
                 AddErrors(result);
             }
+            model.Campuses = GetListOfCampuses();
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -188,8 +188,20 @@ namespace Unigo.Controllers
         {
             string userId = User.Identity.GetUserId();
             Person person = peopleRepo.GetAll().Where(m => m.UserId == userId).FirstOrDefault();
+            
 
-            return View();
+            UserProfileViewModel upvm = new UserProfileViewModel
+            {
+                Campus = destRepo.GetById(person.Campus).Name,
+                Nationality = person.Nationality,
+                City = person.City,
+                FirstName = person.FirstName,
+                Lastname = person.LastName,
+                Joined = "Joined " + person.Joined.ToString("dd. MM. yyyy"),
+                UrlPhoto = "https://i.kym-cdn.com/entries/icons/medium/000/029/043/Shaq_Tries_to_Not_Make_a_Face_While_Eating_Spicy_Wings___Hot_Ones_11-21_screenshot.png"
+            };
+
+            return View(upvm);
         }
 
         //

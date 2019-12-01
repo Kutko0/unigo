@@ -76,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Ride.cs" />
+    <Compile Include="SelectListItem.cs" />
     <Compile Include="StopPointRide.cs" />
   </ItemGroup>
   <ItemGroup>
