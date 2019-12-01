@@ -1,17 +1,22 @@
 Unigo:
-  Problems:
-    ☐ We don't have a way yet to add profile pictures, might be solved by just taking a URL and taking an image from that URL
   Frontend:
     Miscellaneous:
       ✔ Replace the custom button styling and replace it with the default one that comes with bootstrap @low @done(19-11-23 21:40)
+        ☐ Make sure every button has a "rounded-pill" class
+        ☐ Make sure every important button that invokes changes has a "btn-lg" class
       ☐ Fill footer with relevant content @high
       ✘ Add Find a Ride, Create a Ride and Sign Up buttons to the navbar @high @cancelled(19-11-30 19:10)
       ✔ Fix date picker in settings @done(19-11-30 19:10)
-      ☐ Add Car form to settings
+      ✔ Add Car form to settings @done(19-11-30 20:47)
       ☐ 
+    Problems:
+      ☐ We don't have a way yet to add a profile pictures, might be solved by just taking a URL and taking an image from that URL
     Views:
       ✔ Create Ride @critical @done(19-11-29 00:19)
       ✔ Find Ride @critical @done(19-11-30 02:05)
+        ☐ Add "rate this ride" to every ride not started by the user @critical 
       ✘ Messages @low @cancelled(19-11-30 19:09)
+      ☐ Rides @critical
+        ☐ Add the ability to rate previous/finished rides
   Report:
     ☐ Mention Moment.js

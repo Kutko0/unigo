@@ -3,6 +3,11 @@ $('#myList a').on('click', function (e) {
   $(this).tab('show')
 });
 
+// Rating Initialization
+$(document).ready(function() {
+  $('#rating').mdbRate();
+});
+
 var stopPoints = 0;
 var limit = 3;
 

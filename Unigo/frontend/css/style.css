@@ -37,6 +37,10 @@ footer li a {
 	background-color: #4b7bec;
 }
 
-#rating > i {
+#overallRating > i {
 	color: #4b7bec;
+}
+
+#rating {
+	color: #000 !important;
 }
