@@ -24,6 +24,8 @@ namespace Unigo.WinForm
             InitializeComponent();
             PopulateDataGridPeople();
             PopulateDataGridCars();
+            PopulateDataGridDestinations();
+            PopulateDataGridRides();
         }
 
         #region PeopleTab things
@@ -166,6 +168,81 @@ namespace Unigo.WinForm
         }
 
         #endregion
+
+        #region Destinations things
+
+        private async void PopulateDataGridDestinations()
+        {
+            var response = await client.GetAsync(apiURL + "/destinations");
+            var jsonResults = await response.Content.ReadAsStringAsync();
+
+            IEnumerable<Destination> results = JsonConvert.DeserializeObject<IEnumerable<Destination>>(jsonResults);
+
+            gvDestinations.DataSource = results;
+            gvDestinations.Columns[1].Width = 200;
+        }
+
+        private async void txtDestinationsSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            var response = await client.GetAsync(apiURL + "/destinations/ByName/" + txtDestinationsSearchBar.Text.Trim());
+            var jsonResults = await response.Content.ReadAsStringAsync();
+
+            IEnumerable<Destination> results = JsonConvert.DeserializeObject<IEnumerable<Destination>>(jsonResults);
+
+            gvDestinations.DataSource = results;
+        }
+
+        private async void gvDestinations_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            try
+            {
+                DataGridViewRow row = gvDestinations.Rows[rowIndex];
+                int personId = (int)row.Cells[0].Value;
+
+                var response = await client.GetAsync(apiURL + "/destinations/ById/" + personId);
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                Destination destination = JsonConvert.DeserializeObject<Destination>(jsonResults);
+
+                Form updateDestinationWindow = new UpdateDestinationWindow(destination, client);
+                updateDestinationWindow.Show();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Form updateDestinationWindow = new UpdateDestinationWindow(client);
+            updateDestinationWindow.Show();
+        }
+
+        private async void btnDeleteDestination_Click(object sender, EventArgs e)
+        {
+            var rowsToDelete = gvDestinations.SelectedRows;
+
+            DialogResult dialogResult = MessageBox.Show("Do you want to delete " + rowsToDelete.Count + " row(s) ", "Delete destination", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in rowsToDelete)
+                {
+                    int destinationId = (int)row.Cells[0].Value;
+
+                    var response = await client.DeleteAsync(apiURL + "/destinations/" + destinationId);
+                    PopulateDataGridDestinations();
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
+        #endregion
+
 
 
     }

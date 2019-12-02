@@ -9,6 +9,7 @@ using Unigo.Repo;
 
 namespace Unigo.API.Controllers
 {
+    [RoutePrefix("api/destinations")]
     public class DestinationsController : ApiController
     {
         public IRepository<Destination> destinationsRepository;
@@ -25,6 +26,7 @@ namespace Unigo.API.Controllers
         }
 
         [HttpGet]
+        [Route("ById/{id}")]
         public IHttpActionResult GetById(int id)
         {
             Destination destination = destinationsRepository.GetById(id);
@@ -33,6 +35,19 @@ namespace Unigo.API.Controllers
                 return NotFound();
 
             return Ok(destination);
+        }
+
+        [HttpGet]
+        [Route("ByName/{name}")]
+        public IEnumerable<Destination> GetByName(string name)
+        {
+            var destinations = destinationsRepository.GetAll();
+            var chosenDestinations = from destination in destinations
+                                     where destination.Name.Contains(name)
+                                     select destination;
+
+
+            return chosenDestinations;
         }
 
         [HttpPost] 
