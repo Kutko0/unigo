@@ -22,6 +22,7 @@ namespace Unigo.WinForm
         {
             this.client = client;
             InitializeComponent();
+            checkedListBox1.Visible = true;
             PopulateDataGridPeople();
             PopulateDataGridCars();
             PopulateDataGridDestinations();
@@ -243,6 +244,93 @@ namespace Unigo.WinForm
 
         #endregion
 
+        // Destination Column needs to be fixed
+        // Active/Inactive search is not done yet
+        #region Rides things
+
+        private async void PopulateDataGridRides()
+        {
+            var response = await client.GetAsync(apiURL + "/rides");
+            var jsonResults = await response.Content.ReadAsStringAsync();
+
+            IEnumerable<Ride> results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+
+            gvRides.DataSource = results;
+
+            //gvRides.Columns[3].ValueType = typeof(string);
+
+            //for (int i = 0; i < results.Count(); i++)
+            //{
+            //    DataGridViewRow currentRow = gvRides.Rows[i];
+            //    gvRides.Rows[i].Cells[3].Value = "ideto";
+            //}
+
+
+
+            gvRides.Columns["Id"].Visible = false;
+            gvRides.Columns["Rider"].Visible = false;
+            gvRides.Columns["RiderId"].Visible = false;
+            gvRides.Columns["DestinationId"].Visible = false;
+            gvRides.Columns["Active"].Visible = false ;
+
+
+        }
+
+        private async void txtRidesSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            var response = await client.GetAsync(apiURL + "/rides/ByDestination/" + txtRidesSearchBar.Text.Trim());
+            var jsonResults = await response.Content.ReadAsStringAsync();
+
+            IEnumerable<Ride> results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+
+            gvRides.DataSource = results;
+        }
+
+        private async void gvRides_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            try
+            {
+                DataGridViewRow row = gvRides.Rows[rowIndex];
+                int personId = (int)row.Cells[0].Value;
+
+                var response = await client.GetAsync(apiURL + "/rides/ById/" + personId);
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                Ride ride = JsonConvert.DeserializeObject<Ride>(jsonResults);
+
+                Form updateRideWindow = new UpdateRideWindow(ride, client);
+                updateRideWindow.Show();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private async void btnDeleteRide_Click(object sender, EventArgs e)
+        {
+            var rowsToDelete = gvPeople.SelectedRows;
+
+            DialogResult dialogResult = MessageBox.Show("Do you want to delete " + rowsToDelete.Count + " row(s) ", "Delete ride", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in rowsToDelete)
+                {
+                    int rideId = (int)row.Cells[0].Value;
+
+                    var response = await client.DeleteAsync(apiURL + "/rides/" + rideId);
+                    PopulateDataGridRides();
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
+
+        #endregion
 
 
     }

@@ -9,6 +9,7 @@ using Unigo.Repo;
 
 namespace Unigo.API.Controllers
 {
+    [RoutePrefix("api/rides")]
     public class RidesController : ApiController
     {
         public IRepository<Ride> ridesRepository;
@@ -25,6 +26,7 @@ namespace Unigo.API.Controllers
         }
 
         [HttpGet]
+        [Route("ById/{id}")]
         public IHttpActionResult GetById(int id)
         {
             Ride ride = ridesRepository.GetById(id);
@@ -33,6 +35,32 @@ namespace Unigo.API.Controllers
                 return NotFound();
 
             return Ok(ride);
+        }
+
+        [HttpGet]
+        [Route("ByDestination/{name}")]
+        public IList<Ride> GetByDestination(string name)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Destination.Name.Contains(name)
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("ByActiveStatus/{status}")]
+        public IList<Ride> GetByActiveStatus(bool status)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Active == status
+                              select ride;
+
+
+            return chosenRides.ToList();
         }
 
         [HttpPost]

@@ -35,6 +35,11 @@
             this.btnDeleteDestination = new System.Windows.Forms.Button();
             this.gvDestinations = new System.Windows.Forms.DataGridView();
             this.tabRides = new System.Windows.Forms.TabPage();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtRidesSearchBar = new System.Windows.Forms.TextBox();
+            this.btnDeleteRide = new System.Windows.Forms.Button();
+            this.gvRides = new System.Windows.Forms.DataGridView();
             this.tabPeople = new System.Windows.Forms.TabPage();
             this.btnDeletePerson = new System.Windows.Forms.Button();
             this.lablePeopleSearch = new System.Windows.Forms.Label();
@@ -46,19 +51,15 @@
             this.txtCarsSearchBar = new System.Windows.Forms.TextBox();
             this.labelSearchCar = new System.Windows.Forms.Label();
             this.gvCars = new System.Windows.Forms.DataGridView();
-            this.gvRides = new System.Windows.Forms.DataGridView();
-            this.btnDeleteRide = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtRidesSearchBar = new System.Windows.Forms.TextBox();
             this.tabDestinations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvDestinations)).BeginInit();
             this.tabRides.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRides)).BeginInit();
             this.tabPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvPeople)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabCars.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCars)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRides)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDestinations
@@ -125,6 +126,7 @@
             // 
             // tabRides
             // 
+            this.tabRides.Controls.Add(this.checkedListBox1);
             this.tabRides.Controls.Add(this.label1);
             this.tabRides.Controls.Add(this.txtRidesSearchBar);
             this.tabRides.Controls.Add(this.btnDeleteRide);
@@ -135,6 +137,55 @@
             this.tabRides.TabIndex = 2;
             this.tabRides.Text = "Rides";
             this.tabRides.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.checkedListBox1.Location = new System.Drawing.Point(606, 85);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 34);
+            this.checkedListBox1.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(150, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Search by destination:";
+            // 
+            // txtRidesSearchBar
+            // 
+            this.txtRidesSearchBar.Location = new System.Drawing.Point(268, 24);
+            this.txtRidesSearchBar.Name = "txtRidesSearchBar";
+            this.txtRidesSearchBar.Size = new System.Drawing.Size(144, 20);
+            this.txtRidesSearchBar.TabIndex = 6;
+            this.txtRidesSearchBar.TextChanged += new System.EventHandler(this.txtRidesSearchBar_TextChanged);
+            // 
+            // btnDeleteRide
+            // 
+            this.btnDeleteRide.Location = new System.Drawing.Point(606, 24);
+            this.btnDeleteRide.Name = "btnDeleteRide";
+            this.btnDeleteRide.Size = new System.Drawing.Size(93, 28);
+            this.btnDeleteRide.TabIndex = 5;
+            this.btnDeleteRide.Text = "Delete";
+            this.btnDeleteRide.UseVisualStyleBackColor = true;
+            this.btnDeleteRide.Click += new System.EventHandler(this.btnDeleteRide_Click);
+            // 
+            // gvRides
+            // 
+            this.gvRides.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvRides.Location = new System.Drawing.Point(65, 59);
+            this.gvRides.Name = "gvRides";
+            this.gvRides.ReadOnly = true;
+            this.gvRides.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvRides.Size = new System.Drawing.Size(532, 385);
+            this.gvRides.TabIndex = 1;
+            this.gvRides.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvRides_CellContentClick);
             // 
             // tabPeople
             // 
@@ -252,41 +303,6 @@
             this.gvCars.TabIndex = 1;
             this.gvCars.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvCars_CellContentClick);
             // 
-            // gvRides
-            // 
-            this.gvRides.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvRides.Location = new System.Drawing.Point(65, 59);
-            this.gvRides.Name = "gvRides";
-            this.gvRides.ReadOnly = true;
-            this.gvRides.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvRides.Size = new System.Drawing.Size(532, 385);
-            this.gvRides.TabIndex = 1;
-            // 
-            // btnDeleteRide
-            // 
-            this.btnDeleteRide.Location = new System.Drawing.Point(606, 24);
-            this.btnDeleteRide.Name = "btnDeleteRide";
-            this.btnDeleteRide.Size = new System.Drawing.Size(93, 28);
-            this.btnDeleteRide.TabIndex = 5;
-            this.btnDeleteRide.Text = "Delete";
-            this.btnDeleteRide.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Search by name of driver or destination:";
-            // 
-            // txtRidesSearchBar
-            // 
-            this.txtRidesSearchBar.Location = new System.Drawing.Point(268, 24);
-            this.txtRidesSearchBar.Name = "txtRidesSearchBar";
-            this.txtRidesSearchBar.Size = new System.Drawing.Size(144, 20);
-            this.txtRidesSearchBar.TabIndex = 6;
-            // 
             // StartWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +316,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvDestinations)).EndInit();
             this.tabRides.ResumeLayout(false);
             this.tabRides.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRides)).EndInit();
             this.tabPeople.ResumeLayout(false);
             this.tabPeople.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvPeople)).EndInit();
@@ -307,7 +324,6 @@
             this.tabCars.ResumeLayout(false);
             this.tabCars.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCars)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRides)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -336,5 +352,6 @@
         private System.Windows.Forms.Button btnDeleteRide;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtRidesSearchBar;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
