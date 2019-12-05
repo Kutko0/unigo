@@ -166,4 +166,22 @@ namespace Unigo.Models
         }
 
     }
+    
+    public class GreaterThanToday : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            DateTime dt = (DateTime)value;
+
+            long now = DateTime.Now.AddMinutes(15).Ticks;
+
+            if (dt.Ticks > now)
+            {
+                return ValidationResult.Success;
+            }
+
+            return new ValidationResult(ErrorMessage ?? "You have to create ride min. 15 before it starts.");
+        }
+
+    }
 }

@@ -17,5 +17,9 @@ namespace Unigo.Data
         public string Location { get; set; }
 
         public DateTime LeavingTime { get; set; }
+
+        public double StopLat { get; set; }
+
+        public double StopLong { get; set; }
     }
 }

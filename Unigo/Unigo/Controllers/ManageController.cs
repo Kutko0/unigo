@@ -20,16 +20,18 @@ namespace Unigo.Controllers
         private ApplicationUserManager _userManager;
         private IRepository<Person> peopleRepo;
         private IRepository<Car> carRepo;
+        private IRepository<Ride> rideRepo;
 
 
         public ManageController()
         {
         }
 
-        public ManageController(IRepository<Person> pr, IRepository<Car> cr)
+        public ManageController(IRepository<Person> pr, IRepository<Car> cr, IRepository<Ride> rr)
         {
             this.peopleRepo = pr;
             this.carRepo = cr;
+            this.rideRepo = rr;
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -66,19 +68,8 @@ namespace Unigo.Controllers
         // GET: /Manage/Index
         public ActionResult Index(ManageMessageId? message)
         {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.ChangePhoneSuccess ? "Your phone number was changed."
-                : message == ManageMessageId.ChangeSuccess ? "Changed succesfully."
-                : message == ManageMessageId.RemoveLoginSuccess ? "Removed login success."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-                : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
-                : message == ManageMessageId.NoChange ? "No changes has been made."
-                : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
-                : "";
-
-            
+            ViewBag.StatusMessage = ResolveMessage(message);
+                
             return View(FillIndexViewWithData());
         }
 
@@ -152,6 +143,71 @@ namespace Unigo.Controllers
             this.carRepo.SaveChanges();
 
             message = ManageMessageId.AddCarSuccess;
+
+            return RedirectToAction("Index", new { Message = message });
+
+        }
+
+        // GET: /Manage/CreateRide
+        public ActionResult CreateRide(ManageMessageId? message)
+        {
+            ManageMessageId? messageIndex = ManageMessageId.CarNeeded;
+
+            string identityUserId = User.Identity.GetUserId();
+            int userId = peopleRepo.GetAll().Where(m => m.UserId == identityUserId).FirstOrDefault().Id;
+
+            //var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
+            //Car activeCar = cars.Where(m => m.Status == ActiveInactive.Active).FirstOrDefault();
+
+            ViewBag.StatusMessage = ResolveMessage(message);
+
+            //if (activeCar == null)
+            //{
+            //    return RedirectToAction("Index", new { Message = messageIndex });
+            //}
+
+            return View();
+
+        }
+
+        // POST: /Manage/CreateRide
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRide(CreateRideViewModel model)
+        {
+            ManageMessageId? message = ManageMessageId.RideCreated;
+            int userId = peopleRepo.GetAll().Where(m=> m.UserId == User.Identity.GetUserId()).FirstOrDefault().Id;
+
+            var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
+            Car activeCar = cars.Where(m => m.Status == ActiveInactive.Active).FirstOrDefault();
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if(model.NumberOfSeats > activeCar.NumberOfSeats)
+            {
+                message = ManageMessageId.MoreSeats;
+                RedirectToAction("CreateRide", new { Message = message });
+            }
+
+            Ride newRide = new Ride
+            {
+                RiderId = userId,
+                DestinationId = model.DestinationId,
+                Status = ActiveInactive.Active,
+                LeavingTime = model.LeavingTime,
+                NumberOfSeats = model.NumberOfSeats,
+                CarId = activeCar.Id,
+                Price = "Negotiate with driver.",
+                StartPoint = model.StartPoint,
+                StartLat = model.StartLat,
+                StartLong = model.StartLong
+            };
+
+            rideRepo.Add(newRide);
+            rideRepo.SaveChanges();
 
             return RedirectToAction("Index", new { Message = message });
 
@@ -336,11 +392,31 @@ namespace Unigo.Controllers
             ChangeFirstLastNameSuccess,
             ChangePasswordSuccess,
             ChangeSuccess,
+            CarNeeded,
+            MoreSeats,
             AddCarSuccess,
             Error,
             NoChange,
+            RideCreated,
             RemovePhoneSuccess,
             RemoveLoginSuccess
+        }
+
+        private string ResolveMessage(ManageMessageId? message)
+        {
+            return message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.ChangePhoneSuccess ? "Your phone number was changed."
+                : message == ManageMessageId.ChangeSuccess ? "Changed succesfully."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Removed login success."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
+                : message == ManageMessageId.NoChange ? "No changes has been made."
+                : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
+                : message == ManageMessageId.RideCreated ? "Ride created successfully."
+                : message == ManageMessageId.CarNeeded ? "You need to add a car to Create ride."
+                : message == ManageMessageId.MoreSeats ? "Cannot create ride withmore seats than in car."
+                : ""; ;
         }
 
         private IndexViewModel FillIndexViewWithData(

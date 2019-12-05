@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
 
@@ -23,6 +24,8 @@ namespace Unigo.Data
         public string Type { get; set; }
 
         public int NumberOfSeats { get; set; }
+
+        public ActiveInactive Status { get; set; }
 
         [ForeignKey("RiderId")]
         public virtual Person Rider { get; set; }

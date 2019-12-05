@@ -101,7 +101,6 @@ namespace Unigo.Models
 
     }
 
-
     public class UpdatePersonViewModel
     {
         public DateTime Eightteen = DateTime.Now.AddYears(-18);
@@ -133,5 +132,31 @@ namespace Unigo.Models
         public DateTime DateOfBirth { get; set; }
     }
 
+    public class CreateRideViewModel
+    {
+        [Required]
+        public int DestinationId { get; set; }
+
+        [Required]
+        public string StartPoint { get; set; }
+
+        [Required]
+        [GreaterThanToday()]
+        public DateTime LeavingTime { get; set; }
+
+        [Required]
+        public int NumberOfSeats { get; set; }
+
+        [Required]
+        public double StartLat { get; set; }
+
+        [Required]
+        public double StartLong { get; set; }
+
+        // Think about stoppoints long and lats
+        // New viewmodel ? or just bunch of field in this viewmodel
+        // Dropdown with cars ? or only active car
+
+    }
 
 }
