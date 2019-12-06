@@ -140,6 +140,11 @@ namespace Unigo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("UserProfile", "Account");
+            }
+
             if (ModelState.IsValid)
             {
 

@@ -1,13 +1,14 @@
 ﻿@model Unigo.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+
 }
 
 
 
 <div class="container">
     <div class="row py-3 py-md-5 justify-content-center">
-        <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+        <div class="col-10 col-sm-8 col-md-6 col-lg-6">
             <div class="wrapper px-5 py-3 rounded">
                 <div class="text-center">
                     <h3 class="text-white">Sign Up</h3>
@@ -30,10 +31,16 @@
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                     </div>
                     <div class="form-group">
-                        @Html.DropDownListFor(model => model.City, Model.cities , new { @class = "form-control"})
+                        @Html.EnumDropDownListFor(model => model.Nationality, new { @class = "form-control"})
                     </div>
                     <div class="form-group">
-                        @Html.DropDownListFor(model => model.Campus, Model.campuses, new { @class = "form-control"})
+                        @Html.DropDownListFor(m=>m.CampusId,
+                            new SelectList(Model.Campuses,
+                                           "Id",
+                                           "Name"), new { @class = "form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.EnumDropDownListFor(model => model.City, new { @class = "form-control"})
                     </div>
                     <div class="form-group">
                         @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", type = "date" })

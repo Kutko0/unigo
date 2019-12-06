@@ -3,6 +3,7 @@
 <head>
     <title>Unigo Ridesharing</title>
 
+    @Scripts.Render("~/Scripts/MyMap.js")
     @Scripts.Render("~/bundles/modernizr")
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <script src="https://kit.fontawesome.com/d0a1bb1862.js" crossorigin="anonymous"></script>
@@ -21,13 +23,16 @@
     <link href="https://fonts.googleapis.com/css?family=Days+One|Quicksand|Roboto&display=swap" rel="stylesheet">
     @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/Scripts/joinRide.js")
-
     <!-- Date Time -->
     @Scripts.Render("~/Scripts/moment-with-locales.min.js")
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+
+    <!-- Google Map Api -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs3lGeDQjJj8VQ_c0KjZkQnlADlOXR0jU&callback=myMap"></script>
 </head>
-<body>
+
+<body style="min-height:100vh;">
     <section id="navbar">
         <div class="container-fluid" id="nav">
             <nav class="container navbar navbar-expand-md navbar-dark text-right">
@@ -43,10 +48,17 @@
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Home")#contact" class="nav-link">Contact</a>
                         </li>
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            @Html.Partial("_LoginPartial")
-                        </ul>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a href="@Url.Action("CreateRide", "Manage")" class="nav-link">Create Ride</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
 
                 </div>
             </nav>

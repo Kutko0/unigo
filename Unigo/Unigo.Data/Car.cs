@@ -25,7 +25,7 @@ namespace Unigo.Data
 
         public int NumberOfSeats { get; set; }
 
-        public ActiveInactive Status { get; set; }
+        public int Status { get; set; }
 
         [ForeignKey("RiderId")]
         public virtual Person Rider { get; set; }

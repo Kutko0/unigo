@@ -10,7 +10,6 @@ E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\bin\Debug\EntityFramework.SqlS
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csprojAssemblyReference.cache
-E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.CoreCompileInputs.cache
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.csproj.CopyComplete
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.dll
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.pdb
@@ -57,3 +56,4 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.PopulateCars.resources
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Destinations.resources
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.PopulateCars.resources
+E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.AddLongLatToDestinations.resources

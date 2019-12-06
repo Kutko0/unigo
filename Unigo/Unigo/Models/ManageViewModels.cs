@@ -153,6 +153,8 @@ namespace Unigo.Models
         [Required]
         public double StartLong { get; set; }
 
+        public List<ListHelper> Destinations { get; set; }
+
         // Think about stoppoints long and lats
         // New viewmodel ? or just bunch of field in this viewmodel
         // Dropdown with cars ? or only active car

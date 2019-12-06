@@ -56,7 +56,6 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="Destination.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="IDBContext.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\201911231214332_Init.cs" />
@@ -70,6 +69,10 @@
     <Compile Include="Migrations\201911302115584_PopulateCars.cs" />
     <Compile Include="Migrations\201911302115584_PopulateCars.Designer.cs">
       <DependentUpon>201911302115584_PopulateCars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061911194_AddLongLatToDestinations.cs" />
+    <Compile Include="Migrations\201912061911194_AddLongLatToDestinations.Designer.cs">
+      <DependentUpon>201912061911194_AddLongLatToDestinations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -92,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911302115584_PopulateCars.resx">
       <DependentUpon>201911302115584_PopulateCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061911194_AddLongLatToDestinations.resx">
+      <DependentUpon>201912061911194_AddLongLatToDestinations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

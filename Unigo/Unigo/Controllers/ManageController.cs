@@ -21,17 +21,19 @@ namespace Unigo.Controllers
         private IRepository<Person> peopleRepo;
         private IRepository<Car> carRepo;
         private IRepository<Ride> rideRepo;
+        private IRepository<Destination> destRepo;
 
 
         public ManageController()
         {
         }
 
-        public ManageController(IRepository<Person> pr, IRepository<Car> cr, IRepository<Ride> rr)
+        public ManageController(IRepository<Person> pr, IRepository<Car> cr, IRepository<Ride> rr, IRepository<Destination> dr)
         {
             this.peopleRepo = pr;
             this.carRepo = cr;
             this.rideRepo = rr;
+            this.destRepo = dr;
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -151,23 +153,47 @@ namespace Unigo.Controllers
         // GET: /Manage/CreateRide
         public ActionResult CreateRide(ManageMessageId? message)
         {
-            ManageMessageId? messageIndex = ManageMessageId.CarNeeded;
+            //ManageMessageId? messageIndex = ManageMessageId.CarNeeded;
 
-            string identityUserId = User.Identity.GetUserId();
-            int userId = peopleRepo.GetAll().Where(m => m.UserId == identityUserId).FirstOrDefault().Id;
+            //string identityUserId = User.Identity.GetUserId();
+            //int userId = peopleRepo.GetAll().Where(m => m.UserId == identityUserId).FirstOrDefault().Id;
 
-            //var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
-            //Car activeCar = cars.Where(m => m.Status == ActiveInactive.Active).FirstOrDefault();
+            
+
+
+            
+
+            CreateRideViewModel crvm = new CreateRideViewModel
+            {
+                Destinations = GetListOfDestination()
+            };
 
             ViewBag.StatusMessage = ResolveMessage(message);
 
-            //if (activeCar == null)
-            //{
-            //    return RedirectToAction("Index", new { Message = messageIndex });
-            //}
+            return View(crvm);
 
-            return View();
+        }
 
+
+
+        private List<ListHelper> GetListOfDestination()
+        {
+            IEnumerable<Destination> dests = destRepo.GetAll().ToList();
+            var selectList = new List<ListHelper>();
+
+            foreach (var dest in dests)
+            {
+                var newItem = new ListHelper
+                {
+                    Id = dest.Id,
+                    Name = dest.Name
+
+                };
+                selectList.Add(newItem);
+
+            }
+
+            return selectList;
         }
 
         // POST: /Manage/CreateRide
@@ -179,7 +205,7 @@ namespace Unigo.Controllers
             int userId = peopleRepo.GetAll().Where(m=> m.UserId == User.Identity.GetUserId()).FirstOrDefault().Id;
 
             var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
-            Car activeCar = cars.Where(m => m.Status == ActiveInactive.Active).FirstOrDefault();
+            Car activeCar = cars.Where(m => m.Status == 1).FirstOrDefault();
 
             if (!ModelState.IsValid)
             {
@@ -196,7 +222,7 @@ namespace Unigo.Controllers
             {
                 RiderId = userId,
                 DestinationId = model.DestinationId,
-                Status = ActiveInactive.Active,
+                Status = 1,
                 LeavingTime = model.LeavingTime,
                 NumberOfSeats = model.NumberOfSeats,
                 CarId = activeCar.Id,

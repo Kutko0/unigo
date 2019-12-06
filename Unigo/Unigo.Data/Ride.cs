@@ -26,7 +26,7 @@ namespace Unigo.Data
 
         public string Price { get; set; }
 
-        public ActiveInactive Status { get; set; }
+        public int Status { get; set; }
 
         public int NumberOfSeats { get; set; }
 
