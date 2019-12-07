@@ -20,7 +20,7 @@ namespace Unigo.WinForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new StartWindow(client));
+            Application.Run(new LoginWindow(client));
         }
     }
 }

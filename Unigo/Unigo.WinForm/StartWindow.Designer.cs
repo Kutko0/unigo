@@ -69,16 +69,16 @@
             this.tabDestinations.Controls.Add(this.txtDestinationsSearchBar);
             this.tabDestinations.Controls.Add(this.btnDeleteDestination);
             this.tabDestinations.Controls.Add(this.gvDestinations);
-            this.tabDestinations.Location = new System.Drawing.Point(4, 22);
+            this.tabDestinations.Location = new System.Drawing.Point(4, 23);
             this.tabDestinations.Name = "tabDestinations";
-            this.tabDestinations.Size = new System.Drawing.Size(792, 444);
+            this.tabDestinations.Size = new System.Drawing.Size(703, 443);
             this.tabDestinations.TabIndex = 3;
             this.tabDestinations.Text = "Destinations";
             this.tabDestinations.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(606, 59);
+            this.btnAdd.Location = new System.Drawing.Point(573, 56);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(93, 27);
             this.btnAdd.TabIndex = 10;
@@ -89,11 +89,11 @@
             // labelDestinationSearch
             // 
             this.labelDestinationSearch.AutoSize = true;
-            this.labelDestinationSearch.Location = new System.Drawing.Point(115, 29);
+            this.labelDestinationSearch.Location = new System.Drawing.Point(123, 25);
             this.labelDestinationSearch.Name = "labelDestinationSearch";
-            this.labelDestinationSearch.Size = new System.Drawing.Size(109, 13);
+            this.labelDestinationSearch.Size = new System.Drawing.Size(115, 14);
             this.labelDestinationSearch.TabIndex = 9;
-            this.labelDestinationSearch.Text = "Search by destination";
+            this.labelDestinationSearch.Text = "Search by destination:";
             // 
             // txtDestinationsSearchBar
             // 
@@ -105,7 +105,7 @@
             // 
             // btnDeleteDestination
             // 
-            this.btnDeleteDestination.Location = new System.Drawing.Point(606, 24);
+            this.btnDeleteDestination.Location = new System.Drawing.Point(573, 25);
             this.btnDeleteDestination.Name = "btnDeleteDestination";
             this.btnDeleteDestination.Size = new System.Drawing.Size(93, 28);
             this.btnDeleteDestination.TabIndex = 7;
@@ -116,7 +116,7 @@
             // gvDestinations
             // 
             this.gvDestinations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvDestinations.Location = new System.Drawing.Point(65, 59);
+            this.gvDestinations.Location = new System.Drawing.Point(35, 56);
             this.gvDestinations.Name = "gvDestinations";
             this.gvDestinations.ReadOnly = true;
             this.gvDestinations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -133,7 +133,7 @@
             this.tabRides.Controls.Add(this.gvRides);
             this.tabRides.Location = new System.Drawing.Point(4, 22);
             this.tabRides.Name = "tabRides";
-            this.tabRides.Size = new System.Drawing.Size(792, 444);
+            this.tabRides.Size = new System.Drawing.Size(703, 444);
             this.tabRides.TabIndex = 2;
             this.tabRides.Text = "Rides";
             this.tabRides.UseVisualStyleBackColor = true;
@@ -144,23 +144,24 @@
             this.checkedListBox1.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.checkedListBox1.Location = new System.Drawing.Point(606, 85);
+            this.checkedListBox1.Location = new System.Drawing.Point(573, 56);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(120, 34);
             this.checkedListBox1.TabIndex = 8;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(150, 27);
+            this.label1.Location = new System.Drawing.Point(123, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.Size = new System.Drawing.Size(115, 14);
             this.label1.TabIndex = 7;
             this.label1.Text = "Search by destination:";
             // 
             // txtRidesSearchBar
             // 
-            this.txtRidesSearchBar.Location = new System.Drawing.Point(268, 24);
+            this.txtRidesSearchBar.Location = new System.Drawing.Point(241, 22);
             this.txtRidesSearchBar.Name = "txtRidesSearchBar";
             this.txtRidesSearchBar.Size = new System.Drawing.Size(144, 20);
             this.txtRidesSearchBar.TabIndex = 6;
@@ -168,7 +169,7 @@
             // 
             // btnDeleteRide
             // 
-            this.btnDeleteRide.Location = new System.Drawing.Point(606, 24);
+            this.btnDeleteRide.Location = new System.Drawing.Point(573, 25);
             this.btnDeleteRide.Name = "btnDeleteRide";
             this.btnDeleteRide.Size = new System.Drawing.Size(93, 28);
             this.btnDeleteRide.TabIndex = 5;
@@ -179,7 +180,7 @@
             // gvRides
             // 
             this.gvRides.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvRides.Location = new System.Drawing.Point(65, 59);
+            this.gvRides.Location = new System.Drawing.Point(35, 56);
             this.gvRides.Name = "gvRides";
             this.gvRides.ReadOnly = true;
             this.gvRides.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -196,14 +197,14 @@
             this.tabPeople.Location = new System.Drawing.Point(4, 22);
             this.tabPeople.Name = "tabPeople";
             this.tabPeople.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPeople.Size = new System.Drawing.Size(792, 444);
+            this.tabPeople.Size = new System.Drawing.Size(703, 444);
             this.tabPeople.TabIndex = 0;
             this.tabPeople.Text = "People";
             this.tabPeople.UseVisualStyleBackColor = true;
             // 
             // btnDeletePerson
             // 
-            this.btnDeletePerson.Location = new System.Drawing.Point(606, 24);
+            this.btnDeletePerson.Location = new System.Drawing.Point(573, 25);
             this.btnDeletePerson.Name = "btnDeletePerson";
             this.btnDeletePerson.Size = new System.Drawing.Size(93, 28);
             this.btnDeletePerson.TabIndex = 4;
@@ -214,15 +215,15 @@
             // lablePeopleSearch
             // 
             this.lablePeopleSearch.AutoSize = true;
-            this.lablePeopleSearch.Location = new System.Drawing.Point(115, 29);
+            this.lablePeopleSearch.Location = new System.Drawing.Point(98, 25);
             this.lablePeopleSearch.Name = "lablePeopleSearch";
-            this.lablePeopleSearch.Size = new System.Drawing.Size(137, 13);
+            this.lablePeopleSearch.Size = new System.Drawing.Size(144, 14);
             this.lablePeopleSearch.TabIndex = 3;
             this.lablePeopleSearch.Text = "Search by first or last name:";
             // 
             // txtPeopleSearchBar
             // 
-            this.txtPeopleSearchBar.Location = new System.Drawing.Point(258, 22);
+            this.txtPeopleSearchBar.Location = new System.Drawing.Point(241, 22);
             this.txtPeopleSearchBar.Name = "txtPeopleSearchBar";
             this.txtPeopleSearchBar.Size = new System.Drawing.Size(144, 20);
             this.txtPeopleSearchBar.TabIndex = 2;
@@ -231,7 +232,7 @@
             // gvPeople
             // 
             this.gvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvPeople.Location = new System.Drawing.Point(65, 59);
+            this.gvPeople.Location = new System.Drawing.Point(35, 56);
             this.gvPeople.Name = "gvPeople";
             this.gvPeople.ReadOnly = true;
             this.gvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -245,10 +246,11 @@
             this.tabControl1.Controls.Add(this.tabRides);
             this.tabControl1.Controls.Add(this.tabDestinations);
             this.tabControl1.Controls.Add(this.tabCars);
+            this.tabControl1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 470);
+            this.tabControl1.Size = new System.Drawing.Size(711, 470);
             this.tabControl1.TabIndex = 0;
             // 
             // tabCars
@@ -257,17 +259,17 @@
             this.tabCars.Controls.Add(this.txtCarsSearchBar);
             this.tabCars.Controls.Add(this.labelSearchCar);
             this.tabCars.Controls.Add(this.gvCars);
-            this.tabCars.Location = new System.Drawing.Point(4, 22);
+            this.tabCars.Location = new System.Drawing.Point(4, 23);
             this.tabCars.Name = "tabCars";
             this.tabCars.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCars.Size = new System.Drawing.Size(792, 444);
+            this.tabCars.Size = new System.Drawing.Size(703, 443);
             this.tabCars.TabIndex = 4;
             this.tabCars.Text = "Cars";
             this.tabCars.UseVisualStyleBackColor = true;
             // 
             // btnDeleteCar
             // 
-            this.btnDeleteCar.Location = new System.Drawing.Point(606, 24);
+            this.btnDeleteCar.Location = new System.Drawing.Point(573, 25);
             this.btnDeleteCar.Name = "btnDeleteCar";
             this.btnDeleteCar.Size = new System.Drawing.Size(93, 28);
             this.btnDeleteCar.TabIndex = 6;
@@ -286,16 +288,17 @@
             // labelSearchCar
             // 
             this.labelSearchCar.AutoSize = true;
-            this.labelSearchCar.Location = new System.Drawing.Point(115, 29);
+            this.labelSearchCar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelSearchCar.Location = new System.Drawing.Point(115, 25);
             this.labelSearchCar.Name = "labelSearchCar";
-            this.labelSearchCar.Size = new System.Drawing.Size(120, 13);
+            this.labelSearchCar.Size = new System.Drawing.Size(123, 14);
             this.labelSearchCar.TabIndex = 4;
             this.labelSearchCar.Text = "Search by license plate:";
             // 
             // gvCars
             // 
             this.gvCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvCars.Location = new System.Drawing.Point(65, 59);
+            this.gvCars.Location = new System.Drawing.Point(35, 56);
             this.gvCars.Name = "gvCars";
             this.gvCars.ReadOnly = true;
             this.gvCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -307,7 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 470);
+            this.ClientSize = new System.Drawing.Size(713, 470);
             this.Controls.Add(this.tabControl1);
             this.Name = "StartWindow";
             this.Text = "StartWindow";

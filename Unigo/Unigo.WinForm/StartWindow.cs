@@ -278,12 +278,37 @@ namespace Unigo.WinForm
 
         private async void txtRidesSearchBar_TextChanged(object sender, EventArgs e)
         {
-            var response = await client.GetAsync(apiURL + "/rides/ByDestination/" + txtRidesSearchBar.Text.Trim());
-            var jsonResults = await response.Content.ReadAsStringAsync();
+            IEnumerable<Ride> results = null;
+            if (checkedListBox1.CheckedItems.Count == 2 || checkedListBox1.CheckedItems.Count == 0)
+            {
+                var response = await client.GetAsync(apiURL + "/rides/ByDestination/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
 
-            IEnumerable<Ride> results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                gvRides.DataSource = results;
+            }
+            //Active is checked
+            else if(checkedListBox1.GetItemChecked(0))
+            {
+                var response = await client.GetAsync(apiURL + "/rides/GetActiveRides/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
 
-            gvRides.DataSource = results;
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                gvRides.DataSource = results;
+            } 
+            //Inactive is checked
+            else if(checkedListBox1.GetItemChecked(1))
+            {
+                var response = await client.GetAsync(apiURL + "/rides/GetInactiveRides/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                gvRides.DataSource = results;
+
+            }
+            
+
+
         }
 
         private async void gvRides_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -329,6 +354,37 @@ namespace Unigo.WinForm
             }
         }
 
+        private async void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IEnumerable<Ride> results = null;
+            if (checkedListBox1.CheckedItems.Count == 2 || checkedListBox1.CheckedItems.Count == 0)
+            {
+                var response = await client.GetAsync(apiURL + "/rides/ByDestination/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                gvRides.DataSource = results;
+            }
+            //Active is checked
+            else if (checkedListBox1.GetItemChecked(0))
+            {
+                var response = await client.GetAsync(apiURL + "/rides/GetActiveRides/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                gvRides.DataSource = results;
+            }
+            //Inactive is checked
+            else if (checkedListBox1.GetItemChecked(1))
+            {
+                var response = await client.GetAsync(apiURL + "/rides/GetInactiveRides/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+                gvRides.DataSource = results;
+
+            }
+        }
 
         #endregion
 

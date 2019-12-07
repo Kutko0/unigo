@@ -63,6 +63,61 @@ namespace Unigo.API.Controllers
             return chosenRides.ToList();
         }
 
+        [HttpGet]
+        [Route("GetActiveRides")]
+        public IList<Ride> GetActiveRides()
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Active == true
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("GetActiveRides/{name}")]
+        public IList<Ride> GetActiveRidesByDestination(string name)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Destination.Name.Contains(name) && ride.Active == true
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+
+        [HttpGet]
+        [Route("GetInactiveRides")]
+        public IList<Ride> GetInactiveRides()
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Active == false
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("GetInactiveRides/{name}")]
+        public IList<Ride> GetInactiveRidesByDestination(string name)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Destination.Name.Contains(name) && ride.Active == false
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+
+
         [HttpPost]
         public IHttpActionResult CreateRide(Ride ride)
         {
