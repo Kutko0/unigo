@@ -1,0 +1,161 @@
+﻿@model Unigo.Models.CreateRideViewModel
+@{
+	ViewBag.Title = "Create Ride";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="header">
+	<header class="container-fluid pt-5 bg-unigo">
+		<div class="container">
+			<div class="row text-md-left text-center">
+				<div class="col ml-auto">
+					<h1 class="text-white">Create a Ride</h1>
+				</div>
+			</div>
+		</div>
+	</header>
+</section>
+<section id="createRide">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row py-3 py-sm-5 justify-content-around">
+				@*Google map*@
+				<div id="map" class="col-12 col-md-8"></div>
+
+				<div class="col-12 col-md-4">
+					@using (Html.BeginForm("CreateRide", "Manage", FormMethod.Post, new { id = "formCreateRide", role = "form" }))
+                    {
+						@Html.AntiForgeryToken()
+						@Html.ValidationSummary("", new { @class = "text-danger" })
+						<div class="form-group">
+							<label for="startPoint">From?</label>
+							<p class="text-warning" style="display:none;" id="inputFrom">Could not find place on map</p>
+							@Html.TextBoxFor(m => m.StartPoint, new { @class = "form-control", placeholder = "Write / Or pick on map", id = "inputField" })
+						</div>
+						<div class="form-group">
+							<label for="endPoint">To?</label>
+							@Html.DropDownListFor(m => m.DestinationId,
+                            new SelectList(Model.Destinations,
+                                           "Id",
+                                           "Name"), new { @class = "form-control", id = "endPoint" })
+						</div>
+						<div class="form-group">
+							<label for="datetimepicker4">When?</label>
+							<div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+								<input id="datetimepicker4" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+								<div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+									<div class="input-group-text">
+										<i class="fa fa-calendar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="d-inline-flex align-items-center">
+								<a class="btn btn-primary text-white" role="button" id="addStopPoint" onclick="addStopPoint()">Add</a>
+								<p class="m-0 ml-1" for="stopPoints">stop points?</p>
+							</div>
+							<div id="location">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="freeSeat">Free seats?</label>
+							<select class="form-control" id="freeSeat">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							</select>
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" id="returnCheck">
+							<label class="form-check-label" for="returnCheck">Return ride</label>
+						</div>
+						<div class="text-center pt-3">
+							<button class="btn btn-large btn-primary text-white">Create a Ride</button>
+						</div>
+						<script type="text/javascript">
+							$(function () {
+								$('#datetimepicker4').datetimepicker({
+									format: 'MM/DD/YYYY HH:mm',
+									minDate: moment().utc(),
+									stepping: 5,
+									sideBySide: true,
+									widgetPositioning: {
+										horizontal: 'right',
+										vertical: 'bottom'
+									}
+								});
+							});
+
+						</script>
+                    }
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script  type="text/javascript">
+    
+    $(document).ready(function () {
+
+        geocoder = new google.maps.Geocoder();
+        var startMarker = new google.maps.Marker({map: map});
+        var endMarker = new google.maps.Marker({map:map});
+
+
+        function codeAddress(address, marker) {
+
+            geocoder.geocode({ 'address': address, 'componentRestrictions': { 'country': 'DK' } }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    $("#inputFrom").hide();
+
+                    //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+					
+                    marker.setPosition(results[0].geometry.location);
+                    console.log(results[0].geometry.location);
+
+
+                    return results[0];
+
+                } else {
+                    $("#inputFrom").show();
+                    return null;
+                }
+            });
+        }
+
+        $("#endPoint").on('click', function () {
+
+            var from = codeAddress(document.getElementById('inputField').value + ", Aalborg", startMarker);
+            var to = codeAddress($("#endPoint").find('option:selected').text(), endMarker);
+
+            //if (from !== null && to !== null) {
+            //    createRoad(from, to);
+            //}
+
+		});
+
+        function createRoad(from, to) {
+			var route = [
+				from,
+				to
+			];
+
+			var polyline = new google.maps.Polyline({
+				path: route,
+				strokeColor: "#ff0000",
+				strokeOpacity: 0.6,
+				strokeWeight: 5
+            });
+
+            polyline.setMap(map);
+
+        }
+
+
+    });
+
+</script>

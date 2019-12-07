@@ -18,14 +18,24 @@ namespace Unigo.Data
         public virtual Destination Destination { get; set; }
         public int DestinationId { get; set; }
 
+        public int CarId { get; set; }
+
         public string StartPoint { get; set; }
 
         public DateTime LeavingTime { get; set; }
 
-        public double Price { get; set; }
+        public string Price { get; set; }
 
-        public bool Active { get; set; }
+        public int Status { get; set; }
 
         public int NumberOfSeats { get; set; }
+
+        public double StartLat { get; set; }
+
+        public double StartLong{ get; set; }
     }
+
+    
+
+
 }

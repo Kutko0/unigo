@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using Unigo.Data;
 
 namespace Unigo.Models
 {
@@ -16,29 +18,6 @@ namespace Unigo.Models
         public string ReturnUrl { get; set; }
     }
 
-    public class SendCodeViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-        public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
-    }
-
-    public class VerifyCodeViewModel
-    {
-        [Required]
-        public string Provider { get; set; }
-
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
-        public string ReturnUrl { get; set; }
-
-        [Display(Name = "Remember this browser?")]
-        public bool RememberBrowser { get; set; }
-
-        public bool RememberMe { get; set; }
-    }
 
     public class ForgotViewModel
     {
@@ -71,7 +50,7 @@ namespace Unigo.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        
+
         [Required]
         [Display(Name = "Agree with Termss")]
         public bool AgreeWithTerms { get; set; }
@@ -79,14 +58,14 @@ namespace Unigo.Models
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        
+
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        
+
         [Required]
         [Display(Name = "Phone number")]
-        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$", 
+        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$",
             ErrorMessage = "Only danish numbers allowed.\n Use +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 format.")]
         public string PhoneNumber { get; set; }
 
@@ -104,8 +83,26 @@ namespace Unigo.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public int CampusId { get; set; }
+
+        public List<ListHelper> Campuses { get; set; }
+
+
+        public Cities City { get; set; }
+
+        public Nationalities Nationality { get; set; }
+
+    }
+
+    public class ListHelper
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
     }
 
     public class ResetPasswordViewModel
@@ -123,7 +120,7 @@ namespace Unigo.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -135,6 +132,19 @@ namespace Unigo.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class UserProfileViewModel
+    {
+        public string FirstName;
+        public string Lastname;
+        public string City;
+        public string Nationality;
+        public string Campus;
+        public string Joined;
+        public string UrlPhoto;
+        // Add rides
+
     }
 
 
@@ -153,6 +163,24 @@ namespace Unigo.Models
             }
 
             return new ValidationResult(ErrorMessage ?? "Must be 18 y.o.");
+        }
+
+    }
+    
+    public class GreaterThanToday : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            DateTime dt = (DateTime)value;
+
+            long now = DateTime.Now.AddMinutes(15).Ticks;
+
+            if (dt.Ticks > now)
+            {
+                return ValidationResult.Success;
+            }
+
+            return new ValidationResult(ErrorMessage ?? "You have to create ride min. 15 before it starts.");
         }
 
     }

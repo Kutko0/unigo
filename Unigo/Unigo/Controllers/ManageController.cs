@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,15 +19,21 @@ namespace Unigo.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IRepository<Person> peopleRepo;
+        private IRepository<Car> carRepo;
+        private IRepository<Ride> rideRepo;
+        private IRepository<Destination> destRepo;
 
 
         public ManageController()
         {
         }
 
-        public ManageController(IRepository<Person> pr)
+        public ManageController(IRepository<Person> pr, IRepository<Car> cr, IRepository<Ride> rr, IRepository<Destination> dr)
         {
             this.peopleRepo = pr;
+            this.carRepo = cr;
+            this.rideRepo = rr;
+            this.destRepo = dr;
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -61,84 +68,178 @@ namespace Unigo.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        public ActionResult Index(ManageMessageId? message)
         {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.ChangePhoneSuccess ? "Your phone number was changed."
-                : message == ManageMessageId.RemoveLoginSuccess ? "Removed login success."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-                : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
-                : message == ManageMessageId.NoChange ? "No changes has been made."
-                : "";
-
-            var userId = User.Identity.GetUserId();
-            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
-
-            var model = new IndexViewModel
-            {
-                HasPassword = HasPassword(),
-                PhoneNumber = userPerson.PhoneNumber,
-                LastName = userPerson.LastName,
-                FirstName = userPerson.FirstName,
-                Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
-            };
-            return View(model);
+            ViewBag.StatusMessage = ResolveMessage(message);
+                
+            return View(FillIndexViewWithData());
         }
 
         // Custom created methods
         //----------------------
 
-        // GET: /Manage/ChangeFirstLastName
-        [HttpGet]
-        public ActionResult ChangeFirstLastName()
+        // POST: /Manage/UpdatePersonData
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdatePersonData(UpdatePersonViewModel model)
         {
+            ManageMessageId? message = ManageMessageId.NoChange;
+
+            if (!ModelState.IsValid)
+            {
+                return View("Index", FillIndexViewWithData(updatePerson: model));
+            }
+
             var userId = User.Identity.GetUserId();
             Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
 
-            return View(new ChangeFirstLastNameViewModel
+            userPerson.FirstName = model.FirstName;
+            userPerson.LastName = model.LastName;
+            userPerson.Email = model.Email;
+            userPerson.DateOfBirth = model.DateOfBirth;
+            userPerson.PhoneNumber= model.PhoneNumber;
+
+            // get user object from the storage
+            var user = UserManager.FindById(userId);
+            user.Email = model.Email;
+            UserManager.Update(user);
+
+            peopleRepo.SaveChanges();
+            message = ManageMessageId.ChangeSuccess;
+
+            return RedirectToAction("Index", new { Message = message });
+
+        }
+
+        // POST: /Manage/AddCar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCar(AddCarViewModel model)
+        {
+            ManageMessageId? message = ManageMessageId.NoChange;
+
+            if (!ModelState.IsValid)
             {
-                NFirst = userPerson.FirstName,
-                NLast = userPerson.LastName
-            });
+                return View("Index", FillIndexViewWithData(addCar: model));
+            }
+
+            var userId = User.Identity.GetUserId();
+            int userPersonId = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault().Id;
+
+            Car car = new Car
+            {
+                Brand = model.Brand,
+                Color = model.Color,
+                LicensePlate = model.LicensePlate,
+                NumberOfSeats = model.NumberOfSeats,
+                RiderId = userPersonId,
+                Type = model.Type
+            };
+
+            if (!String.IsNullOrEmpty(model.Description))
+            {
+                car.Description = model.Description;
+            }
+
+            this.carRepo.Add(car);
+            this.carRepo.SaveChanges();
+
+            message = ManageMessageId.AddCarSuccess;
+
+            return RedirectToAction("Index", new { Message = message });
+
+        }
+
+        // GET: /Manage/CreateRide
+        public ActionResult CreateRide(ManageMessageId? message)
+        {
+            //ManageMessageId? messageIndex = ManageMessageId.CarNeeded;
+
+            //string identityUserId = User.Identity.GetUserId();
+            //int userId = peopleRepo.GetAll().Where(m => m.UserId == identityUserId).FirstOrDefault().Id;
+
+            
+
+
+            
+
+            CreateRideViewModel crvm = new CreateRideViewModel
+            {
+                Destinations = GetListOfDestination()
+            };
+
+            ViewBag.StatusMessage = ResolveMessage(message);
+
+            return View(crvm);
+
         }
 
 
-        // POST: /Manage/ChangeFirstLastName
+
+        private List<ListHelper> GetListOfDestination()
+        {
+            IEnumerable<Destination> dests = destRepo.GetAll().ToList();
+            var selectList = new List<ListHelper>();
+
+            foreach (var dest in dests)
+            {
+                var newItem = new ListHelper
+                {
+                    Id = dest.Id,
+                    Name = dest.Name
+
+                };
+                selectList.Add(newItem);
+
+            }
+
+            return selectList;
+        }
+
+        // POST: /Manage/CreateRide
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangeFirstLastName(ChangeFirstLastNameViewModel model)
+        public ActionResult CreateRide(CreateRideViewModel model)
         {
-            ManageMessageId? message = ManageMessageId.NoChange;
+            ManageMessageId? message = ManageMessageId.RideCreated;
+            int userId = peopleRepo.GetAll().Where(m=> m.UserId == User.Identity.GetUserId()).FirstOrDefault().Id;
+
+            var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
+            Car activeCar = cars.Where(m => m.Status == 1).FirstOrDefault();
 
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var userId = User.Identity.GetUserId();
-            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
-
-            if(userPerson.FirstName == model.NFirst && userPerson.LastName == model.NLast)
+            if(model.NumberOfSeats > activeCar.NumberOfSeats)
             {
-                return RedirectToAction("Index", new { Message = message });
+                message = ManageMessageId.MoreSeats;
+                RedirectToAction("CreateRide", new { Message = message });
             }
 
-            userPerson.FirstName = model.NFirst;
-            userPerson.LastName = model.NLast;
-            peopleRepo.SaveChanges();
-            message = ManageMessageId.ChangeFirstLastNameSuccess;
+            Ride newRide = new Ride
+            {
+                RiderId = userId,
+                DestinationId = model.DestinationId,
+                Status = 1,
+                LeavingTime = model.LeavingTime,
+                NumberOfSeats = model.NumberOfSeats,
+                CarId = activeCar.Id,
+                Price = "Negotiate with driver.",
+                StartPoint = model.StartPoint,
+                StartLat = model.StartLat,
+                StartLong = model.StartLong
+            };
+
+            rideRepo.Add(newRide);
+            rideRepo.SaveChanges();
 
             return RedirectToAction("Index", new { Message = message });
 
         }
 
-
-
         // Custom methods end
-
 
 
         // Auto-Generated methods under
@@ -177,30 +278,7 @@ namespace Unigo.Controllers
 
         //
         // POST: /Manage/RemovePhoneNumber
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemovePhoneNumber()
-        {
-            var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
-            if (!result.Succeeded)
-            {
-                return RedirectToAction("Index", new { Message = ManageMessageId.Error });
-            }
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user != null)
-            {
-                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-            }
-            return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
-        }
-
-        //
-        // GET: /Manage/ChangePassword
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
-
+        
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -209,7 +287,7 @@ namespace Unigo.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("Index", FillIndexViewWithData(changePass:model));
             }
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
@@ -222,7 +300,7 @@ namespace Unigo.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
-            return View(model);
+            return RedirectToAction("Index", new { Message = ManageMessageId.NoChange });
         }
 
         //
@@ -339,10 +417,83 @@ namespace Unigo.Controllers
             ChangePhoneSuccess,
             ChangeFirstLastNameSuccess,
             ChangePasswordSuccess,
+            ChangeSuccess,
+            CarNeeded,
+            MoreSeats,
+            AddCarSuccess,
             Error,
             NoChange,
+            RideCreated,
             RemovePhoneSuccess,
             RemoveLoginSuccess
+        }
+
+        private string ResolveMessage(ManageMessageId? message)
+        {
+            return message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.ChangePhoneSuccess ? "Your phone number was changed."
+                : message == ManageMessageId.ChangeSuccess ? "Changed succesfully."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Removed login success."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
+                : message == ManageMessageId.NoChange ? "No changes has been made."
+                : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
+                : message == ManageMessageId.RideCreated ? "Ride created successfully."
+                : message == ManageMessageId.CarNeeded ? "You need to add a car to Create ride."
+                : message == ManageMessageId.MoreSeats ? "Cannot create ride withmore seats than in car."
+                : ""; ;
+        }
+
+        private IndexViewModel FillIndexViewWithData(
+            UpdatePersonViewModel updatePerson = null, 
+            ChangePasswordViewModel changePass = null,
+            AddCarViewModel addCar = null)
+        {
+            // Person update view model creation
+            var userId = User.Identity.GetUserId();
+            Person userPerson = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault();
+            UpdatePersonViewModel personView = new UpdatePersonViewModel
+            {
+                FirstName = userPerson.FirstName,
+                LastName = userPerson.LastName,
+                PhoneNumber = userPerson.PhoneNumber,
+                Email = userPerson.Email,
+                DateOfBirth = userPerson.DateOfBirth
+            };
+
+            // Change pass view model creation
+            ChangePasswordViewModel changePassword = new ChangePasswordViewModel();
+
+            // Add car vies model creation
+            AddCarViewModel addCarModel = new AddCarViewModel();
+            addCarModel.carList = this.carRepo.GetAll().Where(c => c.RiderId == userPerson.Id).ToList();
+
+            // Check for specific parameters
+            if (updatePerson != null)
+            {
+                personView = updatePerson;
+            }
+
+            if(changePass != null)
+            {
+                changePassword = changePass;
+            }
+
+            if(addCar != null)
+            {
+                addCarModel = addCar;
+            }
+
+
+            var model = new IndexViewModel
+            {
+                PersonData = personView,
+                ChangePass = changePassword,
+                AddCar = addCarModel
+            };
+
+            return model;
         }
 
 #endregion

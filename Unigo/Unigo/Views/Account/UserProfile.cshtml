@@ -1,0 +1,94 @@
+﻿@model Unigo.Models.UserProfileViewModel
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var FullName = Model.FirstName + " " + Model.Lastname;
+
+}
+   
+
+    @*
+        Add view model for showing past rides
+        Figure out how to save photo
+        Implement sigan r chat
+
+
+    *@
+    <header class="container-fluid pt-5 bg-unigo">
+        <div class="container">
+            <div class="row text-md-left text-center">
+                <div class="col ml-auto">
+                    <h1 class="text-white">Profile</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row pt-3 pt-sm-5">
+            <div class="col-12 col-md-3">
+                <div class="card mb-3">
+                    <img src=@Model.UrlPhoto class="rounded-top img-fluid" alt="Profile Picture">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@FullName</h5>
+                        <p class="card-text">Description</p>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="card-text d-flex align-items-center">
+                                <i class="fas fa-flag pr-3"></i>
+                                <p class="m-0">@Model.Nationality</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card-text d-flex align-items-center">
+                                <i class="fas fa-home pr-3"></i>
+                                <p class="m-0">@Model.City , Denmark</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card-text d-flex align-items-center">
+                                <i class="fas fa-university pr-3"></i>
+                                <p class="m-0">Campus : @Model.Campus</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card-text d-flex align-items-center">
+                                <i class="fas fa-clock pr-3"></i>
+                                <p class="m-0">@Model.Joined</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-primary w-75 mb-3" id="main-button">Message</button>
+            </div>
+            <div class="col mt-3 mt-lg-0">
+                <div class="text-md-left text-center">
+                    <h3>Latest Trips</h3>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-striped text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Ride</td>
+                                    <td>01.11.2019</td>
+                                    <td>5 <i class="fas fa-star"></i></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

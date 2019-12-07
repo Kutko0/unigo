@@ -1,0 +1,65 @@
+﻿@model Unigo.Models.UpdatePersonViewModel
+
+<div class="tab-pane show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+    @using (Html.BeginForm("UpdatePersonData", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="text-md-left text-center">
+            <h3>Profile Settings</h3>
+            <p>Change your profile settings</p>
+        </div>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <hr>
+        <div class="row">
+            <div class="col">
+                <h6><strong>First Name</strong></h6>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.FirstName,
+                    new { @class = "form-control", placeholder = "First Name" })
+                </div>
+                <h6><strong>Last Name</strong></h6>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.LastName,
+                    new { @class = "form-control", placeholder = "Last Name" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h6><strong>Email</strong></h6>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Email,
+                    new { @class = "form-control", placeholder = "Enter email address" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="label-floating"><strong>Date of Birth</strong> </label>
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.DateOfBirth,
+                    new { @class = "form-control", type = "date", @Value = Model.DateOfBirth.ToString("yyyy-MM-dd") })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h6><strong>Phone Number</strong></h6>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.PhoneNumber,
+                    new { @class = "form-control", placeholder = "Phone number" })
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-md-left text-center">
+                <button class="btn btn-lg btn-primary rounded-pill"
+                        type="submit" aria-pressed="true" id="main-button">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    }
+</div>

@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Unigo.Data;
 
 namespace Unigo.Models
 {
     public class IndexViewModel
     {
-        public bool HasPassword { get; set; }
-        public IList<UserLoginInfo> Logins { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool BrowserRemembered { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public AddCarViewModel AddCar { get; set; }
+        public UpdatePersonViewModel PersonData { get; set; }
+        public ChangePasswordViewModel ChangePass { get; set; }
+        
     }
 
     public class ManageLoginsViewModel
@@ -60,29 +60,20 @@ namespace Unigo.Models
     }
 
     public class AddPhoneNumberViewModel
-    {
+    { 
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
     }
 
-    public class ChangeFirstLastNameViewModel
-    {
-        [StringLength(100, ErrorMessage = "First name length between 2 and 100."), MinLength(2)]
-        [Display(Name = "New first name")]
-        [Required]
-        public string NFirst { get; set; }
-
-        [StringLength(100, ErrorMessage = "Last name length between 2 and 100."), MinLength(2)]
-        [Display(Name = "New last name")]
-        [Required]
-        public string NLast { get; set; }
-    }
-
     public class AddCarViewModel {
 
         [Display(Name = "License plate")]
+        /* [RegularExpression(@"^[A-Z]{1,3}-[A-Z]{1,2}-[0-9]{1,4}$",
+                ErrorMessage = "Enter danish license plate.")] 
+             DOES NOT WORK, can't find regex for danish Plates   
+             */
         [Required]
         public string LicensePlate { get; set; }
 
@@ -102,10 +93,72 @@ namespace Unigo.Models
         public string Description { get; set; }
 
         [Display(Name = "Number of seats")]
+        [Range(0, 6, ErrorMessage = "Maximum number of seats is 6.")]
         [Required]
         public int NumberOfSeats { get; set; }
 
+        public List<Car> carList { get; set; }
+
     }
 
-    
+    public class UpdatePersonViewModel
+    {
+        public DateTime Eightteen = DateTime.Now.AddYears(-18);
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Phone number")]
+        [RegularExpression(@"^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$",
+            ErrorMessage = "Only danish numbers allowed.\n Use one of +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535 formats.")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [GreaterThanDate()]
+        public DateTime DateOfBirth { get; set; }
+    }
+
+    public class CreateRideViewModel
+    {
+        [Required]
+        public int DestinationId { get; set; }
+
+        [Required]
+        public string StartPoint { get; set; }
+
+        [Required]
+        [GreaterThanToday()]
+        public DateTime LeavingTime { get; set; }
+
+        [Required]
+        public int NumberOfSeats { get; set; }
+
+        [Required]
+        public double StartLat { get; set; }
+
+        [Required]
+        public double StartLong { get; set; }
+
+        public List<ListHelper> Destinations { get; set; }
+
+        // Think about stoppoints long and lats
+        // New viewmodel ? or just bunch of field in this viewmodel
+        // Dropdown with cars ? or only active car
+
+    }
+
 }

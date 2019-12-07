@@ -3,32 +3,41 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Email</dt>
-        <dd>
-            @Html.ActionLink("Change email", "ChangeEmail");
-        </dd>
-        <dt>Password:</dt>
-        <dd>
-            @Html.ActionLink("Change password", "ChangePassword")
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count
-            @Html.ActionLink("Manage", "ManageLogins")
-        </dd>
-        <dt>First and Last Name</dt>
-        <dd>
-            @Html.ActionLink("Change first and last name", "ChangeFirstLastName");
-        </dd>
-    </dl>
+<header class="container-fluid pt-5 bg-unigo">
+    <div class="container">
+        <div class="row text-md-left text-center">
+            <div class="col ml-auto">
+                <h1 class="text-white">Settings</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container" style="min-height: 70vh;">
+    <p class="text-success" style="margin-bottom: -10px;">@ViewBag.StatusMessage</p>
+    <div class="row py-3 py-sm-5">
+        <div class="col col-md-3 pb-3">
+            <div class="list-group text-center" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                <a class="list-group-item list-group-item-action" id="list-security-list" data-toggle="list" href="#list-security" role="tab" aria-controls="profile">Security</a>
+                <a class="list-group-item list-group-item-action" id="list-mycars-list" data-toggle="list" href="#list-mycars" role="tab" aria-controls="mycars">My Cars</a>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+            <!-- Profile -->
+            <div class="tab-content" id="nav-tabContent">
+                @Html.Partial("~/Views/Shared/UpdatePerson_Partial.cshtml", Model.PersonData)
+                <!-- Password -->
+                @Html.Partial("~/Views/Shared/ChangePassword_Partial.cshtml", Model.ChangePass)
+                <!-- Cars -->
+                @Html.Partial("~/Views/Shared/AddCar_Partial.cshtml", Model.AddCar)
+                
+            </div>
+        </div>
+    </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
-        
+

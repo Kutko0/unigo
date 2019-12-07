@@ -1,0 +1,93 @@
+﻿@model Unigo.Models.AddCarViewModel
+
+    <div class="tab-pane fade" id="list-mycars" role="tabpanel" aria-labelledby="list-mycars-list">
+
+        <div class="text-md-left text-center">
+            <h3>My Cars</h3>
+            <p>See and manage your cars</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-hover table-responsive-sm table-striped text-center w-100" id="myCars">
+                    <thead>
+                        <tr>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Free Seats</th>
+                            <th scope="col">Licence Plate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.carList.Any())
+                        {
+                            foreach (var c in Model.carList)
+                            {
+                                <tr>
+                                    <td>@c.Brand</td>
+                                    <td>@c.Type</td>
+                                    <td>@c.Color</td>
+                                    <td>@c.NumberOfSeats</td>
+                                    <td>@c.LicensePlate</td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Add car form start-->
+
+        @using (Html.BeginForm("AddCar", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="row">
+                @Html.AntiForgeryToken()
+                <div class="col">
+                    <div class="text-md-left text-center">
+                        <h3>Add a new Car</h3>
+                        <hr>
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6><strong>Brand</strong></h6>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Brand,
+                                    new { @class = "form-control", placeholder = "Toyota" })
+                            </div>
+                            <h6><strong>Type</strong></h6>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Type,
+                                    new { @class = "form-control", placeholder = "Corolla" })
+                            </div>
+                            <h6><strong>Color</strong></h6>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Color,
+                                    new { @class = "form-control", placeholder = "Blue" })
+                            </div>
+                            <h6><strong>Number of Free Seats (max. 6)</strong></h6>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.NumberOfSeats,
+                                    new { @class = "form-control", placeholder = "2" })
+                            </div>
+                            <h6><strong>License Plate</strong></h6>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.LicensePlate,
+                                    new { @class = "form-control", placeholder = "AW 36 965" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-md-left text-center">
+                        <button class="btn btn-lg btn-primary rounded-pill"
+                                type="submit" aria-pressed="true" id="main-button">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+         }
+            
+        </div>
