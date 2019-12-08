@@ -293,6 +293,7 @@ namespace Unigo.WinForm
             } // Active rides
             else if(checkedListBox1.SelectedIndex == 0)
             {
+
                 var response = await client.GetAsync(apiURL + "/rides/GetActiveRides/" + txtRidesSearchBar.Text.Trim());
                 var jsonResults = await response.Content.ReadAsStringAsync();
 

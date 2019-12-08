@@ -51,3 +51,4 @@ D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdatePersonW
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateCarWindow.resources
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateDestinationWindow.resources
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateRideWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.LoginWindow.resources

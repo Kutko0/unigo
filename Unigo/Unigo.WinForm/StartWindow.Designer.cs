@@ -308,10 +308,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 470);
+            this.ClientSize = new System.Drawing.Size(692, 470);
             this.Controls.Add(this.tabControl1);
             this.Name = "StartWindow";
-            this.Text = "StartWindow";
+            this.Text = "Menu";
             this.tabDestinations.ResumeLayout(false);
             this.tabDestinations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvDestinations)).EndInit();
