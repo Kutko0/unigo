@@ -47,6 +47,8 @@
             this.txtRiderId = new System.Windows.Forms.TextBox();
             this.txtRiderName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblId
@@ -201,7 +203,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(133, 283);
+            this.btnSave.Location = new System.Drawing.Point(137, 308);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 18;
@@ -209,11 +211,29 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(72, 266);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblStatus.TabIndex = 19;
+            this.lblStatus.Text = "Status";
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(219, 263);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(100, 20);
+            this.txtStatus.TabIndex = 20;
+            // 
             // UpdateCarWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 342);
+            this.ClientSize = new System.Drawing.Size(391, 381);
+            this.Controls.Add(this.txtStatus);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtRiderName);
             this.Controls.Add(this.txtRiderId);
@@ -261,5 +281,7 @@
         private System.Windows.Forms.TextBox txtRiderId;
         private System.Windows.Forms.TextBox txtRiderName;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.TextBox txtStatus;
     }
 }

@@ -84,6 +84,9 @@ namespace Unigo.API.Controllers
                 existingPerson.DateOfBirth = person.DateOfBirth;
                 existingPerson.PhoneNumber = person.PhoneNumber;
                 existingPerson.Email = person.Email;
+                existingPerson.Campus = person.Campus;
+                existingPerson.City = person.City;
+                existingPerson.Nationality = person.Nationality;
                 
                 peopleRepository.SaveChanges();
              }

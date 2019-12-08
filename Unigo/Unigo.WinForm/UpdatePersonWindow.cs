@@ -31,6 +31,9 @@ namespace Unigo.WinForm
             txtDateOfBirth.Text = person.DateOfBirth.ToString();
             txtPhoneNumber.Text = person.PhoneNumber;
             txtEmail.Text = person.Email;
+            txtCity.Text = person.City;
+            txtNationality.Text = person.Nationality;
+            txtCampus.Text = person.Campus.ToString();
             
         }
 
@@ -44,7 +47,11 @@ namespace Unigo.WinForm
                 LastName = txtLastName.Text,
                 DateOfBirth = DateTime.Parse(txtDateOfBirth.Text),
                 PhoneNumber = txtPhoneNumber.Text,
-                Email = txtEmail.Text
+                Email = txtEmail.Text,
+                City = txtCity.Text,
+                Nationality = txtNationality.Text,
+                Campus = int.Parse(txtCampus.Text)
+               
             };
 
 

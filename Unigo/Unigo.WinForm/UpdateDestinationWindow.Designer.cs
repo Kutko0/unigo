@@ -33,6 +33,10 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblLat = new System.Windows.Forms.Label();
+            this.lblLong = new System.Windows.Forms.Label();
+            this.txtLat = new System.Windows.Forms.TextBox();
+            this.txtLong = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblId
@@ -57,19 +61,19 @@
             // 
             this.txtId.Location = new System.Drawing.Point(125, 52);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.Size = new System.Drawing.Size(144, 20);
             this.txtId.TabIndex = 2;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(125, 77);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.Size = new System.Drawing.Size(144, 20);
             this.txtName.TabIndex = 3;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(135, 119);
+            this.btnSave.Location = new System.Drawing.Point(135, 160);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -77,11 +81,47 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblLat
+            // 
+            this.lblLat.AutoSize = true;
+            this.lblLat.Location = new System.Drawing.Point(59, 104);
+            this.lblLat.Name = "lblLat";
+            this.lblLat.Size = new System.Drawing.Size(45, 13);
+            this.lblLat.TabIndex = 5;
+            this.lblLat.Text = "Latitude";
+            // 
+            // lblLong
+            // 
+            this.lblLong.AutoSize = true;
+            this.lblLong.Location = new System.Drawing.Point(59, 130);
+            this.lblLong.Name = "lblLong";
+            this.lblLong.Size = new System.Drawing.Size(54, 13);
+            this.lblLong.TabIndex = 6;
+            this.lblLong.Text = "Longitude";
+            // 
+            // txtLat
+            // 
+            this.txtLat.Location = new System.Drawing.Point(125, 103);
+            this.txtLat.Name = "txtLat";
+            this.txtLat.Size = new System.Drawing.Size(144, 20);
+            this.txtLat.TabIndex = 7;
+            // 
+            // txtLong
+            // 
+            this.txtLong.Location = new System.Drawing.Point(125, 127);
+            this.txtLong.Name = "txtLong";
+            this.txtLong.Size = new System.Drawing.Size(144, 20);
+            this.txtLong.TabIndex = 8;
+            // 
             // UpdateDestinationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 195);
+            this.ClientSize = new System.Drawing.Size(360, 195);
+            this.Controls.Add(this.txtLong);
+            this.Controls.Add(this.txtLat);
+            this.Controls.Add(this.lblLong);
+            this.Controls.Add(this.lblLat);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtId);
@@ -101,5 +141,9 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblLat;
+        private System.Windows.Forms.Label lblLong;
+        private System.Windows.Forms.TextBox txtLat;
+        private System.Windows.Forms.TextBox txtLong;
     }
 }

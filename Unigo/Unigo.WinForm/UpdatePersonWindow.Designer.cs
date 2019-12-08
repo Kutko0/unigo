@@ -43,6 +43,12 @@
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblNationality = new System.Windows.Forms.Label();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtNationality = new System.Windows.Forms.TextBox();
+            this.txtCampus = new System.Windows.Forms.TextBox();
+            this.lblCampus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblId
@@ -102,7 +108,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(31, 206);
+            this.lblEmail.Location = new System.Drawing.Point(31, 200);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 6;
@@ -154,14 +160,14 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(183, 203);
+            this.txtEmail.Location = new System.Drawing.Point(183, 197);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(122, 20);
             this.txtEmail.TabIndex = 13;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 230);
+            this.btnSave.Location = new System.Drawing.Point(112, 322);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 22);
             this.btnSave.TabIndex = 14;
@@ -169,11 +175,68 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // UpdatePerson
+            // lblNationality
+            // 
+            this.lblNationality.AutoSize = true;
+            this.lblNationality.Location = new System.Drawing.Point(31, 252);
+            this.lblNationality.Name = "lblNationality";
+            this.lblNationality.Size = new System.Drawing.Size(56, 13);
+            this.lblNationality.TabIndex = 15;
+            this.lblNationality.Text = "Nationality";
+            // 
+            // lblCity
+            // 
+            this.lblCity.AutoSize = true;
+            this.lblCity.Location = new System.Drawing.Point(31, 226);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(24, 13);
+            this.lblCity.TabIndex = 16;
+            this.lblCity.Text = "City";
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(183, 223);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.ReadOnly = true;
+            this.txtCity.Size = new System.Drawing.Size(122, 20);
+            this.txtCity.TabIndex = 17;
+            // 
+            // txtNationality
+            // 
+            this.txtNationality.Location = new System.Drawing.Point(183, 249);
+            this.txtNationality.Name = "txtNationality";
+            this.txtNationality.ReadOnly = true;
+            this.txtNationality.Size = new System.Drawing.Size(122, 20);
+            this.txtNationality.TabIndex = 18;
+            // 
+            // txtCampus
+            // 
+            this.txtCampus.Location = new System.Drawing.Point(183, 275);
+            this.txtCampus.Name = "txtCampus";
+            this.txtCampus.ReadOnly = true;
+            this.txtCampus.Size = new System.Drawing.Size(122, 20);
+            this.txtCampus.TabIndex = 19;
+            // 
+            // lblCampus
+            // 
+            this.lblCampus.AutoSize = true;
+            this.lblCampus.Location = new System.Drawing.Point(31, 278);
+            this.lblCampus.Name = "lblCampus";
+            this.lblCampus.Size = new System.Drawing.Size(45, 13);
+            this.lblCampus.TabIndex = 20;
+            this.lblCampus.Text = "Campus";
+            // 
+            // UpdatePersonWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 264);
+            this.ClientSize = new System.Drawing.Size(337, 356);
+            this.Controls.Add(this.lblCampus);
+            this.Controls.Add(this.txtCampus);
+            this.Controls.Add(this.txtNationality);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.lblCity);
+            this.Controls.Add(this.lblNationality);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPhoneNumber);
@@ -189,7 +252,7 @@
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblUserId);
             this.Controls.Add(this.lblId);
-            this.Name = "UpdatePerson";
+            this.Name = "UpdatePersonWindow";
             this.Text = "Update person";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -213,5 +276,11 @@
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblNationality;
+        private System.Windows.Forms.Label lblCity;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtNationality;
+        private System.Windows.Forms.TextBox txtCampus;
+        private System.Windows.Forms.Label lblCampus;
     }
 }

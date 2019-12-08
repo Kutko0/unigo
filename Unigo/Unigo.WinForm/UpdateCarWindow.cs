@@ -32,32 +32,58 @@ namespace Unigo.WinForm
             txtNumberOfSeats.Text = car.NumberOfSeats.ToString();
             txtRiderId.Text = car.RiderId.ToString();
             txtRiderName.Text = car.Rider.FirstName + " " + car.Rider.LastName;
+            if(car.Status == 0)
+            {
+                txtStatus.Text = "Inactive";
+            } 
+            else if (car.Status == 1)
+            {
+                txtStatus.Text = "Active";
+            }
 
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            Car car = new Car
+            int status = 0;
+
+            if (!txtStatus.Text.Trim().Equals("Active") && !txtStatus.Text.Trim().Equals("Inactive"))
             {
-                Id = int.Parse(txtId.Text),
-                LicensePlate = txtLicensePlate.Text,
-                Brand = txtBrand.Text,
-                Type = txtType.Text,
-                Color = txtColor.Text,
-                Description = txtDescription.Text,
-                NumberOfSeats = int.Parse(txtNumberOfSeats.Text),
-                RiderId = int.Parse(txtRiderId.Text),
-                Rider = null
-            };
+                DialogResult dialogResult = MessageBox.Show("Allowed values for Status are Active and Inactive ", "Carefull", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (txtStatus.Text.Trim().Equals("Active"))
+                {
+                    status = 1;
+                }
+                else if (txtStatus.Text.Trim().Equals("Inactive"))
+                {
+                    status = 0;
+                }
+                Car car = new Car
+                {
+                    Id = int.Parse(txtId.Text),
+                    LicensePlate = txtLicensePlate.Text,
+                    Brand = txtBrand.Text,
+                    Type = txtType.Text,
+                    Color = txtColor.Text,
+                    Description = txtDescription.Text,
+                    NumberOfSeats = int.Parse(txtNumberOfSeats.Text),
+                    RiderId = int.Parse(txtRiderId.Text),
+                    Rider = null,
+                    Status = status
+                };
 
-            var content = JsonConvert.SerializeObject(car);
-            var buffer = Encoding.UTF8.GetBytes(content);
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var content = JsonConvert.SerializeObject(car);
+                var buffer = Encoding.UTF8.GetBytes(content);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await client.PutAsync(apiURL + "/cars/" + car.Id, byteContent);
+                var response = await client.PutAsync(apiURL + "/cars/" + car.Id, byteContent);
 
-            this.Dispose();
+                this.Dispose();
+            }      
         }
     }
 }

@@ -32,10 +32,10 @@ namespace Unigo.WinForm
             txtLeavingTime.Text = ride.LeavingTime.ToString();
             txtPrice.Text = ride.Price.ToString();
             txtFreeSeats.Text = ride.NumberOfSeats.ToString();
-            if(ride.Active == true)
+            if(ride.Status == 1)
             {
                 txtStatus.Text = "Active";
-            } else if (ride.Active == false)
+            } else if (ride.Status == 0)
             {
                 txtStatus.Text = "Inactive";
             }
@@ -45,7 +45,7 @@ namespace Unigo.WinForm
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            bool status = true;
+            int status = 1;
             
             
             if(!txtStatus.Text.Trim().Equals("Active") && !txtStatus.Text.Trim().Equals("Inactive"))
@@ -56,11 +56,11 @@ namespace Unigo.WinForm
             {
                 if (txtStatus.Text.Trim().Equals("Active"))
                 {
-                    status = true;
+                    status = 1;
                 }
                 else if (txtStatus.Text.Trim().Equals("Inactive"))
                 {
-                    status = false;
+                    status = 0;
                 }
 
                 Ride ride = new Ride
@@ -70,9 +70,9 @@ namespace Unigo.WinForm
                     DestinationId = int.Parse(txtDestinationId.Text),
                     StartPoint = txtStartPoint.Text,
                     LeavingTime = DateTime.Parse(txtLeavingTime.Text),
-                    Price = int.Parse(txtPrice.Text),
+                    Price = txtPrice.Text,
                     NumberOfSeats = int.Parse(txtFreeSeats.Text),
-                    Active = status
+                    Status = status
                 };
 
 
@@ -85,8 +85,6 @@ namespace Unigo.WinForm
 
                 this.Dispose();
             }
-
-           
         }
     }
 }

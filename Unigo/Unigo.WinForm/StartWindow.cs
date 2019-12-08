@@ -14,8 +14,8 @@ using Unigo.Data;
 namespace Unigo.WinForm
 {
     public partial class StartWindow : Form
-    {
-        private HttpClient client;
+    {   
+        private readonly HttpClient client;
         string apiURL = "http://localhost:44304/api";
 
         public StartWindow(HttpClient client)
@@ -113,6 +113,7 @@ namespace Unigo.WinForm
             gvCars.Columns["RiderId"].Visible = false;
             gvCars.Columns["Color"].Visible = false;
             gvCars.Columns["NumberOfSeats"].Visible = false;
+            gvCars.Columns["Status"].Visible = false;
         }
 
         private async void txtCarsSearchBar_TextChanged(object sender, EventArgs e)
@@ -244,8 +245,8 @@ namespace Unigo.WinForm
 
         #endregion
 
-        // Destination Column needs to be fixed
-        // Active/Inactive search is not done yet
+        // Destination Column in Rides needs to be fixed
+        
         #region Rides things
 
         private async void PopulateDataGridRides()
@@ -271,17 +272,40 @@ namespace Unigo.WinForm
             gvRides.Columns["Rider"].Visible = false;
             gvRides.Columns["RiderId"].Visible = false;
             gvRides.Columns["DestinationId"].Visible = false;
-            gvRides.Columns["Active"].Visible = false ;
+            gvRides.Columns["Status"].Visible = false ;
+            gvRides.Columns["StartLat"].Visible = false;
+            gvRides.Columns["StartLong"].Visible = false;
+            gvRides.Columns["CarId"].Visible = false;
 
 
         }
 
         private async void txtRidesSearchBar_TextChanged(object sender, EventArgs e)
         {
-            var response = await client.GetAsync(apiURL + "/rides/ByDestination/" + txtRidesSearchBar.Text.Trim());
-            var jsonResults = await response.Content.ReadAsStringAsync();
+            IEnumerable<Ride> results = null;
 
-            IEnumerable<Ride> results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+            if (checkedListBox1.CheckedItems.Count == 2 || checkedListBox1.CheckedItems.Count == 0)
+            {
+                var response = await client.GetAsync(apiURL + "/rides/ByDestination/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+            } // Active rides
+            else if(checkedListBox1.SelectedIndex == 0)
+            {
+                var response = await client.GetAsync(apiURL + "/rides/GetActiveRides/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+            }   //Inactive rides 
+            else if(checkedListBox1.SelectedIndex == 1)
+            {
+                var response = await client.GetAsync(apiURL + "/rides/GetInactiveRides/" + txtRidesSearchBar.Text.Trim());
+                var jsonResults = await response.Content.ReadAsStringAsync();
+
+                results = JsonConvert.DeserializeObject<IEnumerable<Ride>>(jsonResults);
+            }
+            
 
             gvRides.DataSource = results;
         }
@@ -329,9 +353,12 @@ namespace Unigo.WinForm
             }
         }
 
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtRidesSearchBar_TextChanged(sender, e);
+        }
 
         #endregion
-
 
     }
 }

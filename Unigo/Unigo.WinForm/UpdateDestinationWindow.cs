@@ -33,6 +33,8 @@ namespace Unigo.WinForm
             InitializeComponent();
             txtId.Text = destination.Id.ToString();
             txtName.Text = destination.Name;
+            txtLat.Text = destination.Lat.ToString();
+            txtLong.Text = destination.Long.ToString();
 
             txtId.ReadOnly = true;
         }
@@ -47,7 +49,9 @@ namespace Unigo.WinForm
                 destination = new Destination
                 {
                     Id = int.Parse(txtId.Text),
-                    Name = txtName.Text
+                    Name = txtName.Text,
+                    Lat = double.Parse(txtLat.Text),
+                    Long = double.Parse(txtLong.Text)
                 };
 
                 var content = JsonConvert.SerializeObject(destination);

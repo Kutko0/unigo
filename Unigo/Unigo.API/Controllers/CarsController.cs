@@ -80,6 +80,7 @@ namespace Unigo.API.Controllers
                 existingCar.NumberOfSeats = car.NumberOfSeats;
                 existingCar.Type = car.Type;
                 existingCar.Color = car.Color;
+                existingCar.Status = car.Status;
 
                 carsRepository.SaveChanges();
             }
