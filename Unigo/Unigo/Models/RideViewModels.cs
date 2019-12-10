@@ -31,5 +31,26 @@ namespace Unigo.Models
 
         public string UrlPhoto { get; set; }
 
+        public Dictionary<int, PartialViewForOneRide> PartialViewByRideId { get; set; }
+
+    }
+
+    
+
+    public class PartialViewForOneRide
+    {
+        public Ride ride;
+
+        public string PhotoUrl;
+
+        public string FirstName;
+
+        public string LastName;
+
+        public string CarType;
+
+        public string LicensePLate;
+
+        public string DestinationName;
     }
 }

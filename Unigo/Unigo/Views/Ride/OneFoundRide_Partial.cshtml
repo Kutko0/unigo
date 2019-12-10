@@ -1,12 +1,12 @@
-﻿
+﻿@model Unigo.Models.PartialViewForOneRide
 
     <div id="91848">
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-3 text-center">
-                        <img src="resources/images/marco-pfp.jpg" class="rounded-pill w-75" alt="Profile Picture">
-                        <p class="justify lead my-1">Marco Magdolen</p>
+                        <img src="@Model.PhotoUrl" class="rounded-pill w-75" alt="Profile Picture">
+                        <p class="justify lead my-1">@Model.FirstName @Model.LastName</p>
                         <p id="rating">
                             <span id="ratingValue">4.7</span>
                             <i class="fa fa-star"></i>
@@ -14,11 +14,11 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="text-center">
-                            <h3 class="card-title"><span id="destination">UCN Sofiendalsvej</span></h3>
-                            <h6 class="card-subtitle lead"><span id="date">Tomorrow</span> at <span id="leavingTime">7.55</span></h6>
+                            <h3 class="card-title"><span id="destination">@Model.DestinationName</span></h3>
+                            <h6 class="card-subtitle lead">@Model.ride.LeavingTime</h6>
                             <h6 class="card-subtitle mt-1">
                                 <i class="fas fa-map-marker-alt mr-1"></i>
-                                <span id="startPoint">Kvickly Dannebrogsgade</span>
+                                <span id="startPoint">@Model.ride.StartPoint</span>
                             </h6>
                             <hr class="w-100">
                         </div>
@@ -27,7 +27,7 @@
                                 <i class="fa fa-car"></i>
                             </div>
                             <div class="col">
-                                <p class="mb-1" id="carType">Mercedes Benz CLA 35 AMG</p>
+                                <p class="mb-1" id="carType">@Model.CarType ( @Model.LicensePLate )</p>
                             </div>
                         </div>
                         <div class="row">
@@ -35,7 +35,7 @@
                                 <i class="fa fa-coins"></i>
                             </div>
                             <div class="col">
-                                <p class="mb-1">Negotiate with the driver</p>
+                                <p class="mb-1">@Model.ride.Price</p>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             <h3 class="lead">Free seats:<h3><span class="ml-3" id="seats">3</span></h3></h3>
                         </div>
                         <div class="row d-flex justify-content-center mt-1 mt-sm-3">
-                            <button type="button" class="btn btn-success">Join this ride</button>
+                            <button type="submit" class="btn btn-success">Join this ride</button>
                         </div>
                     </div>
                 </div>

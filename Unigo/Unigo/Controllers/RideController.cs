@@ -16,15 +16,18 @@ namespace Unigo.Controllers
         private IRepository<Destination> destRepo;
         private IRepository<Person> peopleRepo;
         private IRepository<Ride> rideRepo;
+        private IRepository<Car> carRepo;
         private IRepository<PersonRide> personRideRepo;
 
 
-        public RideController(IRepository<Destination> destRepo, IRepository<Person> people, IRepository<PersonRide> peopleRide, IRepository<Ride> ride)
+        public RideController(IRepository<Destination> destRepo, IRepository<Person> people,
+            IRepository<PersonRide> peopleRide, IRepository<Ride> ride, IRepository<Car> car)
         {
             this.destRepo = destRepo;
             this.peopleRepo = people;
             this.personRideRepo = peopleRide;
             this.rideRepo = ride;
+            this.carRepo = car;
         }
 
 
@@ -80,6 +83,10 @@ namespace Unigo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Find(FindRideViewModel model)
         {
+            FindRideViewModel frvm = new FindRideViewModel();
+            frvm.Destinations = GetListOfDestination();
+            frvm.UrlPhoto = "https://i.kym-cdn.com/entries/icons/medium/000/029/043/Shaq_Tries_to_Not_Make_a_Face_While_Eating_Spicy_Wings___Hot_Ones_11-21_screenshot.png";
+            frvm.PartialViewByRideId = new Dictionary<int, PartialViewForOneRide>();
 
             if (!ModelState.IsValid)
             {
@@ -95,6 +102,14 @@ namespace Unigo.Controllers
             double startLat = double.Parse(model.StartLat, System.Globalization.CultureInfo.InvariantCulture);
             double startLng = double.Parse(model.StartLng, System.Globalization.CultureInfo.InvariantCulture);
 
+            foreach (var dest in frvm.Destinations)
+            {
+                if (dest.Id == model.DestinationId)
+                {
+                    frvm.DestinationName = dest.Name;
+                    break;
+                }
+            }
 
             if (!Regex.Match(Request["datetimefield"], @"^([0]\d|[1][0-2])\/([0-2]\d|[3][0-1])\/([2][01]|[1][6-9])\d{2}(\s([0-1]\d|[2][0-3])(\:[0-5]\d){1,2})?$").Success)
             {
@@ -112,7 +127,10 @@ namespace Unigo.Controllers
             Dictionary<Ride, double> calcByDistanceFromStart = new Dictionary<Ride, double>();
             int compareNumber;
             List<PersonRide> pr = personRideRepo.GetAll().ToList();
-           
+            List<Car> cars = carRepo.GetAll().ToList();
+            
+
+
 
             foreach (Ride ride in data)
             {
@@ -120,6 +138,26 @@ namespace Unigo.Controllers
                 if (ride.NumberOfSeats > compareNumber)
                 {
                     calcByDistanceFromStart.Add(ride, DistanceAlgorithm.DistanceBetweenPlaces(startLng, startLat, ride.StartLat, ride.StartLong));
+
+                    // Getting car for ride
+                    string Plate = cars.Where(m => m.RiderId == ride.RiderId).FirstOrDefault().LicensePlate;
+                    string BrandType = cars.Where(m => m.RiderId == ride.RiderId).Where(m => m.Status == 1).FirstOrDefault().Brand;
+
+                    Person p = peopleRepo.GetById(ride.RiderId);
+                    string first = p.FirstName;
+                    string Last = p.LastName;
+
+                    frvm.PartialViewByRideId.Add(ride.Id, new PartialViewForOneRide
+                    {
+                        FirstName = first,
+                        LastName = Last,
+                        ride = ride,
+                        CarType = BrandType,
+                        LicensePLate = Plate,
+                        DestinationName = frvm.DestinationName,
+                        PhotoUrl = frvm.UrlPhoto
+                    });
+                    
                 }
             }
 
@@ -129,22 +167,13 @@ namespace Unigo.Controllers
             }
 
 
-            FindRideViewModel frvm = new FindRideViewModel
-            {
-                calcNumbers = GetCalculatedFreeSeatsByNumberId(rides),
-                Rides = rides,
-                Destinations = GetListOfDestination(),
-                UrlPhoto = "https://i.kym-cdn.com/entries/icons/medium/000/029/043/Shaq_Tries_to_Not_Make_a_Face_While_Eating_Spicy_Wings___Hot_Ones_11-21_screenshot.png"
-            };
+            frvm.calcNumbers = GetCalculatedFreeSeatsByNumberId(rides);
+            frvm.Rides = rides;
+            
+            
+            
 
-            foreach (var dest in frvm.Destinations)
-            {
-                if(dest.Id == model.DestinationId)
-                {
-                    frvm.DestinationName = dest.Name;
-                    break;
-                }
-            }
+            
 
                 return View(frvm);
         }

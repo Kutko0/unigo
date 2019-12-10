@@ -84,11 +84,11 @@
                     </div>
                     foreach (var ride in Model.Rides)
                     {
-                        <p>@ride.StartPoint | @Model.calcNumbers[ride.Id]</p>
-                        @Html.Partial("OneFoundRide_Partial")
+                        @Html.Partial("OneFoundRide_Partial", Model.PartialViewByRideId[ride.Id])
                     }
                     <hr />
                     <p style="margin-top:15px; margin-bottom:15px;text-align:center;">End of results</p>
+                    <hr />
                 }
             }
 
