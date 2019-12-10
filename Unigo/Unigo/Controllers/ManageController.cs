@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -126,6 +129,16 @@ namespace Unigo.Controllers
             var userId = User.Identity.GetUserId();
             int userPersonId = peopleRepo.GetAll().Where(u => u.UserId == userId).FirstOrDefault().Id;
 
+            var cars = carRepo.GetAll().Where(m => m.RiderId == userPersonId);
+            Car activeCar = cars.Where(m => m.Status == 1).FirstOrDefault();
+
+            // Defaultly set to zero
+            int status = 0;
+            if(activeCar == null)
+            {
+                status = 1;
+            }
+
             Car car = new Car
             {
                 Brand = model.Brand,
@@ -133,7 +146,8 @@ namespace Unigo.Controllers
                 LicensePlate = model.LicensePlate,
                 NumberOfSeats = model.NumberOfSeats,
                 RiderId = userPersonId,
-                Type = model.Type
+                Type = model.Type,
+                Status = status
             };
 
             if (!String.IsNullOrEmpty(model.Description))
@@ -153,19 +167,28 @@ namespace Unigo.Controllers
         // GET: /Manage/CreateRide
         public ActionResult CreateRide(ManageMessageId? message)
         {
-            //ManageMessageId? messageIndex = ManageMessageId.CarNeeded;
-
-            //string identityUserId = User.Identity.GetUserId();
-            //int userId = peopleRepo.GetAll().Where(m => m.UserId == identityUserId).FirstOrDefault().Id;
-
-            
+            // Resolve error messages
+            ManageMessageId? messageIndex = ManageMessageId.ActiveCarNeeded;
+            ViewBag.StatusMessage = ResolveMessage(message);
 
 
-            
+            // Get active user
+            string identityUserId = User.Identity.GetUserId();
+            int userId = peopleRepo.GetAll().Where(m => m.UserId == identityUserId).FirstOrDefault().Id;
+            // Get user's active car
+            var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
+            Car activeCar = cars.Where(m => m.Status == 1).FirstOrDefault();
+
+            if(activeCar == null)
+            {
+                return RedirectToAction("Index", new { Message = messageIndex });
+            }
+
 
             CreateRideViewModel crvm = new CreateRideViewModel
             {
-                Destinations = GetListOfDestination()
+                Destinations = GetListOfDestination(),
+                ActiveCar = activeCar
             };
 
             ViewBag.StatusMessage = ResolveMessage(message);
@@ -196,26 +219,66 @@ namespace Unigo.Controllers
             return selectList;
         }
 
+        // Geolocation get lat and lng -- switched for somethin better
+        //private string GetLatLng(string address)
+        //{
+        //    address = "Wi, Aalborg";
+        //    string requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key={1}&address={0}&sensor=false", 
+        //        Uri.EscapeDataString(address), "AIzaSyBs3lGeDQjJj8VQ_c0KjZkQnlADlOXR0jU");
+
+        //    WebRequest request = WebRequest.Create(requestUri);
+        //    WebResponse response = request.GetResponse();
+        //    XDocument xdoc = XDocument.Load(response.GetResponseStream());
+
+        //    XElement result = xdoc.Element("GeocodeResponse").Element("result");
+        //    XElement locationElement = result.Element("geometry").Element("location");
+        //    var lat = locationElement.Element("lat").Value;
+        //    var lng = locationElement.Element("lng").Value;
+
+        //    string latlng = lat + " , " + lng;
+
+        //    return latlng;
+        //}
+
         // POST: /Manage/CreateRide
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateRide(CreateRideViewModel model)
         {
             ManageMessageId? message = ManageMessageId.RideCreated;
-            int userId = peopleRepo.GetAll().Where(m=> m.UserId == User.Identity.GetUserId()).FirstOrDefault().Id;
+            string identityUserId = User.Identity.GetUserId();
+            int userId = peopleRepo.GetAll().Where(m=> m.UserId == identityUserId).FirstOrDefault().Id;
 
             var cars = carRepo.GetAll().Where(m => m.RiderId == userId);
             Car activeCar = cars.Where(m => m.Status == 1).FirstOrDefault();
 
-            if (!ModelState.IsValid)
+            model.Destinations = GetListOfDestination();
+            model.ActiveCar = activeCar;
+
+            if (!Regex.Match(Request["datetimefield"], @"^([0]\d|[1][0-2])\/([0-2]\d|[3][0-1])\/([2][01]|[1][6-9])\d{2}(\s([0-1]\d|[2][0-3])(\:[0-5]\d){1,2})?$").Success)
             {
+                ModelState.AddModelError("Leaqving Time", "Enter correct date format.");
                 return View(model);
             }
 
-            if(model.NumberOfSeats > activeCar.NumberOfSeats)
+            DateTime myDate = DateTime.ParseExact(Request["datetimefield"], "MM/dd/yyyy HH:mm",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+
+            if (!ModelState.IsValid)
             {
-                message = ManageMessageId.MoreSeats;
-                RedirectToAction("CreateRide", new { Message = message });
+                return View(model);
+            }         
+
+            if (model.NumberOfSeats > model.ActiveCar.NumberOfSeats)
+            {
+                ModelState.AddModelError("NumberOfSeats", "Cannot obtain more people that seats in active car.");
+                return View(model);
+            }
+
+            if (myDate.Ticks < DateTime.Now.AddMinutes(15).Ticks ) {
+                ModelState.AddModelError("LeavingTime", "Cannot obtain more people that seats in active car.");
+                return View(model);
             }
 
             Ride newRide = new Ride
@@ -223,13 +286,13 @@ namespace Unigo.Controllers
                 RiderId = userId,
                 DestinationId = model.DestinationId,
                 Status = 1,
-                LeavingTime = model.LeavingTime,
+                LeavingTime = myDate,
                 NumberOfSeats = model.NumberOfSeats,
                 CarId = activeCar.Id,
                 Price = "Negotiate with driver.",
                 StartPoint = model.StartPoint,
-                StartLat = model.StartLat,
-                StartLong = model.StartLong
+                StartLatString = model.StartLat,
+                StartLongString = model.StartLong 
             };
 
             rideRepo.Add(newRide);
@@ -418,7 +481,7 @@ namespace Unigo.Controllers
             ChangeFirstLastNameSuccess,
             ChangePasswordSuccess,
             ChangeSuccess,
-            CarNeeded,
+            ActiveCarNeeded,
             MoreSeats,
             AddCarSuccess,
             Error,
@@ -440,7 +503,7 @@ namespace Unigo.Controllers
                 : message == ManageMessageId.NoChange ? "No changes has been made."
                 : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
                 : message == ManageMessageId.RideCreated ? "Ride created successfully."
-                : message == ManageMessageId.CarNeeded ? "You need to add a car to Create ride."
+                : message == ManageMessageId.ActiveCarNeeded ? "You need have a active car to create ride."
                 : message == ManageMessageId.MoreSeats ? "Cannot create ride withmore seats than in car."
                 : ""; ;
         }

@@ -7,8 +7,11 @@
         <div class="container text-center py-5">
             <h1 id="brand">UNIGO</h1>
             <p class="lead">Your regular travel routine made easier</p>
-            <a class="btn btn-lg btn-primary rounded-pill" href="@Url.Action("Register", "Account")" role="button">Sign Up</a>
-        </div>
+            @if (!Request.IsAuthenticated)
+            {
+                <a class="btn btn-lg btn-primary rounded-pill" href="@Url.Action("Register", "Account")" role="button">Sign Up</a>
+            }
+            </div>
     </div>
 </section>
 <section id="process" class="py-3 py-md-5 bg-unigo text-white">
@@ -18,11 +21,22 @@
                 <h3>How does it work?</h3>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                    <h4>Sign Up</h4>
-                    <p class="lead">Create an account to get started with our service</p>
-                    <a class="btn btn-lg btn-light rounded-pill" href="@Url.Action("Register", "Account")" role="button">Sign Up</a>
-                </div>
+                @if (!Request.IsAuthenticated)
+                {
+                    <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <h4>Sign Up</h4>
+                        <p class="lead">Create an account to get started with our service</p>
+                        <a class="btn btn-lg btn-light rounded-pill" href="@Url.Action("Register", "Account")" role="button">Sign Up</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <h4>Go to profile</h4>
+                        <p class="lead">Enjoy our service with your free account</p>
+                        <a class="btn btn-lg btn-light rounded-pill" href="@Url.Action("UserProfile", "Account")" role="button">Profile</a>
+                    </div>
+                }
                 <div class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
                     <h4>Find a Ride</h4>
                     <p class="lead">Find a ride anywhere</p>

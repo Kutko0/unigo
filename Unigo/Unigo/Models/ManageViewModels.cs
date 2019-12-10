@@ -141,19 +141,20 @@ namespace Unigo.Models
         public string StartPoint { get; set; }
 
         [Required]
-        [GreaterThanToday()]
         public DateTime LeavingTime { get; set; }
 
         [Required]
         public int NumberOfSeats { get; set; }
-
         [Required]
-        public double StartLat { get; set; }
-
+        public string StartLat { get; set; }
         [Required]
-        public double StartLong { get; set; }
+        public string StartLong { get; set; }
 
         public List<ListHelper> Destinations { get; set; }
+
+        public Car ActiveCar { get; set; }
+
+
 
         // Think about stoppoints long and lats
         // New viewmodel ? or just bunch of field in this viewmodel

@@ -33,6 +33,10 @@ namespace Unigo.Data
         public double StartLat { get; set; }
 
         public double StartLong{ get; set; }
+
+        public string StartLatString { get; set; }
+
+        public string StartLongString { get; set; }
     }
 
     
