@@ -53,24 +53,24 @@
 
 
                         @*
-                Future developement-----
+                                Future developement-----
 
-                <div class="form-group">
-                <div class="d-inline-flex align-items-center">
-                    <a class="btn btn-primary text-white" role="button" id="addStopPoint" onclick="addStopPoint()">Add</a>
-                    <p class="m-0 ml-1" for="stopPoints">stop points?</p>
-                </div>
-                <div id="location">
-                </div>
-            </div>*@
+                                <div class="form-group">
+                                <div class="d-inline-flex align-items-center">
+                                    <a class="btn btn-primary text-white" role="button" id="addStopPoint" onclick="addStopPoint()">Add</a>
+                                    <p class="m-0 ml-1" for="stopPoints">stop points?</p>
+                                </div>
+                                <div id="location">
+                                </div>
+                            </div>*@
 
 
                         <div class="form-group">
                             <label for="numberOfSeats">Free seats?</label>
                             @Html.TextBoxFor(m => m.NumberOfSeats, new { @class = "form-control", placeholder = "NO free seats" })
                         </div>
-                        @Html.TextBoxFor(m => m.StartLat, new { @class = "form-control", id = "fieldLat" , style = "display:none;"})
-                        @Html.TextBoxFor(m => m.StartLong, new { @class = "form-control", id = "fieldLng" , style = "display:none;"})
+                        @Html.TextBoxFor(m => m.StartLat, new { @class = "form-control", id = "fieldLat", style = "display:none;" })
+                        @Html.TextBoxFor(m => m.StartLong, new { @class = "form-control", id = "fieldLng", style = "display:none;" })
                         <div class="text-center pt-3">
                             <button class="btn btn-large btn-primary text-white" type="submit">Create a Ride</button>
                         </div>
@@ -95,20 +95,22 @@
         </div>
     </div>
 </section>
-<script  type="text/javascript">
-    
+<script type="text/javascript">
+
     $(document).ready(function () {
 
-         var marker = new google.maps.Marker({map: map});
+        var marker = new google.maps.Marker({ map: map });
 
-        google.maps.event.addListener(map, 'click', function(event) {
-           placeMarker(event.latLng);
+        google.maps.event.addListener(map, 'click', function (event) {
+            placeMarker(event.latLng);
         });
 
         function placeMarker(location) {
             marker.setPosition(location);
             var lat = marker.getPosition().lat();
             var lng = marker.getPosition().lng();
+            //console.log(lat);
+            //console.log(lng);
 
             $("#fieldLat").val(lat);
             $("#fieldLng").val(lng);
@@ -116,10 +118,10 @@
             $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true&key=AIzaSyBs3lGeDQjJj8VQ_c0KjZkQnlADlOXR0jU&language=en", function (data) {
                 $("#inputField").val(data.results[0].formatted_address);
             });
-            
+
         }
 
-        
+
 
 
         geocoder = new google.maps.Geocoder();
@@ -133,7 +135,7 @@
                     $("#inputFrom").hide();
 
                     marker.setPosition(results[0].geometry.location);
-                   
+
                 } else {
                     $("#inputFrom").show();
                     return null;
@@ -148,9 +150,9 @@
             var to = codeAddress($("#endPoint").find('option:selected').text(), endMarker);
 
             // To Get distance between points
-           // google.maps.geometry.spherical.computeDistanceBetween (from, to)
+            // google.maps.geometry.spherical.computeDistanceBetween (from, to)
 
-       
+
 
         });
 
@@ -159,3 +161,7 @@
     });
 
 </script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

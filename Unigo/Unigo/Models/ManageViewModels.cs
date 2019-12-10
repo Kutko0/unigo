@@ -145,8 +145,10 @@ namespace Unigo.Models
 
         [Required]
         public int NumberOfSeats { get; set; }
+
         [Required]
         public string StartLat { get; set; }
+
         [Required]
         public string StartLong { get; set; }
 

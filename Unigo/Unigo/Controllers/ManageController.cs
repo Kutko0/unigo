@@ -291,8 +291,9 @@ namespace Unigo.Controllers
                 CarId = activeCar.Id,
                 Price = "Negotiate with driver.",
                 StartPoint = model.StartPoint,
-                StartLatString = model.StartLat,
-                StartLongString = model.StartLong 
+                StartLat = double.Parse(model.StartLat, System.Globalization.CultureInfo.InvariantCulture),
+                StartLong = double.Parse(model.StartLong, System.Globalization.CultureInfo.InvariantCulture),
+                DateTicks = myDate.Ticks
             };
 
             rideRepo.Add(newRide);

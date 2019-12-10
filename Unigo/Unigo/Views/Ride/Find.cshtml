@@ -1,0 +1,125 @@
+﻿@model Unigo.Models.FindRideViewModel
+@{
+    ViewBag.Title = "Find";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="header">
+    <header class="container-fluid pt-5 bg-unigo">
+        <div class="container">
+            <div class="row text-md-left text-center">
+                <div class="col ml-auto">
+                    <h1 class="text-white">Find a Ride</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+</section>
+
+
+<section id="findRide">
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row py-5 py-sm-5">
+
+                <div class="col-12 col-md-6 offset-md-3">
+
+                    @using (Html.BeginForm("Find", "Ride", FormMethod.Post, new { id = "formFindRide", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-warning" })
+
+                        <div class="form-group">
+                            <label for="endPoint">To?</label>
+                            @Html.DropDownListFor(m => m.DestinationId,
+                               new SelectList(Model.Destinations,
+                                              "Id",
+                                              "Name"), new { @class = "form-control", id = "endPoint" })
+                        </div>
+                        <div class="form-group">
+                            <label for="datetimepicker4">When?</label>
+                            <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                                <input id="datetimepicker4" class="form-control datetimepicker-input" data-target="#datetimepicker4" name="datetimefield" />
+                                <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker4').datetimepicker({
+                                    format: 'MM/DD/YYYY HH:mm',
+                                    minDate: moment().utc(),
+                                    stepping: 5,
+                                    sideBySide: true,
+                                    widgetPositioning: {
+                                        horizontal: 'right',
+                                        vertical: 'bottom'
+                                    }
+                                });
+                            });
+                        </script>
+
+                        @Html.TextBoxFor(m => m.StartLat, new { style = "display:none;", id = "fieldLat" })
+                        @Html.TextBoxFor(m => m.StartLng, new { style = "display:none;", id = "fieldLng" })
+                        <br />
+                        <label> Select place on map by clicking.</label>
+                        <div id="map" class="col-12" style="min-height:300px;"></div>
+                        <br />
+
+                        <div class="text-center">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    }
+                </div>
+            </div>
+            @{
+                if (Model.Rides.Any())
+                {
+                    <div class="row w-100 py-1">
+                        <h2>Rides to <span id="destination">@Model.DestinationName</span></h2>
+                    </div>
+                    foreach (var ride in Model.Rides)
+                    {
+                        <p>@ride.StartPoint | @Model.calcNumbers[ride.Id]</p>
+                        @Html.Partial("OneFoundRide_Partial")
+                    }
+                    <hr />
+                    <p style="margin-top:15px; margin-bottom:15px;text-align:center;">End of results</p>
+                }
+            }
+
+
+
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var marker = new google.maps.Marker({ map: map });
+
+        google.maps.event.addListener(map, 'click', function (event) {
+            placeMarker(event.latLng);
+        });
+
+        function placeMarker(location) {
+            marker.setPosition(location);
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            //console.log(lat);
+            //console.log(lng);
+
+            $("#fieldLat").val(lat);
+            $("#fieldLng").val(lng);
+
+        }
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
