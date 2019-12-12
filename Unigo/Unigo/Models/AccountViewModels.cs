@@ -134,19 +134,27 @@ namespace Unigo.Models
         public string Email { get; set; }
     }
 
+
     public class UserProfileViewModel
     {
-        public string FirstName;
-        public string Lastname;
-        public string City;
-        public string Nationality;
-        public string Campus;
-        public string Joined;
-        public string UrlPhoto;
+        public string FirstName { get; set; }
+        public string Lastname { get; set; }
+        public string City { get; set; }
+        public string Nationality { get; set; }
+        public string Campus { get; set; }
+        public string Joined { get; set; }
+        public string UrlPhoto { get; set; }
         // Add rides
 
+        public List<InfoPastRide> pastRides { get; set; }
     }
 
+    public class InfoPastRide
+    {
+        public string riderName { get; set; }
+        public string Destination { get; set; }
+        public DateTime Time { get; set; }
+    }
 
     // Custom attribute
     public class GreaterThanDate : ValidationAttribute

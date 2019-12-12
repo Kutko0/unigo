@@ -63,7 +63,7 @@ namespace Unigo.API.Controllers
                 existingRide.NumberOfSeats = ride.NumberOfSeats;
                 existingRide.Price = ride.Price;
                 existingRide.LeavingTime = ride.LeavingTime;
-                existingRide.Active = ride.Active;
+                //existingRide.Active = ride.Active;
 
                 ridesRepository.SaveChanges();
             }

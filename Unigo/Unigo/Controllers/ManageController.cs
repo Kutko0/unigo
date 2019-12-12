@@ -485,11 +485,13 @@ namespace Unigo.Controllers
             ActiveCarNeeded,
             MoreSeats,
             AddCarSuccess,
+            UnableJoin,
             Error,
             NoChange,
             RideCreated,
             RemovePhoneSuccess,
-            RemoveLoginSuccess
+            RemoveLoginSuccess,
+            JoinedSuccess
         }
 
         private string ResolveMessage(ManageMessageId? message)
@@ -499,11 +501,13 @@ namespace Unigo.Controllers
                 : message == ManageMessageId.ChangePhoneSuccess ? "Your phone number was changed."
                 : message == ManageMessageId.ChangeSuccess ? "Changed succesfully."
                 : message == ManageMessageId.RemoveLoginSuccess ? "Removed login success."
+                : message == ManageMessageId.UnableJoin ? "You were not able to join this ride."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : message == ManageMessageId.ChangeFirstLastNameSuccess ? "Your first and last name has been changed."
                 : message == ManageMessageId.NoChange ? "No changes has been made."
                 : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
                 : message == ManageMessageId.RideCreated ? "Ride created successfully."
+                : message == ManageMessageId.JoinedSuccess ? "Ride joined successfully."
                 : message == ManageMessageId.ActiveCarNeeded ? "You need have a active car to create ride."
                 : message == ManageMessageId.MoreSeats ? "Cannot create ride withmore seats than in car."
                 : ""; ;

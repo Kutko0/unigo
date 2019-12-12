@@ -35,22 +35,25 @@ namespace Unigo.Models
 
     }
 
-    
-
     public class PartialViewForOneRide
     {
-        public Ride ride;
+        public Ride ride { get; set; }
 
-        public string PhotoUrl;
+        [Required]
+        public int rideId { get; set; }
 
-        public string FirstName;
+        public string PhotoUrl { get; set; }
 
-        public string LastName;
+        public string FirstName { get; set; }
 
-        public string CarType;
+        public string LastName { get; set; }
 
-        public string LicensePLate;
+        public string CarType { get; set; }
 
-        public string DestinationName;
+        public string LicensePLate { get; set; }
+
+        public string DestinationName { get; set; }
+
+        public int FreeSeats { get; set; }
     }
 }

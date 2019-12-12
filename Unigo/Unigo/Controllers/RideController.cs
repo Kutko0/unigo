@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -122,20 +123,25 @@ namespace Unigo.Controllers
             long myDateTicks = myDate.Ticks;
 
             List<Ride> rides = new List<Ride>();
-            List<Ride> data = rideRepo.GetAll().Where(m => m.Status == 1).Where(m => m.DateTicks < myDateTicks)
+            List<Ride> data = rideRepo.GetAll().Where(m => m.Status == 1)
                 .Where(m => m.DestinationId == model.DestinationId).OrderByDescending(m => m.LeavingTime).ToList();
+
             Dictionary<Ride, double> calcByDistanceFromStart = new Dictionary<Ride, double>();
+
             int compareNumber;
+
+            string userId = User.Identity.GetUserId();
+            Person person = peopleRepo.GetAll().Where(m => m.UserId == userId).FirstOrDefault();
+
             List<PersonRide> pr = personRideRepo.GetAll().ToList();
             List<Car> cars = carRepo.GetAll().ToList();
             
-
-
-
             foreach (Ride ride in data)
             {
                 compareNumber = pr.Where(m => m.Ride.Id == ride.Id).ToList().Count();
-                if (ride.NumberOfSeats > compareNumber)
+                if (ride.NumberOfSeats > compareNumber 
+                    /*&& ride.RiderId != person.Id*/ && 
+                    ride.LeavingTime.Ticks > DateTime.Now.Ticks)  // This comment is for purpose of ez testing
                 {
                     calcByDistanceFromStart.Add(ride, DistanceAlgorithm.DistanceBetweenPlaces(startLng, startLat, ride.StartLat, ride.StartLong));
 
@@ -155,7 +161,8 @@ namespace Unigo.Controllers
                         CarType = BrandType,
                         LicensePLate = Plate,
                         DestinationName = frvm.DestinationName,
-                        PhotoUrl = frvm.UrlPhoto
+                        PhotoUrl = frvm.UrlPhoto,
+                        FreeSeats = ride.NumberOfSeats - compareNumber
                     });
                     
                 }
@@ -170,12 +177,7 @@ namespace Unigo.Controllers
             frvm.calcNumbers = GetCalculatedFreeSeatsByNumberId(rides);
             frvm.Rides = rides;
             
-            
-            
-
-            
-
-                return View(frvm);
+            return View(frvm);
         }
 
         private Dictionary<int,int> GetCalculatedFreeSeatsByNumberId(IEnumerable<Ride> rides)
@@ -192,6 +194,55 @@ namespace Unigo.Controllers
 
             return returnDic;
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult JoinRide(PartialViewForOneRide model) 
+        {
+            string userId = User.Identity.GetUserId();
+            Person person = peopleRepo.GetAll().Where(m => m.UserId == userId).FirstOrDefault();
+
+            Ride rideToJoin = rideRepo.GetById(model.rideId);
+
+            // Check for enough seats
+            if(personRideRepo.GetAll().Where(m => m.RideId == rideToJoin.Id).Count() < rideToJoin.NumberOfSeats)
+            {
+                var personRide = personRideRepo.GetAll().Where(m => m.PersonId == person.Id)
+                    .Where(m => m.RideId == rideToJoin.Id).FirstOrDefault();
+                if(personRide != null)
+                {
+                    return RedirectToAction("Index", "Manage", new { Message = ManageController.ManageMessageId.UnableJoin });
+                }
+
+                PersonRide prNew = new PersonRide
+                {
+                    PersonId = person.Id,
+                    RideId = rideToJoin.Id
+                };
+                // Check one more time, just before saving
+                if (personRideRepo.GetAll().Where(m => m.RideId == rideToJoin.Id).Count() < rideToJoin.NumberOfSeats)
+                {
+                    personRideRepo.Add(prNew);
+                    personRideRepo.SaveChanges();
+
+                    if(personRideRepo.GetAll().Where(m => m.RideId == rideToJoin.Id).Count() > rideToJoin.NumberOfSeats)
+                    {
+                        PersonRide lastAdded = personRideRepo.GetAll().Where(m => m.RideId == rideToJoin.Id).
+                            Where(m => m.RideId == rideToJoin.Id).FirstOrDefault();
+
+                        personRideRepo.Remove(lastAdded);
+                        personRideRepo.SaveChanges();
+
+                        return RedirectToAction("Index", "Manage", new { Message = ManageController.ManageMessageId.UnableJoin });
+                    }
+                }
+                
+            }
+
+            return RedirectToAction("Index", "Manage", new { Message = ManageController.ManageMessageId.JoinedSuccess });
+
+        }
+
 
     }
 

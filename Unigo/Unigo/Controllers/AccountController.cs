@@ -22,15 +22,19 @@ namespace Unigo.Controllers
         private ApplicationUserManager _userManager;
         private IRepository<Person> peopleRepo;
         private IRepository<Destination> destRepo;
+        private IRepository<Ride> rideRepo;
+        private IRepository<PersonRide> personRide;
 
         public AccountController()
         {
         }
         
-        public AccountController(IRepository<Person> pr, IRepository<Destination> dr)
+        public AccountController(IRepository<Person> pr, IRepository<Destination> dr, IRepository<Ride> ride, IRepository<PersonRide> personR)
         {
             this.peopleRepo = pr;
             this.destRepo = dr;
+            this.rideRepo = ride;
+            this.personRide = personR;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -189,6 +193,7 @@ namespace Unigo.Controllers
 
         //
         // GET: /Account/Profile
+        [AllowAnonymous]
         public ActionResult UserProfile()
         {
             string userId = User.Identity.GetUserId();
@@ -203,13 +208,33 @@ namespace Unigo.Controllers
                 FirstName = person.FirstName,
                 Lastname = person.LastName,
                 Joined = "Joined " + person.Joined.ToString("dd. MM. yyyy"),
+                pastRides = GetPastRides(person.Id),
                 UrlPhoto = "https://i.kym-cdn.com/entries/icons/medium/000/029/043/Shaq_Tries_to_Not_Make_a_Face_While_Eating_Spicy_Wings___Hot_Ones_11-21_screenshot.png"
             };
+
 
             return View(upvm);
         }
 
-        
+        private List<InfoPastRide> GetPastRides(int id)
+        {
+            List<InfoPastRide> ipr = new List<InfoPastRide>();
+            List<PersonRide> rides = personRide.GetAll().Where(m => m.PersonId == id).ToList();
+            foreach(var x in rides)
+            {
+                Person p = peopleRepo.GetById(x.RideId);
+                Ride r = rideRepo.GetById(x.Id);
+                ipr.Add(new InfoPastRide
+                {
+                    Destination = destRepo.GetById(r.DestinationId).Name,
+                    riderName = p.FirstName + " " + p.LastName,
+                    Time = r.LeavingTime
+                });  
+            }
+
+            return ipr;
+        }
+
 
         //
         // POST: /Account/LogOff
