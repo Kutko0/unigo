@@ -271,7 +271,12 @@ namespace Unigo.WinForm
             gvRides.Columns["Rider"].Visible = false;
             gvRides.Columns["RiderId"].Visible = false;
             gvRides.Columns["DestinationId"].Visible = false;
-            gvRides.Columns["Active"].Visible = false ;
+            gvRides.Columns["Status"].Visible = false ;
+            gvRides.Columns["CarId"].Visible = false;
+            gvRides.Columns["StartLat"].Visible = false;
+            gvRides.Columns["StartLong"].Visible = false;
+            gvRides.Columns["DateTicks"].Visible = false;
+
 
 
         }

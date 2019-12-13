@@ -52,11 +52,11 @@ namespace Unigo.API.Controllers
 
         [HttpGet]
         [Route("ByActiveStatus/{status}")]
-        public IList<Ride> GetByActiveStatus(bool status)
+        public IList<Ride> GetByActiveStatus(int status)
         {
             var rides = ridesRepository.GetAll();
             var chosenRides = from ride in rides
-                              where ride.Active == status
+                              where ride.Status == status
                               select ride;
 
 
@@ -69,7 +69,7 @@ namespace Unigo.API.Controllers
         {
             var rides = ridesRepository.GetAll();
             var chosenRides = from ride in rides
-                              where ride.Active == true
+                              where ride.Status == 1
                               select ride;
 
 
@@ -82,7 +82,7 @@ namespace Unigo.API.Controllers
         {
             var rides = ridesRepository.GetAll();
             var chosenRides = from ride in rides
-                              where ride.Destination.Name.Contains(name) && ride.Active == true
+                              where ride.Destination.Name.Contains(name) && ride.Status == 1
                               select ride;
 
 
@@ -96,7 +96,7 @@ namespace Unigo.API.Controllers
         {
             var rides = ridesRepository.GetAll();
             var chosenRides = from ride in rides
-                              where ride.Active == false
+                              where ride.Status == 0
                               select ride;
 
 
@@ -109,7 +109,7 @@ namespace Unigo.API.Controllers
         {
             var rides = ridesRepository.GetAll();
             var chosenRides = from ride in rides
-                              where ride.Destination.Name.Contains(name) && ride.Active == false
+                              where ride.Destination.Name.Contains(name) && ride.Status == 0
                               select ride;
 
 
@@ -146,7 +146,7 @@ namespace Unigo.API.Controllers
                 existingRide.NumberOfSeats = ride.NumberOfSeats;
                 existingRide.Price = ride.Price;
                 existingRide.LeavingTime = ride.LeavingTime;
-                existingRide.Active = ride.Active;
+                existingRide.Status = ride.Status;
 
                 ridesRepository.SaveChanges();
             }

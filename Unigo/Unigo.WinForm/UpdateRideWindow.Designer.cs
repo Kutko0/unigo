@@ -49,6 +49,14 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtFreeSeats = new System.Windows.Forms.TextBox();
             this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLatitude = new System.Windows.Forms.TextBox();
+            this.txtLongitude = new System.Windows.Forms.TextBox();
+            this.txtCarId = new System.Windows.Forms.TextBox();
+            this.txtDateTicks = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblId
@@ -143,7 +151,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(110, 290);
+            this.btnSave.Location = new System.Drawing.Point(122, 376);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;
@@ -227,11 +235,87 @@
             this.txtStatus.Size = new System.Drawing.Size(100, 20);
             this.txtStatus.TabIndex = 20;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(49, 272);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Latitude";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(49, 298);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Longitude";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 325);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Car id";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(49, 351);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Date ticks";
+            // 
+            // txtLatitude
+            // 
+            this.txtLatitude.Location = new System.Drawing.Point(160, 269);
+            this.txtLatitude.Name = "txtLatitude";
+            this.txtLatitude.ReadOnly = true;
+            this.txtLatitude.Size = new System.Drawing.Size(100, 20);
+            this.txtLatitude.TabIndex = 25;
+            // 
+            // txtLongitude
+            // 
+            this.txtLongitude.Location = new System.Drawing.Point(160, 295);
+            this.txtLongitude.Name = "txtLongitude";
+            this.txtLongitude.ReadOnly = true;
+            this.txtLongitude.Size = new System.Drawing.Size(100, 20);
+            this.txtLongitude.TabIndex = 26;
+            // 
+            // txtCarId
+            // 
+            this.txtCarId.Location = new System.Drawing.Point(160, 322);
+            this.txtCarId.Name = "txtCarId";
+            this.txtCarId.ReadOnly = true;
+            this.txtCarId.Size = new System.Drawing.Size(100, 20);
+            this.txtCarId.TabIndex = 27;
+            // 
+            // txtDateTicks
+            // 
+            this.txtDateTicks.Location = new System.Drawing.Point(160, 348);
+            this.txtDateTicks.Name = "txtDateTicks";
+            this.txtDateTicks.ReadOnly = true;
+            this.txtDateTicks.Size = new System.Drawing.Size(100, 20);
+            this.txtDateTicks.TabIndex = 28;
+            // 
             // UpdateRideWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 355);
+            this.ClientSize = new System.Drawing.Size(342, 422);
+            this.Controls.Add(this.txtDateTicks);
+            this.Controls.Add(this.txtCarId);
+            this.Controls.Add(this.txtLongitude);
+            this.Controls.Add(this.txtLatitude);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.txtFreeSeats);
             this.Controls.Add(this.txtPrice);
@@ -283,5 +367,13 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtFreeSeats;
         private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtLatitude;
+        private System.Windows.Forms.TextBox txtLongitude;
+        private System.Windows.Forms.TextBox txtCarId;
+        private System.Windows.Forms.TextBox txtDateTicks;
     }
 }
