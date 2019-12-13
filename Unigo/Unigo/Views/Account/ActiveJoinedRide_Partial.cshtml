@@ -1,0 +1,27 @@
+﻿@model Unigo.Models.InfoActiveJoinedRide
+
+    <tbody>
+        <tr>
+            <th>@Model.Destination</th>
+            <td>@Model.Time</td>
+            <td>@Model.CarPlate</td>
+            @if (Model.Time.Ticks > DateTime.Now.AddMinutes(15).Ticks && Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LeaveRide", "Ride", FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(m => m.PersonRideId, new { @Value = Model.PersonRideId, style = "display:none;" });
+                    <td> <button type="submit" class="btn btn-danger">Leave ride</button></td>
+
+                }
+            }
+            else
+            {
+                <td>
+                    <p>Past time.</p>
+                </td>
+            }
+
+        </tr>
+
+    </tbody>

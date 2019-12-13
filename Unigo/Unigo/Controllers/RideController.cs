@@ -232,6 +232,13 @@ namespace Unigo.Controllers
 
                         personRideRepo.Remove(lastAdded);
                         personRideRepo.SaveChanges();
+                        
+                        if(personRideRepo.GetAll().Where(m => m.RideId == rideToJoin.Id).Count() == rideToJoin.NumberOfSeats)
+                        {
+                            rideToJoin.Status = 0;
+                            rideRepo.Update(rideToJoin);
+                            rideRepo.SaveChanges();
+                        }
 
                         return RedirectToAction("Index", "Manage", new { Message = ManageController.ManageMessageId.UnableJoin });
                     }
@@ -243,6 +250,48 @@ namespace Unigo.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRide(InfoActiveRide model)
+        {
+            List<PersonRide> toDelete = new List<PersonRide>();
+            toDelete = personRideRepo.GetAll().Where(m => m.RideId == model.RideId).ToList();
+
+            if(toDelete.Any())
+            {
+                foreach (var x in toDelete)
+                {
+                    personRideRepo.Remove(x);
+                }
+            }
+            
+            rideRepo.RemoveById(model.RideId);
+            rideRepo.SaveChanges();
+
+
+            return RedirectToAction("Index", "Manage", new { Message = ManageController.ManageMessageId.RideDeleted });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LeaveRide(InfoActiveJoinedRide model)
+        {
+            string userId = User.Identity.GetUserId();
+            Person person = peopleRepo.GetAll().Where(m => m.UserId == userId).FirstOrDefault();
+            PersonRide toDelete = personRideRepo.GetById(model.PersonRideId);
+            Ride rideToUpdate = rideRepo.GetById(toDelete.RideId);
+
+            personRideRepo.Remove(toDelete);
+            personRideRepo.SaveChanges();
+
+            if (rideToUpdate.Status == 0)
+            {
+                rideToUpdate.Status = 1;
+                rideRepo.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Manage", new { Message = ManageController.ManageMessageId.RideLeft });
+        }
 
     }
 

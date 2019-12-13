@@ -1,0 +1,27 @@
+﻿@model Unigo.Models.InfoActiveRide
+
+    <tbody>
+        <tr>
+            <th>@Model.Destination</th>
+            <td>@Model.Time</td>
+            <td>@Model.NumberOfPeople</td>
+            @if (Model.Time.Ticks > DateTime.Now.AddMinutes(30).Ticks && Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("DeleteRide", "Ride", FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(m => m.RideId, new { @Value = Model.RideId, style="display:none;" });
+                   <td> <button type="submit" class="btn btn-warning">Delete ride</button></td>
+                    
+                }
+            }
+            else
+            {
+            <td>
+                <p>Past time.</p>
+            </td>
+            }
+
+</tr>
+
+    </tbody>

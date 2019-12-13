@@ -147,6 +147,8 @@ namespace Unigo.Models
         // Add rides
 
         public List<InfoPastRide> pastRides { get; set; }
+        public List<InfoActiveRide> activeRides { get; set; }
+        public List<InfoActiveJoinedRide> joinedActiveRides { get; set; }
     }
 
     public class InfoPastRide
@@ -154,6 +156,24 @@ namespace Unigo.Models
         public string riderName { get; set; }
         public string Destination { get; set; }
         public DateTime Time { get; set; }
+        public int Id { get; internal set; }
+    }
+
+    public class InfoActiveRide
+    {
+        public int RideId { get; set; }
+        public string Destination { get; set; }
+        public DateTime Time { get; set; }
+
+        public int NumberOfPeople { get; set; }
+    } 
+    
+    public class InfoActiveJoinedRide
+    {
+        public int PersonRideId { get; set; }
+        public string Destination { get; set; }
+        public DateTime Time { get; set; }
+        public string CarPlate{ get; set; }
     }
 
     // Custom attribute

@@ -24,17 +24,21 @@ namespace Unigo.Controllers
         private IRepository<Destination> destRepo;
         private IRepository<Ride> rideRepo;
         private IRepository<PersonRide> personRide;
+        private IRepository<Car> carRepo;
 
         public AccountController()
         {
         }
         
-        public AccountController(IRepository<Person> pr, IRepository<Destination> dr, IRepository<Ride> ride, IRepository<PersonRide> personR)
+        public AccountController(IRepository<Person> pr, IRepository<Destination> dr, 
+            IRepository<Ride> ride, IRepository<PersonRide> personR, IRepository<Car> c)
         {
             this.peopleRepo = pr;
             this.destRepo = dr;
             this.rideRepo = ride;
             this.personRide = personR;
+            this.carRepo = c;
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -208,7 +212,9 @@ namespace Unigo.Controllers
                 FirstName = person.FirstName,
                 Lastname = person.LastName,
                 Joined = "Joined " + person.Joined.ToString("dd. MM. yyyy"),
-                pastRides = GetPastRides(person.Id),
+                pastRides = GetPastFiveRides(person.Id),
+                activeRides = GetActiveRidesAsDriver(person.Id),
+                joinedActiveRides = GetActiveJoinedRides(person.Id),
                 UrlPhoto = "https://i.kym-cdn.com/entries/icons/medium/000/029/043/Shaq_Tries_to_Not_Make_a_Face_While_Eating_Spicy_Wings___Hot_Ones_11-21_screenshot.png"
             };
 
@@ -216,20 +222,63 @@ namespace Unigo.Controllers
             return View(upvm);
         }
 
-        private List<InfoPastRide> GetPastRides(int id)
+        private List<InfoActiveJoinedRide> GetActiveJoinedRides(int id)
+        {
+            List<InfoActiveJoinedRide> ipr = new List<InfoActiveJoinedRide>();
+            List<PersonRide> pRide = personRide.GetAll().Where(m => m.PersonId == id).ToList();
+
+            foreach(var personR in pRide){
+                Ride r = rideRepo.GetById(personR.RideId);
+                Car c = carRepo.GetById(r.CarId);
+                ipr.Add(new InfoActiveJoinedRide
+                {
+                    Destination = destRepo.GetById(r.DestinationId).Name,
+                    Time = r.LeavingTime,
+                    CarPlate = c.Brand + ", " + c.Type + "( " + c.LicensePlate + " )",
+                    PersonRideId = personR.Id
+                });
+            }
+           
+
+            return ipr;
+        }
+
+        private List<InfoPastRide> GetPastFiveRides(int id)
         {
             List<InfoPastRide> ipr = new List<InfoPastRide>();
-            List<PersonRide> rides = personRide.GetAll().Where(m => m.PersonId == id).ToList();
+            List<PersonRide> rides = personRide.GetAll().Where(m => m.PersonId == id).Take(5).ToList();
             foreach(var x in rides)
             {
-                Person p = peopleRepo.GetById(x.RideId);
-                Ride r = rideRepo.GetById(x.Id);
+                Ride r = rideRepo.GetById(x.RideId);
+                Person p = peopleRepo.GetById(r.RiderId);
+                
                 ipr.Add(new InfoPastRide
                 {
                     Destination = destRepo.GetById(r.DestinationId).Name,
                     riderName = p.FirstName + " " + p.LastName,
-                    Time = r.LeavingTime
+                    Time = r.LeavingTime,
+                    Id = r.Id
                 });  
+            }
+
+            return ipr;
+        }
+
+        private List<InfoActiveRide> GetActiveRidesAsDriver(int id)
+        {
+            List<InfoActiveRide> ipr = new List<InfoActiveRide>();
+            List<Ride> rides = rideRepo.GetAll().Where(m => m.RiderId == id).Where(m => m.Status == 1).ToList();
+            foreach (var x in rides)
+            {
+                int peopleIn = personRide.GetAll().Where(m => m.RideId == x.Id).Count();
+
+                ipr.Add(new InfoActiveRide
+                {
+                    Destination = destRepo.GetById(x.DestinationId).Name,
+                    Time = x.LeavingTime,
+                    NumberOfPeople = peopleIn,
+                    RideId = x.Id
+                });
             }
 
             return ipr;

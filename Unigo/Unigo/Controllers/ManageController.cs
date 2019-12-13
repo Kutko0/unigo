@@ -311,37 +311,9 @@ namespace Unigo.Controllers
 
         //
         // POST: /Manage/RemoveLogin
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
-        {
-            ManageMessageId? message;
-            var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-            if (result.Succeeded)
-            {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
-                message = ManageMessageId.RemoveLoginSuccess;
-            }
-            else
-            {
-                message = ManageMessageId.Error;
-            }
-            return RedirectToAction("ManageLogins", new { Message = message });
-        }
-
-        //
-        // GET: /Manage/AddPhoneNumber
+        
 
 
-        //
-        // POST: /Manage/AddPhoneNumber
-
-        //
-        // POST: /Manage/RemovePhoneNumber
         
         //
         // POST: /Manage/ChangePassword
@@ -367,74 +339,11 @@ namespace Unigo.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.NoChange });
         }
 
-        //
-        // GET: /Manage/SetPassword
-        public ActionResult SetPassword()
-        {
-            return View();
-        }
+       
 
-        //
-        // GET: /Manage/ManageLogins
-        public async Task<ActionResult> ManageLogins(ManageMessageId? message)
-        {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : "";
+        
 
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-
-            if (user == null)
-            {
-                return View("Error");
-            }
-
-            var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
-            var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where
-                (auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
-
-            ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
-            return View(new ManageLoginsViewModel
-            {
-                CurrentLogins = userLogins,
-                OtherLogins = otherLogins
-            });
-        }
-
-        //
-        // POST: /Manage/LinkLogin
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LinkLogin(string provider)
-        {
-            // Request a redirect to the external login provider to link a login for the current user
-            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
-        }
-
-        //
-        // GET: /Manage/LinkLoginCallback
-        public async Task<ActionResult> LinkLoginCallback()
-        {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
-            if (loginInfo == null)
-            {
-                return RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-            }
-            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
-            return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && _userManager != null)
-            {
-                _userManager.Dispose();
-                _userManager = null;
-            }
-
-            base.Dispose(disposing);
-        }
+        
 
 #region Helpers
         // Used for XSRF protection when adding external logins
@@ -456,26 +365,6 @@ namespace Unigo.Controllers
             }
         }
 
-        private bool HasPassword()
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PasswordHash != null;
-            }
-            return false;
-        }
-
-        private bool HasPhoneNumber()
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PhoneNumber != null;
-            }
-            return false;
-        }
-
         public enum ManageMessageId
         {
             ChangePhoneSuccess,
@@ -491,7 +380,9 @@ namespace Unigo.Controllers
             RideCreated,
             RemovePhoneSuccess,
             RemoveLoginSuccess,
-            JoinedSuccess
+            JoinedSuccess,
+            RideDeleted,
+            RideLeft
         }
 
         private string ResolveMessage(ManageMessageId? message)
@@ -507,6 +398,8 @@ namespace Unigo.Controllers
                 : message == ManageMessageId.NoChange ? "No changes has been made."
                 : message == ManageMessageId.AddCarSuccess ? "Car added successfully."
                 : message == ManageMessageId.RideCreated ? "Ride created successfully."
+                : message == ManageMessageId.RideDeleted ? "Ride deleted."
+                : message == ManageMessageId.RideLeft ? "You left the ride."
                 : message == ManageMessageId.JoinedSuccess ? "Ride joined successfully."
                 : message == ManageMessageId.ActiveCarNeeded ? "You need have a active car to create ride."
                 : message == ManageMessageId.MoreSeats ? "Cannot create ride withmore seats than in car."

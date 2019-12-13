@@ -6,76 +6,81 @@
     var FullName = Model.FirstName + " " + Model.Lastname;
 
 }
-   
-
-    @*
-        Add view model for showing past rides
-        Figure out how to save photo
-        Implement sigan r chat
 
 
-    *@
-    <header class="container-fluid pt-5 bg-unigo">
-        <div class="container">
-            <div class="row text-md-left text-center">
-                <div class="col ml-auto">
-                    <h1 class="text-white">Profile</h1>
-                </div>
+@*
+    Add view model for showing past rides
+    Figure out how to save photo
+    Implement sigan r chat
+
+
+*@
+<header class="container-fluid pt-5 bg-unigo">
+    <div class="container">
+        <div class="row text-md-left text-center">
+            <div class="col ml-auto">
+                <h1 class="text-white">Profile</h1>
             </div>
         </div>
-    </header>
-    <div class="container">
-        <div class="row pt-3 pt-sm-5">
-            <div class="col-12 col-md-3">
-                <div class="card mb-3">
-                    <img src=@Model.UrlPhoto class="rounded-top img-fluid" alt="Profile Picture">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">@FullName</h5>
-                        <p class="card-text">Description</p>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="card-text d-flex align-items-center">
-                                <i class="fas fa-flag pr-3"></i>
-                                <p class="m-0">@Model.Nationality</p>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card-text d-flex align-items-center">
-                                <i class="fas fa-home pr-3"></i>
-                                <p class="m-0">@Model.City , Denmark</p>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card-text d-flex align-items-center">
-                                <i class="fas fa-university pr-3"></i>
-                                <p class="m-0">Campus : @Model.Campus</p>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card-text d-flex align-items-center">
-                                <i class="fas fa-clock pr-3"></i>
-                                <p class="m-0">@Model.Joined</p>
-                            </div>
-                        </li>
-                    </ul>
+    </div>
+</header>
+<div class="container" style="margin-bottom: 40px;">
+    <div class="row pt-3 pt-sm-5">
+        <div class="col-12 col-md-3">
+            <div class="card mb-3">
+                <img src=@Model.UrlPhoto class="rounded-top img-fluid" alt="Profile Picture">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@FullName</h5>
+                    <p class="card-text">Description</p>
                 </div>
-                <button type="button" class="btn btn-primary w-75 mb-3" id="main-button">Message</button>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="card-text d-flex align-items-center">
+                            <i class="fas fa-flag pr-3"></i>
+                            <p class="m-0">@Model.Nationality</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="card-text d-flex align-items-center">
+                            <i class="fas fa-home pr-3"></i>
+                            <p class="m-0">@Model.City , Denmark</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="card-text d-flex align-items-center">
+                            <i class="fas fa-university pr-3"></i>
+                            <p class="m-0">Campus : @Model.Campus</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="card-text d-flex align-items-center">
+                            <i class="fas fa-clock pr-3"></i>
+                            <p class="m-0">@Model.Joined</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            @if (Model.pastRides.Any())
-            {
-                <div class="col mt-3 mt-lg-0">
-                    <div class="text-md-left text-center">
-                        <h3>My latest trips</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+        </div>
+
+        @if (Model.pastRides.Any() || Model.activeRides.Any() || Model.joinedActiveRides.Any())
+        {
+            <div class="col mt-3 mt-lg-0">
+                <div class="text-md-left text-center">
+                    <h3>My latest trips</h3>
+                </div>
+                <div class="row">
+
+                    @if (Model.pastRides.Any())
+                    {
+
+                        <div class="col-12">
                             <table class="table table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Driver</th>
                                         <th scope="col">Destination</th>
                                         <th scope="col">Time</th>
+                                        <th scope="col">Id</th>
                                     </tr>
                                 </thead>
                                 @foreach (var part in Model.pastRides)
@@ -85,13 +90,86 @@
 
                             </table>
                         </div>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <p>No past rides yet. | <a href=@Url.Action("Find", "Ride")>Find ride now!</a></p>
-            }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <p>No past rides yet! </p>
+                        </div>
+                    }
 
-        </div>
+
+                    @if (Model.activeRides.Any())
+                    {
+
+
+                        <div class="col-12">
+                            <div class="text-md-left text-center">
+                                <h3>Active rides</h3>
+                            </div>
+                            <table class="table table-striped text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col">Leaving Time</th>
+                                        <th scope="col">People joined</th>
+                                        <th scope="col">Remove(30 min.)</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var part in Model.activeRides)
+                                {
+                                    @Html.Partial("ActiveRide_Partial", part)
+                                }
+
+                            </table>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <p>No rides created yet! </p>
+                    }
+
+                    @if (Model.joinedActiveRides.Any())
+                    {
+
+
+                        <div class="col-12">
+                            <div class="text-md-left text-center">
+                                <h3>Joined rides</h3>
+                            </div>
+                            <table class="table table-striped text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col">Leaving Time</th>
+                                        <th scope="col">Car</th>
+                                        <th scope="col">Leave(15 min.)</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var part in Model.joinedActiveRides)
+                                {
+                                    @Html.Partial("ActiveJoinedRide_Partial", part)
+                                }
+
+                            </table>
+                        </div>
+
+                    }
+
+
+
+
+                        </div>
+                    </div>
+
+        }
+        else
+        {
+            <p>No recent activity.</p>
+        }
+
+
+
     </div>
+</div>
