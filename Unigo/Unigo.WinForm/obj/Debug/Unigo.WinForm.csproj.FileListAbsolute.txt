@@ -47,3 +47,8 @@ D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\Antlr3.Runtime.pdb
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.csproj.CopyComplete
 D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.StartWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdatePersonWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateCarWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateDestinationWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.UpdateRideWindow.resources
+D:\Docs\Projects\unigo\Unigo\Unigo.WinForm\obj\Debug\Unigo.WinForm.LoginWindow.resources

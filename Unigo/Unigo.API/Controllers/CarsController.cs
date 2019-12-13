@@ -9,6 +9,7 @@ using Unigo.Repo;
 
 namespace Unigo.API.Controllers
 {
+    [RoutePrefix("api/cars")]
     public class CarsController : ApiController
     {
         public IRepository<Car> carsRepository;
@@ -27,7 +28,8 @@ namespace Unigo.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        [Route("ById/{id}")]
+        public IHttpActionResult GetById(int id)
         {
             Car car = carsRepository.GetById(id);
 
@@ -35,6 +37,18 @@ namespace Unigo.API.Controllers
                 return NotFound();
 
             return Ok(car);
+        }
+        [HttpGet]
+        [Route("ByLicensePlate/{licensePlate}")]
+        public IList<Car> GetByLicensePlate(string licensePlate)
+        {
+            var cars = carsRepository.GetAll();
+            var chosenCar = from car in cars
+                            where car.LicensePlate.Contains(licensePlate)
+                            select car;
+
+
+            return chosenCar.ToList();
         }
 
         [HttpPost]

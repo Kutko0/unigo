@@ -9,6 +9,7 @@ using Unigo.Repo;
 
 namespace Unigo.API.Controllers
 {
+    [RoutePrefix("api/rides")]
     public class RidesController : ApiController
     {
         public IRepository<Ride> ridesRepository;
@@ -25,6 +26,7 @@ namespace Unigo.API.Controllers
         }
 
         [HttpGet]
+        [Route("ById/{id}")]
         public IHttpActionResult GetById(int id)
         {
             Ride ride = ridesRepository.GetById(id);
@@ -34,6 +36,87 @@ namespace Unigo.API.Controllers
 
             return Ok(ride);
         }
+
+        [HttpGet]
+        [Route("ByDestination/{name}")]
+        public IList<Ride> GetByDestination(string name)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Destination.Name.Contains(name)
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("ByActiveStatus/{status}")]
+        public IList<Ride> GetByActiveStatus(bool status)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Active == status
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("GetActiveRides")]
+        public IList<Ride> GetActiveRides()
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Active == true
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("GetActiveRides/{name}")]
+        public IList<Ride> GetActiveRidesByDestination(string name)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Destination.Name.Contains(name) && ride.Active == true
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+
+        [HttpGet]
+        [Route("GetInactiveRides")]
+        public IList<Ride> GetInactiveRides()
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Active == false
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+        [HttpGet]
+        [Route("GetInactiveRides/{name}")]
+        public IList<Ride> GetInactiveRidesByDestination(string name)
+        {
+            var rides = ridesRepository.GetAll();
+            var chosenRides = from ride in rides
+                              where ride.Destination.Name.Contains(name) && ride.Active == false
+                              select ride;
+
+
+            return chosenRides.ToList();
+        }
+
+
 
         [HttpPost]
         public IHttpActionResult CreateRide(Ride ride)
@@ -63,7 +146,7 @@ namespace Unigo.API.Controllers
                 existingRide.NumberOfSeats = ride.NumberOfSeats;
                 existingRide.Price = ride.Price;
                 existingRide.LeavingTime = ride.LeavingTime;
-                //existingRide.Active = ride.Active;
+                existingRide.Active = ride.Active;
 
                 ridesRepository.SaveChanges();
             }
