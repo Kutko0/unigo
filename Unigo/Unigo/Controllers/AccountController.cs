@@ -232,13 +232,16 @@ namespace Unigo.Controllers
             foreach(var personR in pRide){
                 Ride r = rideRepo.GetById(personR.RideId);
                 Car c = carRepo.GetById(r.CarId);
-                ipr.Add(new InfoActiveJoinedRide
+                if(r.DateTicks > DateTime.Now.Ticks)
                 {
-                    Destination = destRepo.GetById(r.DestinationId).Name,
-                    Time = r.LeavingTime,
-                    CarPlate = c.Brand + ", " + c.Type + "( " + c.LicensePlate + " )",
-                    PersonRideId = personR.Id
-                });
+                    ipr.Add(new InfoActiveJoinedRide
+                    {
+                        Destination = destRepo.GetById(r.DestinationId).Name,
+                        Time = r.LeavingTime,
+                        CarPlate = c.Brand + ", " + c.Type + "( " + c.LicensePlate + " )",
+                        PersonRideId = personR.Id
+                    });
+                }
             }
            
 
