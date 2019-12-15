@@ -47,36 +47,6 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\roslyn\vbc.
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\roslyn\vbc.rsp
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\roslyn\VBCSCompiler.exe
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\roslyn\VBCSCompiler.exe.config
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Antlr3.Runtime.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\EntityFramework.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\EntityFramework.SqlServer.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.AspNet.Identity.Core.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.AspNet.Identity.Owin.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Host.SystemWeb.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Cookies.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Facebook.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Google.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.OAuth.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Twitter.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Web.Infrastructure.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Newtonsoft.Json.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Owin.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Net.Http.Formatting.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Helpers.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Http.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Http.WebHost.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Mvc.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Optimization.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Razor.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.WebPages.Deployment.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.WebPages.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.WebPages.Razor.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\WebGrease.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Helpers.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Mvc.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Web.Optimization.xml
@@ -97,7 +67,6 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.A
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Host.SystemWeb.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.xml
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Facebook.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Cookies.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Google.xml
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Microsoft.Owin.Security.Twitter.xml
@@ -355,16 +324,9 @@ E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.dll
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Common.xml
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Common.WebHost.xml
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.xml
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Common.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Common.WebHost.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.Mvc.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Runtime.CompilerServices.Unsafe.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\System.Threading.Tasks.Extensions.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Data.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Domain.Models.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Repo.dll
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\WebActivatorEx.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Data.pdb
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Data.dll.config
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.Domain.Models.pdb
@@ -512,7 +474,6 @@ D:\Docs\Projects\unigo\Unigo\Unigo\bin\Unigo.API.pdb
 D:\Docs\Projects\unigo\Unigo\Unigo\bin\Unigo.API.dll.config
 D:\Docs\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.dll
 D:\Docs\Projects\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.xml
-E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Ninject.Web.WebApi.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.pdb
 E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo\bin\Unigo.API.dll.config

@@ -57,3 +57,4 @@ E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.Destinations.resources
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.PopulateCars.resources
 E:\UCN\Semester 3\Projects\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.AddLongLatToDestinations.resources
+E:\School n Shit\projekts\3rd Semester project\unigo\Unigo\Unigo.Data\obj\Debug\Unigo.Data.Migrations.AddLongLatToDestinations.resources

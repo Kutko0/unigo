@@ -87,13 +87,14 @@ namespace Unigo.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name = "Your campus")]
         public int CampusId { get; set; }
 
         public List<ListHelper> Campuses { get; set; }
 
-
+        [Display(Name = "City")]
         public Cities City { get; set; }
-
+        [Display(Name = "Nationality")]
         public Nationalities Nationality { get; set; }
 
     }

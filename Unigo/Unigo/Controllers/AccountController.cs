@@ -112,6 +112,10 @@ namespace Unigo.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("UserProfile");
+            }
 
             RegisterViewModel rvm = new RegisterViewModel
             {
@@ -197,12 +201,10 @@ namespace Unigo.Controllers
 
         //
         // GET: /Account/Profile
-        [AllowAnonymous]
         public ActionResult UserProfile()
         {
             string userId = User.Identity.GetUserId();
             Person person = peopleRepo.GetAll().Where(m => m.UserId == userId).FirstOrDefault();
-            
 
             UserProfileViewModel upvm = new UserProfileViewModel
             {
